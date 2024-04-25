@@ -1,0 +1,25 @@
+:root {
+    --yj1: 4px;
+    --yj2: 8px;
+}
+
+
+.button_line {
+    display: flex;
+    width: 70px;
+    height: 32px;
+    padding: 0px 8px;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    align-self: stretch;
+    border-radius: var(--yj2);
+    border: 1px solid #E0DFDF;
+    background: #FFF;
+}
+
+
+button:hover {
+    cursor: pointer;
+    /* 小手效果，提示用户可以点击 */
+}

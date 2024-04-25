@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资源效果预览</title>
+    <link rel="shortcut icon" href="../../images/启动图标.png">
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #f7f7f7;
+        }
+
+        .main {
+            display: flex;
+
+        }
+
+        .box {
+
+            width: 200px;
+            margin: 10px;
+            border-radius: 1.25rem;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .box img {
+            border-radius: 1.25rem;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .box:hover {
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+
+        .box-title {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>资源效果预览工具</h3>
+    <div class="main">
+        <div class="box" onclick="window.location.href = 'pages/square/guangchang.html';">
+            <img src="./images/目录页/广场页.png" alt="Image 1">
+            <div class="box-title">广场</div>
+        </div>
+
+        <div class="box" onclick="window.location.href = 'pages/my/wodeye.html';">
+            <img src="./images/目录页/我的页.png" alt="Image 2">
+            <div class="box-title">我的</div>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
