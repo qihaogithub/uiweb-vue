@@ -9,11 +9,9 @@
         </div>
     </div>  
     <div class="menu">
-        <menu @update:image="updateImage" />
+        <menu/>
     </div>
 </div>
-
-   
 
 </template>
   
