@@ -8,21 +8,21 @@
         <pad :imageUrl="imageUrl" />
         </div>
     </div>  
-    <div class="menu">
-        <menu/>
+    <div class="resource-list">
+        <resource/>
     </div>
 </div>
 
 </template>
   
 <script>
-import menu from './menu.vue';
+import resource from './resource-list.vue';
 import pad from './pop-up-pad.vue';
 import phone from './pop-up-phone.vue';
 
 export default {
   components: {
-    menu,
+    resource ,
     phone,
     pad,
 
@@ -60,9 +60,9 @@ export default {
     width: 100%;
 }
 
-.menu {
+.resource-list {
     display: flex;
-    width: 16rem;
+    width: 18rem;
     padding: 0 1rem;
     flex-direction: column;
     align-items: center;
