@@ -12,7 +12,9 @@
     "vue": "^3.4.21"
   },
   "devDependencies": {
+    "@arco-design/web-vue": "^2.55.1",
     "@vitejs/plugin-vue": "^5.0.4",
+    "arco-cli": "^1.27.5",
     "vite": "^5.2.9"
   }
 }
