@@ -33,7 +33,7 @@
 <script setup>
 import { IconEdit, IconPlus } from '@arco-design/web-vue/es/icon';
 import { ref } from 'vue';
-import emitter from '@/utils/emitter.ts';
+import emitter from '@/utils/emitter';
 
 
 const file = ref();
