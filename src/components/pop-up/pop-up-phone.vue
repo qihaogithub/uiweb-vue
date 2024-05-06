@@ -2,13 +2,18 @@
   <div class="page">
     <div class="main">
       <div class="pop">
+<<<<<<< HEAD
         <img :src="uploadedImage" alt="弹窗资源" />
+=======
+        <img :src="imageUrl" alt="图片1" />
+>>>>>>> b882d269f2f3b409e649645cecaf694682114a1a
       </div>
     </div>
   </div>
 </template>
 
 <script>
+<<<<<<< HEAD
 import { ref } from "vue";
 import { useUploadStore } from "../../stores/Resources.js";
 
@@ -25,6 +30,10 @@ export default {
       uploadedImage: uploadedImage.value,
     };
   },
+=======
+export default {
+  props: ["imageUrl"], // 使用prop接收父组件传递的图片URL
+>>>>>>> b882d269f2f3b409e649645cecaf694682114a1a
 };
 </script>
 

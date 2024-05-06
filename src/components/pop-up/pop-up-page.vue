@@ -9,6 +9,7 @@
       </div>
     </div>
     <div class="resource-list">
+<<<<<<< HEAD
       <div class="menu">
         <div class="title"><span>资源列表</span></div>
         <div class="resources">
@@ -20,10 +21,14 @@
           />
         </div>
       </div>
+=======
+      <resource @update:image="updateImage" />
+>>>>>>> b882d269f2f3b409e649645cecaf694682114a1a
     </div>
   </div>
 </template>
 
+<<<<<<< HEAD
 <script setup>
 import { ref } from "vue";
 import pad from "./pop-up-pad.vue";
@@ -44,6 +49,30 @@ function handleUpload({ id, file }) {
   uploadedImages.value[id] = file;
   // 这里可以根据id来决定将图片传递给哪个子组件
 }
+=======
+<script>
+import resource from "../pop-up/resource-list.vue";
+import pad from "./pop-up-pad.vue";
+import phone from "./pop-up-phone.vue";
+
+export default {
+  components: {
+    resource,
+    phone,
+    pad,
+  },
+  data() {
+    return {
+      imageUrl: "src/assets/img/通用广告弹窗/默认弹窗.png",
+    };
+  },
+  methods: {
+    updateImage(newImageUrl) {
+      this.imageUrl = newImageUrl;
+    },
+  },
+};
+>>>>>>> b882d269f2f3b409e649645cecaf694682114a1a
 </script>
 
 <style>
@@ -64,6 +93,21 @@ function handleUpload({ id, file }) {
   width: 100%;
 }
 
+<<<<<<< HEAD
+=======
+.resource-list {
+  display: flex;
+  width: 18rem;
+  padding: 0 1rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  border-top: 0.0625rem solid #e0dfdf;
+  border-left: 0.0625rem solid #e0dfdf;
+  background-color: #fff;
+}
+
+>>>>>>> b882d269f2f3b409e649645cecaf694682114a1a
 .pad {
   width: 53.75rem;
   height: 50.75rem;
@@ -106,6 +150,7 @@ function handleUpload({ id, file }) {
   display: none;
   /* 隐藏滚动条 */
 }
+<<<<<<< HEAD
 
 .title {
   display: flex;
@@ -132,4 +177,6 @@ function handleUpload({ id, file }) {
   width: 100%;
   gap: 1.25rem;
 }
+=======
+>>>>>>> b882d269f2f3b409e649645cecaf694682114a1a
 </style>

@@ -20,4 +20,5 @@ emitter.on('myurl',(value) => {
   <img :src="uurl" alt="图片1" />
   <img :src="uurl" alt="图片2" />
   <img :src="uurl" alt="图片3" />
+
 </template>
