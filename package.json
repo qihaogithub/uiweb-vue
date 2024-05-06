@@ -1,0 +1,23 @@
+{
+  "name": "uiweb",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@rollup/rollup-win32-x64-msvc": "^4.17.2",
+    "mitt": "^3.0.1",
+    "pinia": "^2.1.7",
+    "vue": "^3.4.21"
+  },
+  "devDependencies": {
+    "@arco-design/web-vue": "^2.55.1",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "arco-cli": "^1.27.5",
+    "vite": "^5.2.9"
+  }
+}

@@ -1,0 +1,454 @@
+ul {
+    list-style-type: none;
+    margin-left: 0;
+    /* 移除默认的外边距 */
+    padding-left: 0px;
+    /* 添加左内边距 */
+}
+
+ul ul {
+    padding-left: 20px;
+    /* 为嵌套列表增加额外的内边距 */
+}
+
+
+
+.menu {
+    position: fixed;
+    right: 0;
+    top: 0;
+    display: flex;
+    width: 16rem;
+    height: 100%;
+    padding: 0 1rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+    align-self: stretch;
+    border-top: 0.0625rem solid #E0DFDF;
+    border-left: 0.0625rem solid #E0DFDF;
+    background-color: #fff;
+
+}
+
+
+/* 画布 */
+.canvas {
+    display: flex;
+    justify-content: Center;
+    align-items: center;
+    /* 弹性盒子沿主轴居中排列 */
+    flex-wrap: wrap;
+    /*弹性盒子挤压时可以换行 */
+    gap: 2.5rem;
+    /* align-items: center; */
+    /* width: 100%; */
+    height: 100%;
+    margin-right: 17rem;
+
+}
+
+
+.phone {
+    width: 23.4375rem;
+    height: 50.75rem;
+    margin-top: 1rem;
+    margin: 1.875rem 0;
+    background-color: #FFF;
+
+    flex-direction: column;
+    /* 修改主轴方向*/
+    overflow-x: hidden;
+    /* 隐藏水平滚动条并阻止水平滚动 */
+    /* 允许内容在垂直方向上滚动 */
+    /* overflow-y: auto;  */
+    border-radius: 1.25rem;
+    box-shadow: 0rem 0.25rem 3.125rem 0rem rgba(0, 0, 0, 0.08);
+}
+
+.pad {
+    width: 53.75rem;
+    height: 50.75rem;
+    margin: 1.875rem 0;
+    background-color: #FFF;
+    flex-direction: column;
+    /* 修改主轴方向*/
+    align-items: center;
+    overflow-x: hidden;
+    /* 隐藏水平滚动条并阻止水平滚动 */
+    /* 允许内容在垂直方向上滚动 */
+    /* overflow-y: auto; */
+    border-radius: 1.25rem;
+    box-shadow: 0rem 0.25rem 3.125rem 0rem rgba(0, 0, 0, 0.08);
+
+}
+
+.phone::-webkit-scrollbar {
+    display: none;
+    /* 隐藏滚动条 */
+}
+
+.pad::-webkit-scrollbar {
+    display: none;
+    /* 隐藏滚动条 */
+}
+
+
+.phone .top,
+.pad .top {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.phone .navigationBar,
+.pad .navigationBar {
+    display: flex;
+    height: 2.75rem;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.4375rem 1.25rem;
+}
+
+.phone .logo {
+    width: 9.625rem;
+    height: 1.875rem;
+    transform-origin: left center;
+    /* 设置缩放原点为左边中心 */
+    transition: transform 0.3s ease;
+    /* 平滑过渡效果 */
+    /* 添加一个平滑的过渡效果 */
+}
+
+.phone .scan {
+    height: 1.875rem;
+}
+
+.pad .logo {
+    width: 9.625rem;
+    height: 1.875rem;
+    transform-origin: left center;
+    /* 设置缩放原点为左边中心 */
+    transition: transform 0.3s ease;
+    /* 平滑过渡效果 */
+    /* 添加一个平滑的过渡效果 */
+}
+
+.pad .scan {
+    height: 1.875rem;
+}
+
+
+
+/* 内容 */
+
+
+.neirong::-webkit-scrollbar {
+    display: none;
+}
+
+.phone .neirong {
+    /* padding-top: 3rem; */
+    /* display: flex;
+    flex-direction: column; */
+    width: 20.9375rem;
+    gap: 1rem;
+    /* padding-bottom: 100px; */
+    overflow-x: hidden;
+
+}
+
+.pad .neirong {
+    /* padding-top: 3rem;
+    display: flex;
+    flex-direction: column; */
+    width: 48.75rem;
+    gap: 1.25rem;
+    /* padding-bottom: 100px; */
+    overflow-x: hidden;
+
+}
+
+/* 科目 */
+.phone .subject {
+    display: flex;
+    /* 启用Flexbox布局 */
+    justify-content: space-between;
+    /* 子元素之间的空间平均分布 */
+    /* padding: 0 1rem; */
+    /* 左右内边距为 1rem */
+    justify-content: center;
+    /* 水平居中子元素 */
+    align-items: center;
+    /* 垂直居中子元素，如果已经是居中的话，这一行可以省略 */
+    gap: 0.6875rem;
+}
+
+.pad .subject {
+    display: flex;
+    /* 启用Flexbox布局 */
+    justify-content: space-between;
+    /* 子元素之间的空间平均分布 */
+    justify-content: center;
+    /* 水平居中子元素 */
+    align-items: center;
+    /* 垂直居中子元素，如果已经是居中的话，这一行可以省略 */
+    /* padding: 0 1rem; */
+    /* 左右内边距为 1rem */
+    width: 48.75rem;
+    margin: 0 auto;
+    gap: 1.25rem;
+}
+
+.phone .km {
+    display: flex;
+    padding: 0.125rem 0rem var(--, 0.25rem) 0rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.125rem;
+    width: 3.6375rem;
+    /* 设置每个.km元素的宽度为6.25rem */
+    height: 3.25rem;
+    border-radius: 0.75rem 0.75rem 1.5rem 0.75rem;
+    margin-top: 1rem;
+}
+
+.phone .km img {
+    width: 2rem;
+}
+
+.pad .km {
+    display: flex;
+    padding: 0.625rem 0rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1 0 0;
+    /* width: 8.75rem;  */
+    flex: 1 0 0;
+    /* 弹性项目可以根据需要增长，占据所有额外的空间*/
+    height: 3.75rem;
+    padding: 0rem 0.125rem 0rem 0.25rem;
+    border-radius: 0.9375rem 0.9375rem 1.875rem 0.9375rem;
+}
+
+.phone .km span {
+    font-size: 0.75rem;
+    width: 1.82rem;
+    height: 1rem;
+    border-radius: 0.38rem 0.38rem 0.75rem 0.38rem;
+}
+
+.pad .km span {
+    font-size: 1.25rem;
+}
+
+.pad .km img {
+    width: 2.5rem;
+}
+
+.s1 {
+    padding: 0.13rem 0 0.34rem;
+    background-color: #fff2ea;
+    box-shadow: 0rem -0.062rem 0.125rem #ffede0 inset;
+}
+
+.s2 {
+    padding: 0.13rem 0 0.34rem;
+    background: rgba(234, 249, 255, 1);
+    box-shadow: 0rem -0.083rem 0.167rem rgba(224, 246, 255, 1) inset;
+}
+
+.s3 {
+    padding: 0.13rem 0 0.34rem;
+    background: rgba(249, 245, 255, 1);
+    box-shadow: 0rem -0.083rem 0.167rem rgba(243, 235, 255, 1) inset;
+}
+
+.s4 {
+    padding: 0.13rem 0 0.34rem;
+    background: rgba(238, 252, 235, 1);
+    box-shadow: 0rem -0.083rem 0.167rem rgba(229, 250, 224, 1) inset;
+}
+
+.s5 {
+    padding: 0.13rem 0 0.34rem;
+    background: #fff0f3;
+    box-shadow: 0rem -0.083rem 0.167rem #ffe5eb inset;
+}
+
+/* banner */
+.phone .bigBanner {
+    position: relative;
+    width: 20.9375rem;
+    /*横幅的最大宽度 */
+    height: 12rem;
+    /* 背景图像的高度 */
+    margin: 0 auto;
+    /* 添加6.25rem的顶部空白，并水平居中横幅 */
+}
+
+.pad .bigBanner {
+    position: relative;
+
+    width: 48.75rem;
+    /*横幅的最大宽度 */
+    height: 15rem;
+    /* 背景图像的高度 */
+    margin: 0rem auto 0;
+    /* 添加6.25rem的顶部空白，并水平居中横幅 */
+}
+
+.pad .background-image {
+    position: absolute;
+    width: 100%;
+    /* 将背景图像的宽度设置为容器的100% */
+    height: 13.4375rem;
+    /* Height of the background image */
+    bottom: 0;
+    /* 对齐图像的底部 */
+    left: 50%;
+    /* 将图像水平居中 */
+    transform: translateX(-50%);
+    /* 调整位置，使位置完全居中 */
+    border-radius: 1.6856rem;
+    /* 在背景图像中添加1.25rem圆角 */
+    object-fit: cover;
+    /* 确保图像覆盖区域而不拉伸*/
+}
+
+.pad .foreground-image {
+    position: absolute;
+    height: 15rem;
+    width: 100%;
+    /* 将前景图像的宽度设置为容器的100% */
+    bottom: 0rem;
+    /* 将前景图像放置在背景图像上方2.5rem */
+    left: 50%;
+    /* 将图像水平居中 */
+    transform: translateX(-50%);
+    /* 调整位置，使位置完全居中 */
+    object-fit: cover;
+    /* 确保图像覆盖区域而不拉伸 */
+}
+
+.phone .background-image {
+    position: absolute;
+    width: 100%;
+    /* 将背景图像的宽度设置为容器的100% */
+    height: 10.75rem;
+    /* Height of the background image */
+    bottom: 0;
+    /* 对齐图像的底部 */
+    left: 50%;
+    /* 将图像水平居中 */
+    transform: translateX(-50%);
+    /* 调整位置，使位置完全居中 */
+    border-radius: 1rem;
+    /* 在背景图像中添加1.25rem圆角 */
+    object-fit: cover;
+    /* 确保图像覆盖区域而不拉伸*/
+}
+
+.phone .foreground-image {
+    position: absolute;
+    height: 12rem;
+    width: 100%;
+    /* 将前景图像的宽度设置为容器的100% */
+    bottom: 0rem;
+    /* 将前景图像放置在背景图像上方2.5rem */
+    left: 50%;
+    /* 将图像水平居中 */
+    transform: translateX(-50%);
+    /* 调整位置，使位置完全居中 */
+    object-fit: cover;
+    /* 确保图像覆盖区域而不拉伸 */
+}
+
+
+.phone .miniBanner {
+    display: flex;
+    /* 启用Flexbox布局 */
+    margin-top: 1rem;
+    /* padding-left: 1rem; */
+    /* 左内边距为 1rem */
+    width: 20.9375rem;
+    gap: 0.5rem;
+}
+
+.phone .miniBanner img {
+    width: 10.125rem;
+    height: 5.6875rem;
+}
+
+.pad .miniBanner {
+    display: flex;
+    /* 启用Flexbox布局 */
+    width: 48.75rem;
+    gap: 0.75rem;
+    margin: 1.25rem 0 0 0;
+}
+
+.pad .miniBanner img {
+    width: 15.1875rem;
+}
+
+.phone .other img {
+    display: block;
+    margin: 1.5rem auto;
+    width: 20.9375rem;
+}
+
+.pad .other img {
+    display: block;
+    margin: 0 auto;
+    width: 48.75rem;
+
+}
+
+
+
+.menu .title {
+    display: flex;
+    align-items: center;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    width: 100%;
+    height: 3.75rem;
+    border-bottom: 0.0625rem solid #F5F4F4;
+}
+
+.resources {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100%;
+
+}
+
+.list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+}
+
+.zyname a {
+    margin: 0.25rem;
+    vertical-align: middle;
+    /* 居中对齐 */
+}
+
+
+
+.phone .tabBar,
+.pad .tabBar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}

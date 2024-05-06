@@ -1,0 +1,22 @@
+#menu-icon {
+    cursor: pointer;
+    position: fixed;
+    font-size: 1.5rem;
+    top: 10px;
+    left: 10px;
+    transition: opacity 0.3s;
+}
+
+.menu-layer {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    /* 设置一个较高的数值，确保元素位于页面最上层 */
+    top: 3rem;
+    left: 1rem;
+    background-color: white;
+    padding: 0 1rem;
+    border: 1px solid #ddd;
+    border-radius: 1rem;
+    box-shadow: 0rem 0.25rem 3.125rem 0rem rgba(0, 0, 0, 0.08);
+}
