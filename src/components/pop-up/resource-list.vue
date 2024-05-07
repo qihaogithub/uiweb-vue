@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import upload from "../general/upload.vue";
+import upload from "../general/upload/upload.vue";
 
 export default {
   components: {

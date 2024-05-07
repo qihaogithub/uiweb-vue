@@ -19,5 +19,19 @@
     "@vitejs/plugin-vue": "^5.0.4",
     "arco-cli": "^1.27.5",
     "vite": "^5.2.9"
-  }
+  },
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }

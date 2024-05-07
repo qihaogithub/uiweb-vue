@@ -9,7 +9,7 @@
       </div>
     </div>
     <div class="resource-list">
-<<<<<<< HEAD
+      <<<<<<< HEAD
       <div class="menu">
         <div class="title"><span>资源列表</span></div>
         <div class="resources">
@@ -21,9 +21,9 @@
           />
         </div>
       </div>
-=======
+      =======
       <resource @update:image="updateImage" />
->>>>>>> b882d269f2f3b409e649645cecaf694682114a1a
+      >>>>>>> b882d269f2f3b409e649645cecaf694682114a1a
     </div>
   </div>
 </template>
@@ -33,7 +33,7 @@
 import { ref } from "vue";
 import pad from "./pop-up-pad.vue";
 import phone from "./pop-up-phone.vue";
-import upload from "../general/upload.vue";
+import upload from "../general/upload/upload.vue";
 
 const imageUrl = ref("src/assets/img/通用广告弹窗/默认弹窗.png");
 const uploadedImages = ref({
