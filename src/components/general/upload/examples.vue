@@ -9,15 +9,15 @@ const uurl2 = ref("");
 const uurl3 = ref("");
 
 // 为每个上传组件注册一个事件监听
-emitter.on("updateImage1", (url) => {
+emitter.on("updateImage1", (url: any) => {
   uurl1.value = url;
 });
 
-emitter.on("updateImage2", (url) => {
+emitter.on("updateImage2", (url: any) => {
   uurl2.value = url;
 });
 
-emitter.on("updateImage3", (url) => {
+emitter.on("updateImage3", (url: any) => {
   uurl3.value = url;
 });
 </script>
