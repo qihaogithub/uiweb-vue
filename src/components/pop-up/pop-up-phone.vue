@@ -2,39 +2,21 @@
   <div class="page">
     <div class="main">
       <div class="pop">
-<<<<<<< HEAD
-        <img :src="uploadedImage" alt="弹窗资源" />
-=======
-        <img :src="imageUrl" alt="图片1" />
->>>>>>> b882d269f2f3b409e649645cecaf694682114a1a
+        <img :src="uurl1" alt="图片1" />
       </div>
     </div>
   </div>
 </template>
 
-<script>
-<<<<<<< HEAD
+<script setup lang="ts">
 import { ref } from "vue";
-import { useUploadStore } from "../../stores/Resources.js";
+import emitter from "@/utils/emitter";
 
-export default {
-  setup() {
-    const uploadStore = useUploadStore();
-    const uploadedImage = ref("src/assets/img/通用广告弹窗/默认弹窗.png");
-
-    if (uploadStore.image) {
-      uploadedImage.value = uploadStore.image;
-    }
-
-    return {
-      uploadedImage: uploadedImage.value,
-    };
-  },
-=======
-export default {
-  props: ["imageUrl"], // 使用prop接收父组件传递的图片URL
->>>>>>> b882d269f2f3b409e649645cecaf694682114a1a
-};
+const uurl1 = ref("/src/assets/img/通用广告弹窗/默认弹窗.png");
+// 上传组件组件注册事件监听
+emitter.on("updateImage1", (url) => {
+  uurl1.value = url;
+});
 </script>
 
 <style scoped>
