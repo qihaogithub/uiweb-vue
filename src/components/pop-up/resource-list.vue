@@ -2,8 +2,8 @@
   <div class="menu">
     <div class="title"><span>资源列表</span></div>
     <div class="resources">
-      <upload @upload="handleUpload" />
-      <upload @upload="handleUpload" />
+      <!-- <upload @upload="handleUpload" />
+      <upload @upload="handleUpload" /> -->
     </div>
   </div>
 </template>

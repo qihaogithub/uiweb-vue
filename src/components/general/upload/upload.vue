@@ -4,6 +4,7 @@
       action="/"
       :fileList="file ? [file] : []"
       :show-file-list="false"
+      @before-upload="beforeUpload"
       @change="onChange"
       @progress="onProgress"
     >
@@ -52,24 +53,31 @@
 import { IconEdit, IconPlus } from "@arco-design/web-vue/es/icon";
 import { ref } from "vue";
 import emitter from "@/utils/emitter";
+import { Modal } from "@arco-design/web-vue";
+import { useCheckImageSize } from "@/hooks/useCheckImageSize"; // 导入自定义 hook
 
 const file = ref();
 const id = ref(0); // 假设这个id是通过父组件传递的属性
 const props = defineProps({
   id: Number,
+  // 父组件传递了图片尺寸要求
+  minSize: Object,
+  maxSize: Object,
 });
 
+// 检查图片尺寸
+const beforeUpload = (rawFile) => {
+  return useCheckImageSize(rawFile, props.minSize, props.maxSize); // 调用自定义 hook
+};
+
 const onChange = (_, currentFile) => {
-  file.value = {
-    ...currentFile,
-    // url: URL.createObjectURL(currentFile.file),
-  };
+  file.value = currentFile;
   // 根据id来触发不同的事件
   const event = `updateImage${props.id}`;
   console.log(event);
   emitter.emit(event, file.value.url);
-  // emitter.emit("myurl", file.value);
 };
+
 const onProgress = (currentFile) => {
   file.value = currentFile;
 };

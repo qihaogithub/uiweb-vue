@@ -1,8 +1,7 @@
 <script setup>
-import upload from "@/components/general/upload/upload.vue";
-import popup from "@/components/pop-up/pop-up-phone.vue";
+import popup from "@/components/pop-up/pop-up-page.vue";
 </script>
 
 <template>
-  <upload />
+  <popup />
 </template>
