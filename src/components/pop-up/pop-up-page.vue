@@ -12,7 +12,11 @@
       <div class="menu">
         <div class="title"><span>资源列表</span></div>
         <div class="resources">
-          <upload :id="1" />
+          <upload
+            :id="1"
+            :minSize="{ width: 100, height: 100 }"
+            :maxSize="{ width: 100, height: 100 }"
+          />
         </div>
       </div>
     </div>
