@@ -30,4 +30,4 @@ coverage
 *.tsbuildinfo
 
 
-oss-config.js
+config/oss-config.js
