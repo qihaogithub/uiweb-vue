@@ -14,8 +14,8 @@
         <div class="resources">
           <upload
             :id="1"
-            :minSize="{ width: 100, height: 100 }"
-            :maxSize="{ width: 100, height: 100 }"
+            :minSize="{ width: 670, height: 670 }"
+            :maxSize="{ width: 670, height: 890 }"
           />
         </div>
       </div>
