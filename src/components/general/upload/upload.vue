@@ -53,11 +53,10 @@
 import { IconEdit, IconPlus } from "@arco-design/web-vue/es/icon";
 import { ref } from "vue";
 import emitter from "@/utils/emitter";
-import { Modal } from "@arco-design/web-vue";
+
 import { useCheckImageSize } from "@/hooks/useCheckImageSize"; // 导入自定义 hook
 
 const file = ref();
-const id = ref(0); // 假设这个id是通过父组件传递的属性
 const props = defineProps({
   id: Number,
   // 父组件传递了图片尺寸要求
