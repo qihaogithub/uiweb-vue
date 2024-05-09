@@ -17,6 +17,11 @@
             :minSize="{ width: 670, height: 670 }"
             :maxSize="{ width: 670, height: 890 }"
           />
+          <uploadSvga
+            :id="2"
+            :minSize="{ width: 670, height: 670 }"
+            :maxSize="{ width: 670, height: 890 }"
+          />
         </div>
       </div>
     </div>
@@ -28,6 +33,7 @@ import { ref } from "vue";
 import pad from "@/components/pop-up/pop-up-pad.vue";
 import phone from "@/components/pop-up/pop-up-phone.vue";
 import upload from "@/components/general/upload/upload.vue";
+import uploadSvga from "@/components/general/upload/upload-svga.vue";
 
 // 默认弹窗资源
 const imageUrl = ref("src/assets/img/通用广告弹窗/默认弹窗.png");

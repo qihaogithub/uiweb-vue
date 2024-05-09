@@ -73,7 +73,7 @@ const onChange = (_, currentFile) => {
   file.value = currentFile;
   // 根据id来触发不同的事件
   const event = `updateImage${props.id}`;
-  console.log(event);
+  console.log("更新了");
   emitter.emit(event, file.value.url);
 };
 
