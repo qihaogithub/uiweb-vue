@@ -4,6 +4,7 @@
       action="/"
       :fileList="file ? [file] : []"
       :show-file-list="false"
+      :auto-upload="false"
       @before-upload="beforeUpload"
       @change="onChange"
       @progress="onProgress"
@@ -73,7 +74,7 @@ const onChange = (_, currentFile) => {
   file.value = currentFile;
   // 根据id来触发不同的事件
   const event = `updateImage${props.id}`;
-  console.log("更新了");
+
   emitter.emit(event, file.value.url);
 };
 

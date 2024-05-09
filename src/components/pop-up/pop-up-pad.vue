@@ -2,8 +2,9 @@
   <div class="page">
     <div class="main">
       <div class="pop">
-        <img :src="pngurl" alt="图片1" />
-        <div :id="'guide' + timeId" class="game-guide"></div>
+        <!-- 使用v-show来切换显示/隐藏 -->
+        <img v-show="showImage" :src="pngurl" alt="图片1" />
+        <div v-show="showSVGA" :id="'guide' + timeId" class="game-guide"></div>
       </div>
     </div>
   </div>
@@ -43,11 +44,22 @@ emitter.on("updateImage2", (url) => {
   svgaurl.value = url;
 });
 
-// 监听pngurl和svgaurl的变化
+//默认显示png，隐藏svga
+const showImage = ref(true); // 默认显示图片
+const showSVGA = ref(false); // 默认不显示SVGA
+// 监听pngurl的变化
+watch(pngurl, (newVal, oldVal) => {
+  if (newVal !== oldVal) {
+    showImage.value = true; // 显示图片
+    showSVGA.value = false; // 隐藏SVGA
+  }
+});
+// 监听svgaurl的变化
 watch(svgaurl, (newVal, oldVal) => {
   if (newVal !== oldVal) {
-    // 当svgaurl变化时，重新加载SVGA动画
-    guideFn();
+    showSVGA.value = true; // 显示SVGA
+    showImage.value = false; // 隐藏图片
+    guideFn(); // 重新加载SVGA动画
   }
 });
 </script>
