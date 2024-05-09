@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "postbuild": "node ./scripts/upload-to-oss.js"
+    "preview": "vite preview"
   },
   "dependencies": {
     "mitt": "^3.0.1",
