@@ -1,7 +1,18 @@
+<template>
+  <!-- 导航区 -->
+  <div class="navigate"></div>
+  <!-- 展示区 -->
+  <div class="main-content">
+    <RouterView></RouterView>
+  </div>
+</template>
+
 <script setup>
-import popup from "@/components/pop-up/pop-up-page.vue";
+import { RouterLink, RouterView } from "vue-router";
 </script>
 
-<template>
-  <popup />
-</template>
+<style scoped>
+.main-content {
+  height: 100%;
+}
+</style>
