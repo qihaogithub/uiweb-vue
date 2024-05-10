@@ -1,7 +1,8 @@
 <script setup>
-import test from "@/components/square/bigbanner.vue";
+import test from "@/pages/square.vue";
 </script>
 
 <template>
   <test />
 </template>
+<style scoped></style>

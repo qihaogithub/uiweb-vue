@@ -55,7 +55,7 @@
 </template>
 
 <script setup>
-import bigBanner from "./big-banner.vue";
+import bigBanner from "@/components/square/big-banner.vue";
 </script>
 
 <style scoped>
