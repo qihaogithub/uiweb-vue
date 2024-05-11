@@ -1,5 +1,5 @@
 <script setup>
-import test from "@/pages/square.vue";
+import test from "@/components/test/ceshi.vue";
 </script>
 
 <template>

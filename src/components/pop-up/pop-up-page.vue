@@ -2,10 +2,10 @@
   <div class="page">
     <div class="canvas">
       <div class="phone">
-        <phone />
+        <phone :imageUrl="imageUrl" />
       </div>
       <div class="pad">
-        <pad />
+        <pad :imageUrl="imageUrl" />
       </div>
     </div>
     <div class="resource-list">
@@ -17,11 +17,6 @@
             :minSize="{ width: 670, height: 670 }"
             :maxSize="{ width: 670, height: 890 }"
           />
-          <uploadSvga
-            :id="2"
-            :minSize="{ width: 670, height: 670 }"
-            :maxSize="{ width: 670, height: 890 }"
-          />
         </div>
       </div>
     </div>
@@ -29,35 +24,37 @@
 </template>
 
 <script setup>
-import phone from "@/components/square/square-phone.vue";
-import pad from "@/components/square/square-pad.vue";
+import { ref } from "vue";
+import pad from "@/components/pop-up/pop-up-pad.vue";
+import phone from "@/components/pop-up/pop-up-phone.vue";
 import upload from "@/components/general/upload/upload.vue";
-import popUp from "@/components/pop-up/pop-up-pad.vue";
+
+// 默认弹窗资源
+const imageUrl = ref("src/assets/img/通用广告弹窗/默认弹窗.png");
 </script>
 
-<style scoped>
-* {
-  font-size: 12px;
-}
+<style>
 .page {
   width: 100%;
   height: 100%;
+  display: flex;
 }
 
 .canvas {
   display: flex;
   justify-content: center;
   align-items: center;
+  /* 弹性盒子沿主轴居中排列 */
   flex-wrap: wrap;
-  gap: 2.5em;
+  /*弹性盒子挤压时可以换行 */
+  gap: 2.5rem;
   width: 100%;
-  background-color: blue;
 }
 
 .pad {
-  width: 53.75em;
-  height: 50.75em;
-  margin: 1.875em 0;
+  width: 53.75rem;
+  height: 50.75rem;
+  margin: 1.875rem 0;
   background-color: #fff;
   flex-direction: column;
   /* 修改主轴方向*/
@@ -66,8 +63,8 @@ import popUp from "@/components/pop-up/pop-up-pad.vue";
   /* 隐藏水平滚动条并阻止水平滚动 */
   /* 允许内容在垂直方向上滚动 */
   /* overflow-y: auto; */
-  border-radius: 1.25em;
-  box-shadow: 0em 0.25em 3.125em 0em rgba(0, 0, 0, 0.08);
+  border-radius: 1.25rem;
+  box-shadow: 0rem 0.25rem 3.125rem 0rem rgba(0, 0, 0, 0.08);
 }
 
 .pad::-webkit-scrollbar {
@@ -76,15 +73,20 @@ import popUp from "@/components/pop-up/pop-up-pad.vue";
 }
 
 .phone {
-  width: 23.4375em;
-  height: 50.75em;
-  margin-top: 1em;
-  margin: 1.875em 0;
+  width: 23.4375rem;
+  height: 50.75rem;
+  margin-top: 1rem;
+  margin: 1.875rem 0;
   background-color: #fff;
+
   flex-direction: column;
+  /* 修改主轴方向*/
   overflow-x: hidden;
-  border-radius: 1.25em;
-  box-shadow: 0em 0.25em 3.125em 0em rgba(0, 0, 0, 0.08);
+  /* 隐藏水平滚动条并阻止水平滚动 */
+  /* 允许内容在垂直方向上滚动 */
+  /* overflow-y: auto;  */
+  border-radius: 1.25rem;
+  box-shadow: 0rem 0.25rem 3.125rem 0rem rgba(0, 0, 0, 0.08);
 }
 
 .phone::-webkit-scrollbar {
@@ -95,18 +97,18 @@ import popUp from "@/components/pop-up/pop-up-pad.vue";
 .title {
   display: flex;
   align-items: center;
-  font-size: 1.25em;
+  font-size: 1.25rem;
   font-style: normal;
   font-weight: 500;
   line-height: 150%;
   width: 100%;
-  height: 3.75em;
-  border-bottom: 0.0625em solid #f5f4f4;
+  height: 3.75rem;
+  border-bottom: 0.0625rem solid #f5f4f4;
 }
 .resources {
   display: flex;
   flex-direction: column;
-  gap: 1.25em;
+  gap: 1.25rem;
   width: 100%;
 }
 
@@ -115,6 +117,6 @@ import popUp from "@/components/pop-up/pop-up-pad.vue";
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  gap: 1.25em;
+  gap: 1.25rem;
 }
 </style>

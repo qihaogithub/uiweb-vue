@@ -15,7 +15,6 @@
 
 <style scoped>
 .bigBanner {
-  
   position: relative;
   width: 100%; /* 宽度继承父级盒子的宽度 */
   height: calc(100% * 0.307692307692308);
@@ -29,7 +28,7 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  border-radius: 1.6856rem;
+  border-radius: 1.25rem;
 }
 .foreground-image {
   position: absolute;

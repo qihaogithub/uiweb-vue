@@ -1,76 +1,106 @@
 <template>
   <a-space direction="vertical" :style="{ width: '100%' }">
+    <!-- Upload 组件 -->
     <a-upload
-      action="/"
-      :fileList="file ? [file] : []"
-      :show-file-list="false"
+      :action="uploadAction"
+      :customRequest="customRequest"
       @change="onChange"
       @progress="onProgress"
+      :fileList="fileList"
+      :show-file-list="true"
     >
       <template #upload-button>
-        <div
-          :class="`arco-upload-list-item${
-            file && file.status === 'error'
-              ? ' arco-upload-list-item-error'
-              : ''
-          }`"
-        >
-          <div
-            class="arco-upload-list-picture custom-upload-avatar"
-            v-if="file && file.url"
-          >
-            <img :src="file.url" />
-            <div class="arco-upload-list-picture-mask">
-              <IconEdit />
-            </div>
-            <a-progress
-              v-if="file.status === 'uploading' && file.percent < 100"
-              :percent="file.percent"
-              type="circle"
-              size="mini"
-              :style="{
-                position: 'absolute',
-                left: '50%',
-                top: '50%',
-                transform: 'translateX(-50%) translateY(-50%)',
-              }"
-            />
-          </div>
-          <div class="arco-upload-picture-card" v-else>
-            <div class="arco-upload-picture-card-text">
-              <IconPlus />
-              <div style="margin-top: 10px; font-weight: 600">Upload</div>
-            </div>
-          </div>
-        </div>
+        <a-button>
+          <IconPlus />
+          Upload
+        </a-button>
       </template>
     </a-upload>
+    <!-- 已上传的图片列表 -->
+    <div v-if="fileList.length > 0">
+      <h3>Uploaded Images</h3>
+      <div v-for="file in fileList" :key="file.uid" class="image-container">
+        <img :src="file.url" alt="Uploaded Image" class="uploaded-image" />
+      </div>
+    </div>
   </a-space>
 </template>
 
-<script setup>
-import { IconEdit, IconPlus } from "@arco-design/web-vue/es/icon";
+<script>
+import { IconPlus } from "@arco-design/web-vue/es/icon";
 import { ref } from "vue";
-import emitter from "@/utils/emitter";
 
-const file = ref();
-const id = ref(0); // 假设这个id是通过父组件传递的属性
-const props = defineProps({
-  id: Number,
-});
+export default {
+  components: { IconPlus },
+  setup() {
+    const fileList = ref([]);
+    const uploadAction = "https://apiupload-gfatptrscp.cn-hangzhou.fcapp.run"; // 确保这是服务器端接收上传的端点
 
-const onChange = (_, currentFile) => {
-  file.value = {
-    ...currentFile,
-    // url: URL.createObjectURL(currentFile.file),
-  };
-  // 根据id来触发不同的事件
-  const event = `updateImage${props.id}`;
-  console.log(event);
-  emitter.emit(event, file.value.url);
-  // emitter.emit("myurl", file.value);
-};
-const onProgress = (currentFile) => {
-  file.value = currentFile;
+    const customRequest = (option) => {
+      const { onProgress, onError, onSuccess, file, name } = option;
+      const formData = new FormData();
+      formData.append(name || "file", file);
+      // 使用 fetch API 进行上传
+      fetch(uploadAction, {
+        // 确保这里的 URL 是正确的
+        method: "POST",
+        body: formData,
+        onUploadProgress: (event) => {
+          let percent = 0;
+          if (event.lengthComputable) {
+            percent = (event.loaded / event.total) * 100;
+          }
+          onProgress(percent, event);
+        },
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          onSuccess(data);
+          // 更新 fileList 以包含新上传的文件
+          const newFile = {
+            uid: Date.now() + file.name, // 生成唯一标识符
+            name: file.name,
+            url: data.url, // 确保服务器返回的响应中包含 fileURL
+          };
+          fileList.value.push(newFile);
+        })
+        .catch((error) => {
+          onError(error);
+        });
+    };
+
+    const onChange = (info) => {
+      // 此处可以根据 info 做进一步处理
+    };
+
+    const onProgress = (file) => {
+      // 可以在这里处理上传进度
+    };
+
+    return {
+      fileList,
+      uploadAction,
+      customRequest,
+      onChange,
+      onProgress,
+    };
+  },
 };
 </script>
+
+<style scoped>
+.image-container {
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.uploaded-image {
+  max-width: 100px;
+  max-height: 100px;
+}
+</style>

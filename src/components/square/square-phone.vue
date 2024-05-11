@@ -3,13 +3,13 @@
   <div class="neirong">
     <subjects style="width: 89.3333333333333%" />
     <div style="width: 89.3333333333333%">
-      <bigBanner :model="'phone'" style="height: 12rem" />
+      <bigBanner :model="'phone'" style="height: 12em" />
     </div>
     <div style="width: 100%">
       <minibanner />
     </div>
     <img
-      style="width: 89.3333333333333%; margin: 1rem 0 5rem 0"
+      style="width: 89.3333333333333%; margin: 1em 0 5em 0"
       src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E5%B9%BF%E5%9C%BA%E9%A1%B5/%E5%86%85%E5%AE%B9/%E5%86%85%E5%AE%B9.png"
     />
   </div>

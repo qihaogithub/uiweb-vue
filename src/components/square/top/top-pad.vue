@@ -1,7 +1,7 @@
 <template>
   <div class="top">
     <img
-      src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E5%B9%BF%E5%9C%BA%E9%A1%B5/%E9%A1%B6%E9%83%A8/%E7%8A%B6%E6%80%81%E6%A0%8F.png"
+      src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E5%B9%BF%E5%9C%BA%E9%A1%B5/%E9%A1%B6%E9%83%A8/%E7%8A%B6%E6%80%81%E6%A0%8F_pad.png"
     />
     <div class="navigationBar">
       <img

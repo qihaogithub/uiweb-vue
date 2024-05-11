@@ -40,14 +40,14 @@ const imageWidth = computed(() => (props.model === "pad" ? x1 : x2));
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  border-radius: 1rem;
+  border-radius: 1em;
   object-fit: cover;
 }
 .foreground-image {
   position: absolute;
   width: 100%;
   height: 100%;
-  bottom: 0rem;
+  bottom: 0em;
   left: 50%;
   transform: translateX(-50%);
   object-fit: cover;
