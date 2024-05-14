@@ -37,20 +37,19 @@
 .subject {
   display: flex;
   align-items: center;
-  gap: 0.6875em;
+  gap: 1.03125em;
   width: 100%;
 }
 
 .km {
   display: flex;
-  padding: 0.125em 0em var(--, 0.25em) 0em;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 0.125em;
   width: 100%;
   height: 3.25em;
-  border-radius: 0.75em 0.75em 1.5em 0.75em;
+  border-radius: 0.9375em 0.9375em 1.875em 0.9375em;
 }
 
 .km img {
@@ -58,10 +57,9 @@
 }
 
 .km span {
-  font-size: 0.75em;
-  width: 1.82em;
-  height: 1em;
-  border-radius: 0.38em 0.38em 0.75em 0.38em;
+  font-size: 1.25em;
+  font-style: normal;
+  font-weight: 500;
 }
 
 .s1 {

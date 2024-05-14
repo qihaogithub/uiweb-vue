@@ -37,61 +37,61 @@
 .subject {
   display: flex;
   align-items: center;
-  gap: 0.6875rem;
+  gap: 0.6875em;
   width: 100%;
 }
 
 .km {
   display: flex;
-  padding: 0.125rem 0rem var(--, 0.25rem) 0rem;
+  padding: 0.125em 0em var(--, 0.25em) 0em;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.125rem;
-  width: 3.6375rem;
-  /* 设置每个.km元素的宽度为6.25rem */
-  height: 3.25rem;
-  border-radius: 0.75rem 0.75rem 1.5rem 0.75rem;
+  gap: 0.125em;
+  width: 3.6375em;
+  /* 设置每个.km元素的宽度为6.25em */
+  height: 3.25em;
+  border-radius: 0.75em 0.75em 1.5em 0.75em;
 }
 
 .km img {
-  width: 2rem;
+  width: 2em;
 }
 
 .km span {
-  font-size: 0.75rem;
-  width: 1.82rem;
-  height: 1rem;
-  border-radius: 0.38rem 0.38rem 0.75rem 0.38rem;
+  font-size: 0.75em;
+
+  height: 1em;
+  border-radius: 0.38em 0.38em 0.75em 0.38em;
 }
 
 .s1 {
-  padding: 0.13rem 0 0.34rem;
+  padding: 0.13em 0 0.34em;
   background-color: #fff2ea;
-  box-shadow: 0rem -0.062rem 0.125rem #ffede0 inset;
+  box-shadow: 0em -0.062em 0.125em #ffede0 inset;
 }
 
 .s2 {
-  padding: 0.13rem 0 0.34rem;
+  padding: 0.13em 0 0.34em;
   background: rgba(234, 249, 255, 1);
-  box-shadow: 0rem -0.083rem 0.167rem rgba(224, 246, 255, 1) inset;
+  box-shadow: 0em -0.083em 0.167em rgba(224, 246, 255, 1) inset;
 }
 
 .s3 {
-  padding: 0.13rem 0 0.34rem;
+  padding: 0.13em 0 0.34em;
   background: rgba(249, 245, 255, 1);
-  box-shadow: 0rem -0.083rem 0.167rem rgba(243, 235, 255, 1) inset;
+  box-shadow: 0em -0.083em 0.167em rgba(243, 235, 255, 1) inset;
 }
 
 .s4 {
-  padding: 0.13rem 0 0.34rem;
+  padding: 0.13em 0 0.34em;
   background: rgba(238, 252, 235, 1);
-  box-shadow: 0rem -0.083rem 0.167rem rgba(229, 250, 224, 1) inset;
+  box-shadow: 0em -0.083em 0.167em rgba(229, 250, 224, 1) inset;
 }
 
 .s5 {
-  padding: 0.13rem 0 0.34rem;
+  padding: 0.13em 0 0.34em;
   background: #fff0f3;
-  box-shadow: 0rem -0.083rem 0.167rem #ffe5eb inset;
+  box-shadow: 0em -0.083em 0.167em #ffe5eb inset;
 }
 </style>

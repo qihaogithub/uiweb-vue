@@ -12,16 +12,52 @@
       <div class="menu">
         <div class="title"><span>资源列表</span></div>
         <div class="resources">
-          <upload
-            :id="1"
-            :minSize="{ width: 670, height: 670 }"
-            :maxSize="{ width: 670, height: 890 }"
-          />
-          <uploadSvga
-            :id="2"
-            :minSize="{ width: 670, height: 670 }"
-            :maxSize="{ width: 670, height: 890 }"
-          />
+          <div class="list">
+            <div class="zyname">
+              <span>大banner前景图</span>
+              <a
+                href="https://alidocs.dingtalk.com/i/nodes/mExel2BLV54K0MnQCxk2Pq2wWgk9rpMq?utm_scene=team_space"
+                target="_blank"
+                ><iconpark-icon name="help"></iconpark-icon
+              ></a>
+            </div>
+            <upload
+              :id="1"
+              :minSize="{ width: 670, height: 670 }"
+              :maxSize="{ width: 670, height: 890 }"
+            />
+          </div>
+          <div class="list">
+            <div class="zyname">
+              <span>大banner背景图</span>
+              <a
+                href="https://alidocs.dingtalk.com/i/nodes/mExel2BLV54K0MnQCxk2Pq2wWgk9rpMq?utm_scene=team_space"
+                target="_blank"
+                ><iconpark-icon name="help"></iconpark-icon
+              ></a>
+            </div>
+            <upload
+              :id="1"
+              :minSize="{ width: 670, height: 670 }"
+              :maxSize="{ width: 670, height: 890 }"
+            />
+          </div>
+
+          <div class="list">
+            <div class="zyname">
+              <span>小banner</span>
+              <a
+                href="https://alidocs.dingtalk.com/i/nodes/gwva2dxOW4KX7gmQCQN1X2oz8bkz3BRL?utm_scene=team_space"
+                target="_blank"
+                ><iconpark-icon name="help"></iconpark-icon
+              ></a>
+            </div>
+            <upload
+              :id="1"
+              :minSize="{ width: 670, height: 670 }"
+              :maxSize="{ width: 670, height: 890 }"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -92,10 +128,26 @@ import popUp from "@/components/pop-up/pop-up-pad.vue";
   /* 隐藏滚动条 */
 }
 
+.resource-list {
+  display: flex;
+  width: 16em;
+  height: 100%;
+  padding: 0 1em;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  flex-shrink: 0;
+  align-self: stretch;
+  border-top: 0.0625em solid #e0dfdf;
+  border-left: 0.0625em solid #e0dfdf;
+  background-color: #fff;
+  z-index: 2;
+}
+
 .title {
   display: flex;
   align-items: center;
-  font-size: 1.25em;
+  font-size: 1.5em;
   font-style: normal;
   font-weight: 500;
   line-height: 150%;
@@ -110,11 +162,18 @@ import popUp from "@/components/pop-up/pop-up-pad.vue";
   width: 100%;
 }
 
+.zyname {
+  width: 100%;
+}
+.zyname a {
+  margin: 0.25rem;
+  vertical-align: middle;
+  /* 居中对齐 */
+}
 .list {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  gap: 1.25em;
 }
 </style>

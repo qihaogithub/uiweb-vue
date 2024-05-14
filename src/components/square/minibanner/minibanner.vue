@@ -28,7 +28,7 @@
   margin-top: 1em;
   padding: 0 1.25em;
   height: 5.69563em;
-  gap: 0.5em;
+  gap: 0.7em;
   overflow-x: auto; /* 允许横向滚动 */
   scroll-snap-type: x mandatory; /* 滚动时对齐子元素 */
 }
