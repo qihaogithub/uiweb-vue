@@ -3,7 +3,7 @@
   <div class="neirong">
     <subjectsPad style="width: 89.3333333333333%" />
     <div style="width: 89.3333333333333%">
-      <bigBanner :model="'phone'" style="height: 15em" />
+      <bigBanner style="height: 15em" />
     </div>
     <div style="width: 100%">
       <minibanner style="padding: 0 2.65em; height: 7.1195375em" />

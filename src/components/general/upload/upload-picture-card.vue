@@ -1,27 +1,21 @@
 <template>
   <a-upload
+    list-type="picture-card"
     action="/"
-    :fileList="file ? [file] : []"
-    :show-file-list="false"
+    :default-file-list="fileList"
     :auto-upload="false"
+    image-preview
     @before-upload="beforeUpload"
     @change="onChange"
     @progress="onProgress"
-  >
-    <template #upload-button>
-      <button class="button_line">
-        <iconpark-icon name="upload"></iconpark-icon>
-        <span>上传</span>
-      </button>
-    </template>
-  </a-upload>
+  />
 </template>
 
 <script setup>
 import { ref } from "vue";
 import emitter from "@/utils/emitter";
 import { useCheckImageSize } from "@/hooks/useCheckImageSize"; // 导入自定义 hook
-
+// import { config } from "webpack";
 const file = ref();
 const props = defineProps({
   id: Number,
@@ -41,23 +35,10 @@ const onChange = (_, currentFile) => {
   const event = `updateImage${props.id}`;
 
   emitter.emit(event, file.value.url);
+  console.log(file.value.url);
 };
 
 const onProgress = (currentFile) => {
   file.value = currentFile;
 };
 </script>
-<style scoped>
-.button_line {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 64px;
-  height: 100%;
-  padding: 4px 10px;
-  background-color: #f0f0f0;
-  border: 1px dashed #d9d9d9;
-  border-radius: 4px;
-  cursor: pointer;
-}
-</style>

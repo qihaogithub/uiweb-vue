@@ -1,30 +1,23 @@
 <template>
   <div class="bigBanner">
-    <img
-      class="background-image"
-      src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E5%B9%BF%E5%9C%BA%E9%A1%B5/%E5%A4%A7banner/banner_%E8%83%8C%E6%99%AF%E5%9B%BE.png"
-      alt="Foreground Image"
-    />
-    <img
-      class="foreground-image"
-      src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E5%B9%BF%E5%9C%BA%E9%A1%B5/%E5%A4%A7banner/banner_%E5%89%8D%E6%99%AF%E5%9B%BE.png"
-      alt="Background Image"
-    />
+    <img class="background-image" alt="Foreground Image" :src="bgimage" />
+
+    <img class="foreground-image" alt="Background Image" :src="fgimage" />
   </div>
 </template>
 <script setup>
-import { computed, defineProps } from "vue";
-// 定义接收的props参数
-const props = defineProps({
-  model: {
-    type: String,
-    default: "pad", // 默认参数值
-  },
-});
-const x1 = "100%"; // 假设A对应的宽度是100%
-const x2 = "53.6858974358974%"; // 假设B对应的宽度是54%
+import { ref } from "vue";
+import emitter from "@/utils/emitter";
+const bgimage = ref("/src/assets/img/广场页/大banner/banner_背景图.png");
+const fgimage = ref("/src/assets/img/广场页/大banner/banner_前景图.png");
 
-const imageWidth = computed(() => (props.model === "pad" ? x1 : x2));
+// 上传组件组件注册事件监听
+emitter.on("updateImage1", (url) => {
+  fgimage.value = url;
+});
+emitter.on("updateImage2", (url) => {
+  bgimage.value = url;
+});
 </script>
 
 <style scoped>

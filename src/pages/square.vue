@@ -21,11 +21,7 @@
                 ><iconpark-icon name="help"></iconpark-icon
               ></a>
             </div>
-            <upload
-              :id="1"
-              :minSize="{ width: 670, height: 670 }"
-              :maxSize="{ width: 670, height: 890 }"
-            />
+            <upload :id="1" :minSize="{ width: 1248, height: 384 }" />
           </div>
           <div class="list">
             <div class="zyname">
@@ -36,11 +32,7 @@
                 ><iconpark-icon name="help"></iconpark-icon
               ></a>
             </div>
-            <upload
-              :id="1"
-              :minSize="{ width: 670, height: 670 }"
-              :maxSize="{ width: 670, height: 890 }"
-            />
+            <upload :id="2" :minSize="{ width: 1248, height: 344 }" />
           </div>
 
           <div class="list">
@@ -57,6 +49,10 @@
               :minSize="{ width: 670, height: 670 }"
               :maxSize="{ width: 670, height: 890 }"
             />
+            <uploadPictureCard  
+            :id="3"
+              :minSize="{ width: 670, height: 670 }"
+              :maxSize="{ width: 670, height: 890 }"/>
           </div>
         </div>
       </div>
@@ -67,15 +63,13 @@
 <script setup>
 import phone from "@/components/square/square-phone.vue";
 import pad from "@/components/square/square-pad.vue";
-import upload from "@/components/general/upload/upload.vue";
-import popUp from "@/components/pop-up/pop-up-pad.vue";
+import upload from "@/components/general/upload/upload-simple.vue";
+import uploadPictureCard from "@/components/general/upload/upload-picture-card.vue";
 </script>
 
 <style scoped>
-html {
-  font-size: 12px;
-}
 .page {
+  font-size: 12px;
   width: 100%;
   height: 100%;
 }
@@ -87,7 +81,7 @@ html {
   flex-wrap: wrap;
   gap: 2.5em;
   width: 100%;
-  background-color: blue;
+  background-color: #edeff3;
 }
 
 .pad {
@@ -147,7 +141,7 @@ html {
 .title {
   display: flex;
   align-items: center;
-  font-size: 2em;
+  font-size: 1.5em;
   font-style: normal;
   font-weight: 500;
   line-height: 150%;
@@ -155,7 +149,6 @@ html {
   height: 3.75em;
   border-bottom: 0.0625em solid #f5f4f4;
 }
-
 .resources {
   display: flex;
   flex-direction: column;

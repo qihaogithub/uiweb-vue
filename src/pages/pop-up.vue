@@ -60,10 +60,8 @@ const imageUrl = ref("src/assets/img/通用广告弹窗/默认弹窗.png");
 </script>
 
 <style>
-html {
-  font-size: 12px;
-}
 .page {
+  font-size: 12px;
   width: 100%;
   height: 100%;
   display: flex;
@@ -76,15 +74,15 @@ html {
   /* 弹性盒子沿主轴居中排列 */
   flex-wrap: wrap;
   /*弹性盒子挤压时可以换行 */
-  gap: 2.5rem;
+  gap: 2.5em;
   width: 100%;
   background-color: #edeff3;
 }
 
 .pad {
-  width: 53.75rem;
-  height: 50.75rem;
-  margin: 1.875rem 0;
+  width: 53.75em;
+  height: 50.75em;
+  margin: 1.875em 0;
   background-color: #fff;
   flex-direction: column;
   /* 修改主轴方向*/
@@ -93,8 +91,8 @@ html {
   /* 隐藏水平滚动条并阻止水平滚动 */
   /* 允许内容在垂直方向上滚动 */
   /* overflow-y: auto; */
-  border-radius: 1.25rem;
-  box-shadow: 0rem 0.25rem 3.125rem 0rem rgba(0, 0, 0, 0.08);
+  border-radius: 1.25em;
+  box-shadow: 0em 0.25em 3.125em 0em rgba(0, 0, 0, 0.08);
 }
 
 .pad::-webkit-scrollbar {
@@ -103,10 +101,10 @@ html {
 }
 
 .phone {
-  width: 23.4375rem;
-  height: 50.75rem;
-  margin-top: 1rem;
-  margin: 1.875rem 0;
+  width: 23.4375em;
+  height: 50.75em;
+  margin-top: 1em;
+  margin: 1.875em 0;
   background-color: #fff;
 
   flex-direction: column;
@@ -115,8 +113,8 @@ html {
   /* 隐藏水平滚动条并阻止水平滚动 */
   /* 允许内容在垂直方向上滚动 */
   /* overflow-y: auto;  */
-  border-radius: 1.25rem;
-  box-shadow: 0rem 0.25rem 3.125rem 0rem rgba(0, 0, 0, 0.08);
+  border-radius: 1.25em;
+  box-shadow: 0em 0.25em 3.125em 0em rgba(0, 0, 0, 0.08);
 }
 
 .phone::-webkit-scrollbar {
@@ -164,7 +162,7 @@ html {
   width: 100%;
 }
 .zyname a {
-  margin: 0.25rem;
+  margin: 0.25em;
   vertical-align: middle;
   /* 居中对齐 */
 }
