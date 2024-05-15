@@ -81,9 +81,9 @@ watch(svgaurl, (newVal, oldVal) => {
   height: 100%;
 }
 .pop img {
-  width: 20.9375rem;
+  width: 20.9375em;
 }
 .pop .game-guide {
-  width: 20.9375rem;
+  width: 20.9375em;
 }
 </style>

@@ -72,7 +72,7 @@ import popUp from "@/components/pop-up/pop-up-pad.vue";
 </script>
 
 <style scoped>
-* {
+html {
   font-size: 12px;
 }
 .page {
@@ -147,7 +147,7 @@ import popUp from "@/components/pop-up/pop-up-pad.vue";
 .title {
   display: flex;
   align-items: center;
-  font-size: 1.5em;
+  font-size: 2em;
   font-style: normal;
   font-weight: 500;
   line-height: 150%;
@@ -155,6 +155,7 @@ import popUp from "@/components/pop-up/pop-up-pad.vue";
   height: 3.75em;
   border-bottom: 0.0625em solid #f5f4f4;
 }
+
 .resources {
   display: flex;
   flex-direction: column;

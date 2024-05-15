@@ -1,9 +1,12 @@
 <template>
   <a-upload
     action="/"
-    @change="onChange"
+    :fileList="file ? [file] : []"
     :show-file-list="false"
     :auto-upload="false"
+    @before-upload="beforeUpload"
+    @change="onChange"
+    @progress="onProgress"
   >
     <template #upload-button>
       <button class="button_line">
@@ -18,10 +21,10 @@
 import { IconEdit, IconPlus } from "@arco-design/web-vue/es/icon";
 import { ref } from "vue";
 import emitter from "@/utils/emitter";
+
 import { useCheckImageSize } from "@/hooks/useCheckImageSize"; // 导入自定义 hook
 
 const file = ref();
-
 const props = defineProps({
   id: Number,
   // 父组件传递了图片尺寸要求
@@ -36,14 +39,16 @@ const beforeUpload = (rawFile) => {
 
 const onChange = (_, currentFile) => {
   file.value = currentFile;
+  // 根据id来触发不同的事件
   const event = `updateImage${props.id}`;
-  const fileURL = URL.createObjectURL(file.value.file);
-  file.value.url = fileURL;
 
   emitter.emit(event, file.value.url);
 };
-</script>
 
+const onProgress = (currentFile) => {
+  file.value = currentFile;
+};
+</script>
 <style scoped>
 .button_line {
   display: flex;

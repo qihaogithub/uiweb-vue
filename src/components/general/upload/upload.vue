@@ -41,7 +41,7 @@
           <div class="arco-upload-picture-card" v-else>
             <div class="arco-upload-picture-card-text">
               <IconPlus />
-              <div style="margin-top: 10px; font-weight: 600">Upload</div>
+              <div style="margin-top: 10px; font-weight: 600">点击上传</div>
             </div>
           </div>
         </div>
