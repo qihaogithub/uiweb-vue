@@ -2,12 +2,13 @@
   <a-upload
     list-type="picture-card"
     action="/"
-    :default-file-list="fileList"
     :auto-upload="false"
+    :show-retry-button="false"
     image-preview
+    multiple
     @before-upload="beforeUpload"
     @change="onChange"
-    @progress="onProgress"
+    @before-remove="handleBeforeRemove"
   />
 </template>
 
@@ -15,8 +16,10 @@
 import { ref } from "vue";
 import emitter from "@/utils/emitter";
 import { useCheckImageSize } from "@/hooks/useCheckImageSize"; // 导入自定义 hook
-// import { config } from "webpack";
-const file = ref();
+
+// const file = ref();
+const fileList = ref([]);
+
 const props = defineProps({
   id: Number,
   // 父组件传递了图片尺寸要求
@@ -29,16 +32,23 @@ const beforeUpload = (rawFile) => {
   return useCheckImageSize(rawFile, props.minSize, props.maxSize); // 调用自定义 hook
 };
 
-const onChange = (_, currentFile) => {
-  file.value = currentFile;
-  // 根据id来触发不同的事件
+const onChange = (fileList) => {
+  fileList.value = fileList;
+  const urls = fileList.value.map((file) => file.url);
   const event = `updateImage${props.id}`;
-
-  emitter.emit(event, file.value.url);
-  console.log(file.value.url);
+  emitter.emit(event, urls);
 };
 
-const onProgress = (currentFile) => {
-  file.value = currentFile;
+const handleBeforeRemove = (file) => {
+  // 返回一个 Promise，根据需要实现删除前的逻辑
+  return new Promise((resolve, reject) => {
+    // 确认删除后，从 fileList 中移除该文件，并更新 URL 数组
+    const index = fileList.value.findIndex((item) => item.uid === file.uid);
+
+    fileList.value.splice(index, 1);
+    const urls = fileList.value.map((file) => file.url);
+    emitter.emit("updateImages", urls);
+    resolve(true);
+  });
 };
 </script>

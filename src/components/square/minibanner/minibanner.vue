@@ -1,11 +1,17 @@
 <template>
   <div class="miniBanner">
     <img
+      v-for="(src, index) in newUrls"
+      :key="index"
+      :src="src"
+      :alt="`Mini Banner ${index + 1}`"
+      class="miniBannerImage"
+    />
+    <img
       v-for="(src, index) in imageUrls"
       :key="index"
       :src="src"
       :alt="`Mini Banner ${index + 1}`"
-      v-if="index !== 0 || src !== ''"
       class="miniBannerImage"
     />
   </div>
@@ -13,6 +19,7 @@
 
 <script setup>
 import { ref } from "vue";
+import emitter from "@/utils/emitter";
 
 const imageUrls = ref([
   "src/assets/img/广场页/小banner/Property 1=01.png",
@@ -21,6 +28,14 @@ const imageUrls = ref([
   "src/assets/img/广场页/小banner/Property 1=04.png",
   "src/assets/img/广场页/小banner/Property 1=06.png",
 ]);
+const newUrls = ref([]);
+// 上传组件组件注册事件监听
+emitter.on("updateImage3", uploadUrl);
+function uploadUrl(urls) {
+  //翻转数组中内容的顺序
+  const reversedUrls = [...urls].reverse();
+  newUrls.value = reversedUrls;
+}
 </script>
 
 <style scoped>

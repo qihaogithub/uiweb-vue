@@ -7,7 +7,7 @@
   >
     <template #upload-button>
       <button class="button_line">
-        <iconpark-icon name="upload"></iconpark-icon>
+        <upload theme="outline" size="16" fill="#666" />
         <span>上传</span>
       </button>
     </template>

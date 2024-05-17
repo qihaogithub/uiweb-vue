@@ -18,8 +18,8 @@
               <a
                 href="https://alidocs.dingtalk.com/i/nodes/mExel2BLV54K0MnQCxk2Pq2wWgk9rpMq?utm_scene=team_space"
                 target="_blank"
-                ><iconpark-icon name="help"></iconpark-icon
-              ></a>
+                ><Help theme="outline" size="12" fill="#666"
+              /></a>
             </div>
             <upload :id="1" :minSize="{ width: 1248, height: 384 }" />
           </div>
@@ -29,30 +29,23 @@
               <a
                 href="https://alidocs.dingtalk.com/i/nodes/mExel2BLV54K0MnQCxk2Pq2wWgk9rpMq?utm_scene=team_space"
                 target="_blank"
-                ><iconpark-icon name="help"></iconpark-icon
-              ></a>
+                ><Help theme="outline" size="12" fill="#666"
+              /></a>
             </div>
             <upload :id="2" :minSize="{ width: 1248, height: 344 }" />
           </div>
 
-          <div class="list">
+          <div class="list" style="flex-direction: column; gap: 12px">
             <div class="zyname">
               <span>小banner</span>
               <a
                 href="https://alidocs.dingtalk.com/i/nodes/gwva2dxOW4KX7gmQCQN1X2oz8bkz3BRL?utm_scene=team_space"
                 target="_blank"
-                ><iconpark-icon name="help"></iconpark-icon
-              ></a>
+              >
+                <Help theme="outline" size="12" fill="#666" />
+              </a>
             </div>
-            <upload
-              :id="1"
-              :minSize="{ width: 670, height: 670 }"
-              :maxSize="{ width: 670, height: 890 }"
-            />
-            <uploadPictureCard  
-            :id="3"
-              :minSize="{ width: 670, height: 670 }"
-              :maxSize="{ width: 670, height: 890 }"/>
+            <uploadPictureCard :id="3" :minSize="{ width: 480, height: 270 }" />
           </div>
         </div>
       </div>
@@ -65,6 +58,7 @@ import phone from "@/components/square/square-phone.vue";
 import pad from "@/components/square/square-pad.vue";
 import upload from "@/components/general/upload/upload-simple.vue";
 import uploadPictureCard from "@/components/general/upload/upload-picture-card.vue";
+import { Help } from "@icon-park/vue-next";
 </script>
 
 <style scoped>
