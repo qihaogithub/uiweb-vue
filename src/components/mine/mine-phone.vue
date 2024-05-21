@@ -8,62 +8,15 @@
       class="top"
       src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E6%88%91%E7%9A%84%E9%A1%B5/phone/%E9%A1%B6%E9%83%A8.png"
     />
-    <div class="small_ad">
-      <img
-        class="left-img"
-        src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img//我的页/资源/广告图_左.png"
-      />
-      <img
-        class="right_img"
-        src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/我的页/资源/广告图_右.png"
-      />
-    </div>
+    <notice />
     <img
       src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/我的页/phone/功能图标区域.png"
+      style="margin: 0 1.25em"
     />
     <div class="huodong">
-      <div class="hdbiaoti">
-        <p>邀请活动</p>
-        <div class="hdbiaoti_r">
-          <span class="text_2">邀请奖励记录</span>
-          <iconpark-icon name="right"></iconpark-icon>
-        </div>
-      </div>
-      <div class="hdbanner">
-        <div class="hdbanner1-1">
-          <img
-            class="hdkpimg"
-            src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/我的页/资源/邀请活动01.png"
-          />
-        </div>
-        <div class="hdbanner1-2">
-          <img
-            src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/我的页/资源/邀请活动02.png"
-          />
-        </div>
-      </div>
+      <huodong />
     </div>
-    <div class="huodong">
-      <div class="hdbiaoti">
-        <p>邀请活动</p>
-        <div class="hdbiaoti_r">
-          <span class="text_2">邀请奖励记录</span>
-          <iconpark-icon name="right"></iconpark-icon>
-        </div>
-      </div>
-      <div class="hdbanner">
-        <div class="hdbanner2-1">
-          <img
-            src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/我的页/资源/商场1.png"
-          />
-        </div>
-        <div class="hdbanner2-2">
-          <img
-            src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/我的页/资源/商场2.png"
-          />
-        </div>
-      </div>
-    </div>
+
     <img
       class="contact"
       src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/我的页/phone/联系电话.png"
@@ -74,3 +27,35 @@
     src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/我的页/phone/标签栏.png"
   />
 </template>
+<script setup>
+import notice from "@/components/mine/notice.vue";
+import huodong from "@/components/mine/huodong.vue";
+</script>
+<style scoped>
+.status_bar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.neirong::-webkit-scrollbar {
+  display: none;
+}
+
+.neirong {
+  padding-top: 3em;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1em;
+  padding-bottom: 100px;
+  overflow-x: hidden;
+}
+.huodong {
+  margin: 0 1.25em;
+}
+.tabBar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+</style>
