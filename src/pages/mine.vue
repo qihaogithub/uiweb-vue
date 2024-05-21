@@ -61,9 +61,11 @@ import pad from "@/components/mine/mine-pad.vue";
 import phone from "@/components/mine/mine-phone.vue";
 import upload from "@/components/general/upload/upload-simple.vue";
 </script>
+<<<<<<< HEAD
 <style scoped>
 @import "@/assets/styles/phone.css";
 @import "@/assets/styles/pad.css";
 @import "@/assets/styles/page.css";
 @import "@/assets/styles/resource.css";
 </style>
+======= >>>>>>> 44ed1410650c6dc0e426339891be3d0d719b8709
