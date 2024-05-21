@@ -1,0 +1,20 @@
+.pad {
+  width: 53.75em;
+  height: 50.75em;
+  margin: 1.875em 0;
+  background-color: #fff;
+  flex-direction: column;
+  /* 修改主轴方向*/
+  align-items: center;
+  overflow-x: hidden;
+  /* 隐藏水平滚动条并阻止水平滚动 */
+  /* 允许内容在垂直方向上滚动 */
+  /* overflow-y: auto; */
+  border-radius: 1.25em;
+  box-shadow: 0em 0.25em 3.125em 0em rgba(0, 0, 0, 0.08);
+}
+
+.pad::-webkit-scrollbar {
+  display: none;
+  /* 隐藏滚动条 */
+}

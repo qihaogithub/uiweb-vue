@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import menu from "@/pages/menu.vue";
 import popup from "../pages/pop-up.vue";
-import test from "../pages/test.vue";
+import test from "@/components/test/ceshi.vue";
 import square from "@/pages/square.vue";
 import mine from "@/pages/mine.vue";
 

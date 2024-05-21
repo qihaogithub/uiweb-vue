@@ -28,11 +28,6 @@ const routes = ref([
     image: "src/assets/img/目录页/通用弹窗.png",
     title: "通用弹窗",
   },
-  {
-    path: "/test",
-
-    title: "测试",
-  },
 ]);
 </script>
 
