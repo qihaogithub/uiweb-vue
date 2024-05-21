@@ -1,84 +1,120 @@
 <template>
-  <div class="main">
-    <div v-for="(route, index) in routes" :key="index" class="box">
-      <router-link :to="route.path">
-        <img :src="route.image" :alt="route.title" />
-        <div class="box-title">{{ route.title }}</div>
-      </router-link>
+  <div class="page">
+    <!-- 画布 -->
+    <div class="canvas">
+      <div class="phone">
+        <phone />
+      </div>
+
+      <div class="pad">
+        <pad />
+      </div>
+    </div>
+    <!-- 资源清单 -->
+    <div class="menu">
+      <div class="title"><span>资源列表</span></div>
+      <div class="resources">
+        <div class="list">
+          <div class="zyname">
+            <span>通知条-左</span>
+            <a
+              href="https://alidocs.dingtalk.com/i/nodes/NZQYprEoWoe9jQgXHROmK7YXJ1waOeDk?utm_scene=team_space"
+              target="_blank"
+              ><iconpark-icon name="help"></iconpark-icon
+            ></a>
+          </div>
+          <button class="button_line" id="button-notice">
+            <iconpark-icon name="upload"></iconpark-icon>
+            <span>上传</span>
+          </button>
+          <input
+            type="file"
+            id="inputNoticeLeft"
+            accept="image/*"
+            style="display: none"
+          />
+        </div>
+
+        <div class="list">
+          <div class="zyname">
+            <span>通知条-右</span>
+            <a
+              href="https://alidocs.dingtalk.com/i/nodes/mExel2BLV54K0MnQCxk2Pq2wWgk9rpMq?utm_scene=team_space"
+              target="_blank"
+              ><iconpark-icon name="help"></iconpark-icon
+            ></a>
+          </div>
+          <button class="button_line" id="uploadBackgroundButton">
+            <iconpark-icon name="upload"></iconpark-icon>
+            <span>上传</span>
+          </button>
+          <input
+            type="file"
+            id="inputNoticeRight"
+            accept="image/*"
+            style="display: none"
+          />
+        </div>
+
+        <div class="list">
+          <div class="zyname">
+            <span>通知条-背景色</span>
+            <a
+              href="https://alidocs.dingtalk.com/i/nodes/mExel2BLV54K0MnQCxk2Pq2wWgk9rpMq?utm_scene=team_space"
+              target="_blank"
+              ><iconpark-icon name="help"></iconpark-icon
+            ></a>
+          </div>
+          <input
+            type="text"
+            class="colorInput tztcolorInput"
+            placeholder="色值"
+          />
+        </div>
+
+        <div class="list">
+          <div class="zyname">
+            <span>活动卡片</span>
+            <a
+              href="https://alidocs.dingtalk.com/i/nodes/gwva2dxOW4KX7gmQCQN1X2oz8bkz3BRL?utm_scene=team_space"
+              target="_blank"
+              ><iconpark-icon name="help"></iconpark-icon
+            ></a>
+          </div>
+          <button class="button_line" id="uploadhdBanner">
+            <iconpark-icon name="upload"></iconpark-icon>
+            <span>上传</span>
+          </button>
+          <input
+            type="file"
+            id="fileInputhdBanner"
+            accept="image/*"
+            style="display: none"
+          />
+        </div>
+
+        <div class="list">
+          <div class="zyname">
+            <span>活动卡片-背景</span>
+            <a
+              href="https://alidocs.dingtalk.com/i/nodes/mExel2BLV54K0MnQCxk2Pq2wWgk9rpMq?utm_scene=team_space"
+              target="_blank"
+              ><iconpark-icon name="help"></iconpark-icon
+            ></a>
+          </div>
+          <input
+            type="text"
+            class="colorInput hdcolorInput"
+            placeholder="色值"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </template>
-
 <script setup>
 import { ref } from "vue";
-
-const routes = ref([
-  {
-    path: "/square",
-    image: "src/assets/img/目录页/广场页.png",
-    title: "广场",
-  },
-  {
-    path: "/mine",
-    image: "src/assets/img/目录页/我的页.png",
-    title: "我的",
-  },
-  {
-    path: "/popup",
-    image: "src/assets/img/目录页/通用弹窗.png",
-    title: "通用弹窗",
-  },
-]);
+import pad from "@/components/mine/mine-pad.vue";
+import phone from "@/components/mine/mine-phone.vue";
+import upload from "@/components/general/upload/upload-simple.vue";
 </script>
-
-<style scoped>
-body,
-html {
-  height: 100%;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: #f7f7f7;
-}
-
-.main {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.box {
-  width: 200px;
-  margin: 10px;
-  border-radius: 1.25rem;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s ease-in-out;
-}
-
-.box img {
-  border-radius: 1rem;
-  max-width: 100%;
-  height: auto;
-}
-
-.box:hover {
-  transform: scale(1.1);
-  cursor: pointer;
-}
-
-.box-title {
-  font-size: 1.2rem;
-  margin-top: 10px;
-  text-align: center;
-}
-</style>

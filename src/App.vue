@@ -10,7 +10,6 @@
 
 <script setup>
 import { RouterView } from "vue-router";
-import ceshi from "@/components/test/ceshi.vue";
 </script>
 
 <style scoped>
