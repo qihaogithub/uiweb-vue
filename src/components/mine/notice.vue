@@ -1,5 +1,5 @@
 <template>
-  <div class="small_ad">
+  <div class="small_ad" :style="{ backgroundColor: color1 }">
     <img
       class="left-img"
       src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E6%88%91%E7%9A%84%E9%A1%B5/%E8%B5%84%E6%BA%90/%E5%B9%BF%E5%91%8A%E5%9B%BE_%E5%B7%A6.png"
@@ -10,12 +10,15 @@
     />
   </div>
 </template>
+<script setup>
+defineProps(["color2"]);
+</script>
 <style scoped>
 .small_ad {
   display: flex;
   height: 2.125em;
   padding: 0em 0.875em;
-  margin: 0 1.25em;
+
   justify-content: space-between;
   align-items: center;
   flex-shrink: 0;

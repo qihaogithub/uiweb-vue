@@ -6,6 +6,9 @@ import { createPinia } from "pinia"; // 导入创建 Pinia 实例的函数
 import router from "./router/router";
 import "@icon-park/vue-next/styles/index.css";
 
+import axios from "axios";
+axios.defaults.baseURL = "https://picui.cn/api/v1";
+
 const pinia = createPinia(); // 创建 Pinia 状态管理实例
 const app = createApp(App); // 创建 Vue 应用
 

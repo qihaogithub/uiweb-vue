@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@icon-park/vue-next": "^1.4.2",
+    "axios": "^1.7.2",
     "mitt": "^3.0.1",
     "pinia": "^2.1.7",
     "svga": "^2.1.1",

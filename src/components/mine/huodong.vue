@@ -1,54 +1,64 @@
 <template>
-  <div class="huodong">
-    <div class="hdbiaoti">
-      <p>邀请活动</p>
-      <div class="hdbiaoti_r">
-        <span class="text_2">邀请奖励记录</span>
-        <iconpark-icon name="right"></iconpark-icon>
+  <div class="main">
+    <div class="huodong">
+      <div class="hdbiaoti">
+        <p>邀请活动</p>
+        <div class="hdbiaoti_r">
+          <span class="text_2">邀请奖励记录</span>
+          <iconpark-icon name="right"></iconpark-icon>
+        </div>
+      </div>
+      <div class="hdbanner">
+        <div class="hdbanner1-1">
+          <img
+            class="hdkpimg"
+            src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/我的页/资源/邀请活动01.png"
+          />
+        </div>
+        <div class="hdbanner1-2">
+          <img
+            src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/我的页/资源/邀请活动02.png"
+          />
+        </div>
       </div>
     </div>
-    <div class="hdbanner">
-      <div class="hdbanner1-1">
-        <img
-          class="hdkpimg"
-          src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/我的页/资源/邀请活动01.png"
-        />
+    <div class="huodong">
+      <div class="hdbiaoti">
+        <p>邀请活动</p>
+        <div class="hdbiaoti_r">
+          <span class="text_2">邀请奖励记录</span>
+          <iconpark-icon name="right"></iconpark-icon>
+        </div>
       </div>
-      <div class="hdbanner1-2">
-        <img
-          src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/我的页/资源/邀请活动02.png"
-        />
-      </div>
-    </div>
-  </div>
-  <div class="huodong">
-    <div class="hdbiaoti">
-      <p>邀请活动</p>
-      <div class="hdbiaoti_r">
-        <span class="text_2">邀请奖励记录</span>
-        <iconpark-icon name="right"></iconpark-icon>
-      </div>
-    </div>
-    <div class="hdbanner">
-      <div class="hdbanner2-1">
-        <img
-          src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/我的页/资源/商场1.png"
-        />
-      </div>
-      <div class="hdbanner2-2">
-        <img
-          src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/我的页/资源/商场2.png"
-        />
+      <div class="hdbanner">
+        <div class="hdbanner2-1">
+          <img
+            src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/我的页/资源/商场1.png"
+          />
+        </div>
+        <div class="hdbanner2-2">
+          <img
+            src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/我的页/资源/商场2.png"
+          />
+        </div>
       </div>
     </div>
   </div>
 </template>
+<script setup>
+defineProps(["color2"]);
+</script>
+
 <style scoped>
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25em;
+}
 .huodong {
   display: flex;
   flex-direction: column;
   gap: 0.5em;
-  padding: 0 1.25em;
 }
 .hdbiaoti {
   display: flex;
