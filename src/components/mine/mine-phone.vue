@@ -5,17 +5,14 @@
   />
   <div class="neirong">
     <img
-      class="top"
       src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E6%88%91%E7%9A%84%E9%A1%B5/phone/%E9%A1%B6%E9%83%A8.png"
     />
     <notice />
     <img
       src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/我的页/phone/功能图标区域.png"
-      style="margin: 0 1.25em"
     />
-    <div class="huodong">
-      <huodong />
-    </div>
+
+    <huodong />
 
     <img
       class="contact"
@@ -33,8 +30,9 @@ import huodong from "@/components/mine/huodong.vue";
 </script>
 <style scoped>
 .status_bar {
-  position: absolute;
+  position: sticky;
   top: 0;
+  z-index: 2;
   width: 100%;
 }
 .neirong::-webkit-scrollbar {
@@ -42,20 +40,18 @@ import huodong from "@/components/mine/huodong.vue";
 }
 
 .neirong {
-  padding-top: 3em;
   display: flex;
   flex-direction: column;
-  width: 100%;
   gap: 1em;
   padding-bottom: 100px;
   overflow-x: hidden;
-}
-.huodong {
   margin: 0 1.25em;
 }
+
 .tabBar {
-  position: absolute;
+  position: sticky;
   bottom: 0;
   width: 100%;
+  z-index: 2;
 }
 </style>

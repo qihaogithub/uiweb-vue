@@ -15,7 +15,7 @@
   display: flex;
   height: 2.125em;
   padding: 0em 0.875em;
-  margin: 0 1.25em;
+
   justify-content: space-between;
   align-items: center;
   flex-shrink: 0;

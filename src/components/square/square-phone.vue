@@ -32,11 +32,6 @@ import minibanner from "@/components/square/minibanner/minibanner.vue";
   overflow-x: hidden;
 }
 
-.top {
-  position: sticky;
-  top: 0;
-  z-index: 2;
-}
 .neirong {
   display: flex;
   flex-direction: column;
