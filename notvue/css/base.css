@@ -1,0 +1,17 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+  /* 防止水平滚动*/
+
+}
+
+html {
+  font-size: 12px;
+}
+
+body {
+  background-color: #F7F8FC;
+}

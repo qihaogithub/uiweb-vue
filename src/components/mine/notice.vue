@@ -24,19 +24,17 @@ emitter.on("updateImage2", (url) => {
 });
 </script>
 <style scoped>
-.small_ad {
+div {
   display: flex;
-  height: 2.125em;
-  padding: 0em 0.875em;
-
   justify-content: space-between;
   align-items: center;
-  flex-shrink: 0;
+  height: 2.125em;
+  padding: 0em 0.875em;
   border-radius: 1.33333em;
   background: #fcf9de;
   box-shadow: 0px -4px 0px 0px rgba(0, 0, 0, 0.02) inset;
 }
-.small_ad img {
+img {
   height: 100%;
 }
 </style>
