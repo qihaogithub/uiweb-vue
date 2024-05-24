@@ -8,8 +8,12 @@
 <script setup>
 import { ref } from "vue";
 import emitter from "@/utils/emitter";
-const bgimage = ref("/src/assets/img/广场页/大banner/banner_背景图.png");
-const fgimage = ref("/src/assets/img/广场页/大banner/banner_前景图.png");
+const bgimage = ref(
+  "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E5%B9%BF%E5%9C%BA%E9%A1%B5/%E5%A4%A7banner/banner_%E8%83%8C%E6%99%AF%E5%9B%BE.png"
+);
+const fgimage = ref(
+  "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E5%B9%BF%E5%9C%BA%E9%A1%B5/%E5%A4%A7banner/banner_%E5%89%8D%E6%99%AF%E5%9B%BE.png"
+);
 
 // 上传组件组件注册事件监听
 emitter.on("updateImage1", (url) => {
