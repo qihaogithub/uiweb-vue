@@ -7,7 +7,6 @@
   >
     <template #upload-button>
       <button class="button_line">
-        <upload theme="outline" size="16" fill="#666" />
         <span>上传</span>
       </button>
     </template>
@@ -49,11 +48,11 @@ const onChange = (_, currentFile) => {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 64px;
+  width: 48px;
   height: 100%;
   padding: 4px 10px;
   background-color: #f0f0f0;
-  border: 1px dashed #d9d9d9;
+  border: 1px solid #d9d9d9;
   border-radius: 4px;
   cursor: pointer;
 }

@@ -6,7 +6,6 @@
     :auto-upload="false"
     @before-upload="beforeUpload"
     @change="onChange"
-    @progress="onProgress"
   >
     <template #upload-button>
       <button class="button_line">
@@ -17,34 +16,44 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
 import emitter from "@/utils/emitter";
-import { useCheckImageSize } from "@/hooks/useCheckImageSize"; // 导入自定义 hook
+import { checkImageSize } from "@/hooks/checkImageSize.js"; // 导入自定义 hook
 
-const file = ref();
+const file = ref(null); // 使用 ref 创建一个响应式引用
 const props = defineProps({
   id: Number,
-  // 父组件传递了图片尺寸要求
-  minSize: Object,
-  maxSize: Object,
+  widthExact: Number,
+  heightExact: Number,
+  minWidth: Number,
+  maxWidth: Number,
+  minHeight: Number,
+  maxHeight: Number,
 });
 
 // 检查图片尺寸
-const beforeUpload = (rawFile) => {
-  return useCheckImageSize(rawFile, props.minSize, props.maxSize); // 调用自定义 hook
+const beforeUpload = (file) => {
+  return checkImageSize(
+    file,
+    props.widthExact,
+    props.heightExact,
+    props.minWidth,
+    props.maxWidth,
+    props.minHeight,
+    props.maxHeight
+  ); // 调用自定义 hook
 };
 
-const onChange = (_, currentFile) => {
-  file.value = currentFile;
+const onChange = (_, file) => {
+  file.value = file; // 更新响应式引用
   // 根据id来触发不同的事件
   const event = `updateImage${props.id}`;
-
   emitter.emit(event, file.value.url);
+  console.log("发送了");
 };
 
-const onProgress = (currentFile) => {
-  file.value = currentFile;
-};
+// const onProgress = (currentFile) => {
+//   file.value = currentFile;
+// };
 </script>
 <style scoped>
 .button_line {

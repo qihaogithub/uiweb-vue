@@ -5,7 +5,6 @@
   <div class="main-content">
     <RouterView></RouterView>
   </div>
-  <ceshi></ceshi>
 </template>
 
 <script setup>
