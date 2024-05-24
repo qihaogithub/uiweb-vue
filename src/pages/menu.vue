@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <div v-for="(route, index) in routes" :key="index" class="box">
-      <router-link :to="route.path">
+      <router-link :to="route.path" style="color: #404040">
         <img :src="route.image" :alt="route.title" />
         <div class="box-title">{{ route.title }}</div>
       </router-link>
