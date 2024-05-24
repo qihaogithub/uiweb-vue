@@ -15,17 +15,20 @@ import { ref } from "vue";
 const routes = ref([
   {
     path: "/square",
-    image: "src/assets/img/目录页/广场页.png",
+    image:
+      "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E7%9B%AE%E5%BD%95%E9%A1%B5/%E5%B9%BF%E5%9C%BA%E9%A1%B5.png",
     title: "广场",
   },
   {
     path: "/mine",
-    image: "src/assets/img/目录页/我的页.png",
+    image:
+      "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E7%9B%AE%E5%BD%95%E9%A1%B5/%E6%88%91%E7%9A%84%E9%A1%B5.png",
     title: "我的",
   },
   {
     path: "/popup",
-    image: "src/assets/img/目录页/通用弹窗.png",
+    image:
+      "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E7%9B%AE%E5%BD%95%E9%A1%B5/%E9%80%9A%E7%94%A8%E5%BC%B9%E7%AA%97.png",
     title: "通用弹窗",
   },
 ]);

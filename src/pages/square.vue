@@ -21,7 +21,7 @@
                 ><Help theme="outline" size="12" fill="#666"
               /></a>
             </div>
-            <upload :id="1" :minSize="{ width: 1248, height: 384 }" />
+            <upload :id="1" :widthExact="1248" :heightExact="384" />
           </div>
           <div class="list">
             <div class="zyname">
@@ -32,7 +32,7 @@
                 ><Help theme="outline" size="12" fill="#666"
               /></a>
             </div>
-            <upload :id="2" :minSize="{ width: 1248, height: 344 }" />
+            <upload :id="2" :widthExact="1248" :heightExact="344" />
           </div>
 
           <div class="list" style="flex-direction: column; gap: 12px">

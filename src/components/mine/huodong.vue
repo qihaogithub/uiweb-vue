@@ -9,11 +9,8 @@
         </div>
       </div>
       <div class="hdbanner">
-        <div class="hdbanner1-1">
-          <img
-            class="hdkpimg"
-            src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/我的页/资源/邀请活动01.png"
-          />
+        <div class="hdbanner1-1" :style="{ backgroundColor: color2 }">
+          <img class="hdkpimg" :src="img" />
         </div>
         <div class="hdbanner1-2">
           <img
@@ -46,6 +43,17 @@
   </div>
 </template>
 <script setup>
+import emitter from "@/utils/emitter";
+import { ref } from "vue";
+const img = ref(
+  "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/我的页/资源/邀请活动01.png"
+);
+// 上传组件组件注册事件监听
+emitter.on("updateImage3", (url) => {
+  img.value = url;
+  console.log("收到了");
+});
+
 defineProps(["color2"]);
 </script>
 

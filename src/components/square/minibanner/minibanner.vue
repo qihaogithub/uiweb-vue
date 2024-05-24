@@ -22,11 +22,11 @@ import { ref } from "vue";
 import emitter from "@/utils/emitter";
 
 const imageUrls = ref([
-  "src/assets/img/广场页/小banner/Property 1=01.png",
-  "src/assets/img/广场页/小banner/Property 1=02.png",
-  "src/assets/img/广场页/小banner/Property 1=05.png",
-  "src/assets/img/广场页/小banner/Property 1=04.png",
-  "src/assets/img/广场页/小banner/Property 1=06.png",
+  "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E5%B9%BF%E5%9C%BA%E9%A1%B5/%E5%B0%8Fbanner/Property%201%3D01.png",
+  "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E5%B9%BF%E5%9C%BA%E9%A1%B5/%E5%B0%8Fbanner/Property%201%3D02.png",
+  "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E5%B9%BF%E5%9C%BA%E9%A1%B5/%E5%B0%8Fbanner/Property%201%3D05.png",
+  "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E5%B9%BF%E5%9C%BA%E9%A1%B5/%E5%B0%8Fbanner/Property%201%3D04.png",
+  "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E5%B9%BF%E5%9C%BA%E9%A1%B5/%E5%B0%8Fbanner/Property%201%3D06.png",
 ]);
 const newUrls = ref([]);
 // 上传组件组件注册事件监听
