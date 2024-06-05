@@ -32,6 +32,10 @@ const router = createRouter({
       path: "/test",
       component: test,
     },
+    {
+      path: "/size",
+      component: () => import("../components/尺寸检查/批量尺寸检查.vue"),
+    },
   ],
 });
 

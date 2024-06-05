@@ -24,7 +24,7 @@
                 ><Help theme="outline" size="12" fill="#666"
               /></a>
             </div>
-            <upload :id="1" :heightExact="34" />
+            <upload :id="1" :heightExact="68" />
           </div>
           <div class="list">
             <div class="zyname">
@@ -35,7 +35,7 @@
                 ><Help theme="outline" size="12" fill="#666"
               /></a>
             </div>
-            <upload :id="2" :heightExact="34" />
+            <upload :id="2" :heightExact="68" />
           </div>
           <div class="list">
             <div class="zyname">

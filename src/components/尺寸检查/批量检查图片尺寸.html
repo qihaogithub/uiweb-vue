@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>图片尺寸列表</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      .upload-container {
+        margin-bottom: 20px;
+      }
+      #fileInput {
+        display: none;
+      }
+      .upload-label {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #5584ff;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+      }
+      .upload-label:hover {
+        background-color: #3c72ff;
+      }
+      #output,
+      #images {
+        margin-top: 20px;
+      }
+      .button-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .size-button {
+        padding: 10px 15px;
+        border: 1px solid #ddd;
+        background-color: #f2f2f2;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+      .size-button.selected {
+        background-color: #5584ff;
+        color: white;
+      }
+      .image-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+      }
+      .image-grid img {
+        max-width: 100px;
+        max-height: 100px;
+        object-fit: cover;
+        cursor: pointer;
+      }
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+      .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        border-radius: 10px;
+        width: 80%;
+        max-width: 500px;
+      }
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>上传文件夹并列出图片尺寸</h1>
+    <div class="upload-container">
+      <label for="fileInput" class="upload-label">上传图片/文件夹</label>
+      <input type="file" id="fileInput" webkitdirectory multiple />
+    </div>
+    <div id="output"></div>
+    <div id="images"></div>
+
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p id="modalText"></p>
+        <p id="modalFileName"></p>
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("fileInput")
+        .addEventListener("change", async function (event) {
+          const files = event.target.files;
+          const sizeToFileMap = new Map();
+          const output = document.getElementById("output");
+          output.innerHTML = "";
+          document.getElementById("images").innerHTML = "";
+
+          for (const file of files) {
+            if (file.type.startsWith("image/")) {
+              const img = new Image();
+              img.src = URL.createObjectURL(file);
+
+              await new Promise((resolve) => {
+                img.onload = () => {
+                  const size = `${img.width} x ${img.height}`;
+                  if (!sizeToFileMap.has(size)) {
+                    sizeToFileMap.set(size, []);
+                  }
+                  sizeToFileMap
+                    .get(size)
+                    .push({ file, path: file.webkitRelativePath });
+                  URL.revokeObjectURL(img.src);
+                  resolve();
+                };
+              });
+            }
+          }
+
+          if (sizeToFileMap.size > 0) {
+            const sortedSizes = Array.from(sizeToFileMap.keys()).sort(
+              (a, b) => {
+                const [aWidth, aHeight] = a.split(" x ").map(Number);
+                const [bWidth, bHeight] = b.split(" x ").map(Number);
+                return aWidth * aHeight - bWidth * bHeight;
+              }
+            );
+
+            const buttonContainer = document.createElement("div");
+            buttonContainer.className = "button-container";
+
+            sortedSizes.forEach((size) => {
+              const files = sizeToFileMap.get(size);
+              const button = document.createElement("button");
+              button.className = "size-button";
+              button.innerHTML = `${size}<br>(${files.length})`;
+              button.addEventListener("click", () => {
+                document
+                  .querySelectorAll(".size-button")
+                  .forEach((btn) => btn.classList.remove("selected"));
+                button.classList.add("selected");
+                displayImages(files);
+              });
+              buttonContainer.appendChild(button);
+            });
+
+            output.appendChild(buttonContainer);
+          } else {
+            output.textContent = "没有找到图片文件。";
+          }
+        });
+
+      function displayImages(files) {
+        const imagesDiv = document.getElementById("images");
+        imagesDiv.innerHTML = "";
+        const imageGrid = document.createElement("div");
+        imageGrid.className = "image-grid";
+
+        files.forEach(({ file, path }) => {
+          const img = new Image();
+          img.src = URL.createObjectURL(file);
+          img.addEventListener("click", () => showModal(path));
+          imageGrid.appendChild(img);
+          img.onload = () => {
+            URL.revokeObjectURL(img.src);
+          };
+        });
+
+        imagesDiv.appendChild(imageGrid);
+      }
+
+      function showModal(path) {
+        const modal = document.getElementById("myModal");
+        const modalText = document.getElementById("modalText");
+        const modalFileName = document.getElementById("modalFileName");
+        const fileName = path.substring(path.lastIndexOf("/") + 1);
+        const filePath = path.substring(0, path.lastIndexOf("/"));
+
+        modalText.innerHTML = `文件路径:<br>${filePath}`;
+        modalFileName.innerHTML = `文件名:<br>${fileName}`;
+        modal.style.display = "block";
+      }
+
+      document.querySelector(".close").addEventListener("click", () => {
+        document.getElementById("myModal").style.display = "none";
+      });
+
+      window.addEventListener("click", (event) => {
+        const modal = document.getElementById("myModal");
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>
