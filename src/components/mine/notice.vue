@@ -25,7 +25,7 @@ emitter.on("updateImage2", (url) => {
 </script>
 <style scoped>
 .small_ad {
-  display: flex;
+  display: flex !important;
   justify-content: space-between;
   align-items: center;
   height: 2.125em;
