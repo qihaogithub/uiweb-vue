@@ -7,7 +7,7 @@
     <img
       src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E6%88%91%E7%9A%84%E9%A1%B5/phone/%E9%A1%B6%E9%83%A8.png"
     />
-    <notice v-bind="$attrs" />
+    <Notice v-bind="$attrs" />
     <img
       src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/我的页/phone/功能图标区域.png"
     />
@@ -25,7 +25,7 @@
   />
 </template>
 <script setup>
-import notice from "@/components/mine/notice.vue";
+import Notice from "@/components/mine/Notice.vue";
 import huodong from "@/components/mine/huodong.vue";
 </script>
 <style scoped>
