@@ -64,7 +64,7 @@
                 ><Help theme="outline" size="12" fill="#666"
               /></a>
             </div>
-            <upload :id="3" :widthExact="148" :heightExact="64" />
+            <upload :id="3" :widthExact="296" :heightExact="128" />
           </div>
           <div class="list">
             <div class="zyname">
