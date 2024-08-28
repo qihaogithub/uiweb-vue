@@ -25,7 +25,7 @@
   />
 </template>
 <script setup>
-import notice from "@/components/mine/Notice.vue";
+import notice from "@/components/mine/Horizontal bar.vue";
 import huodong from "@/components/mine/huodong.vue";
 </script>
 <style scoped>
