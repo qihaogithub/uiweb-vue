@@ -34,7 +34,7 @@ onMounted(() => {
 
 <style scoped>
 .small_ad {
-  display: flex !important;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   height: 2.125em;

@@ -111,10 +111,3 @@ const presetColors = ref([
   "#FFF3EB",
 ]);
 </script>
-
-<style scoped>
-@import "@/assets/styles/phone.css";
-@import "@/assets/styles/pad.css";
-@import "@/assets/styles/page.css";
-@import "@/assets/styles/resource.css";
-</style>
