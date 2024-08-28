@@ -1,13 +1,12 @@
 <template>
   <div class="small_ad" :style="{ backgroundColor: color1 }">
-    <img :src="computedLeftImg" />
-    <img :src="computedRightImg" />
+    <img :src="leftImg" />
+    <img :src="rightImg" />
   </div>
 </template>
-
 <script setup>
-import { ref, computed, onMounted } from "vue";
 import emitter from "@/utils/emitter";
+import { ref } from "vue";
 defineProps(["color1"]);
 
 const leftImg = ref(
@@ -16,22 +15,14 @@ const leftImg = ref(
 const rightImg = ref(
   "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E6%88%91%E7%9A%84%E9%A1%B5/%E8%B5%84%E6%BA%90/%E5%B9%BF%E5%91%8A%E5%9B%BE_%E5%8F%B3.png"
 );
-
-// 使用 computed 属性
-const computedLeftImg = computed(() => leftImg.value);
-const computedRightImg = computed(() => rightImg.value);
-
-onMounted(() => {
-  // 注册事件监听器
-  emitter.on("updateImage1", (url) => {
-    leftImg.value = url;
-  });
-  emitter.on("updateImage2", (url) => {
-    rightImg.value = url;
-  });
+// 上传组件组件注册事件监听
+emitter.on("updateImage1", (url) => {
+  leftImg.value = url;
+});
+emitter.on("updateImage2", (url) => {
+  rightImg.value = url;
 });
 </script>
-
 <style scoped>
 .small_ad {
   display: flex !important;
