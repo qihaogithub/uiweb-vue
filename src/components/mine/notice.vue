@@ -1,5 +1,5 @@
 <template>
-  <div class="small_ad" :style="{ backgroundColor: color1 }">
+  <div class="notice" :style="{ backgroundColor: color1 }">
     <img :src="computedLeftImg" />
     <img :src="computedRightImg" />
   </div>
@@ -33,7 +33,7 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.small_ad {
+.notice {
   display: flex;
   justify-content: space-between;
   align-items: center;
