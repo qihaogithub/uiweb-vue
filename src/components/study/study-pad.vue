@@ -1,53 +1,39 @@
 <template>
-  <top />
-  <div class="neirong">
-    <subjectsPad style="width: 89.3333333333333%" />
-    <div style="width: 89.3333333333333%">
-      <bigBanner style="height: 15em" />
+  <div class="container">
+    <img class="top" src="../../assets/img/学习页/top-pad.png" />
+    <div class="content">
+      <div style="width: 89.3333333333333%">
+        <bigTaskCard />
+      </div>
     </div>
-    <div style="width: 100%">
-      <minibanner style="padding: 0 2.65em; height: 7.1195375em" />
-    </div>
-    <img
-      style="width: 89.3333333333333%; margin: 1em 0 5em 0"
-      src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E5%B9%BF%E5%9C%BA%E9%A1%B5/%E5%86%85%E5%AE%B9/pad%E5%86%85%E5%AE%B9%E5%8D%A0%E4%BD%8D.png"
-    />
   </div>
-  <img
-    class="tabBar"
-    src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E5%B9%BF%E5%9C%BA%E9%A1%B5/%E5%BA%95%E9%83%A8/%E5%BA%95%E9%83%A8%E6%A0%87%E7%AD%BE%E6%A0%8F_pad.png"
-  />
+  <img class="tabBar" src="../../assets/img/学习页/底部标签栏-pad.png" />
 </template>
 
 <script setup>
-import bigBanner from "@/components/square/bigbanner/bigbanner-pad.vue";
-import top from "@/components/square/top/top-pad.vue";
-import subjectsPad from "@/components/square/subjects/subjects-pad.vue";
-import minibanner from "@/components/square/minibanner/minibanner.vue";
+import bigTaskCard from "@/components/study/Big task card/bigTaskCard-pad.vue";
 </script>
 
 <style scoped>
-* {
-  background-color: #fff;
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 93%;
+  background-color: #ffffff;
   overflow-x: hidden;
 }
-
 .top {
-  position: sticky;
-  top: 0;
-  z-index: 2;
+  width: 100%;
+  margin-bottom: 1rem;
 }
-.neirong {
+.content {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: hidden;
-  z-index: 1;
+  overflow-y: auto;
 }
 .tabBar {
-  position: sticky;
-  bottom: 0;
   width: 100%;
-  z-index: 2;
 }
 </style>

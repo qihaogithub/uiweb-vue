@@ -11,10 +11,7 @@
 </template>
 
 <script setup>
-import bigBanner from "@/components/study/Big task card/bigbanner-phone.vue";
-import top from "@/components/square/top/top.vue";
-
-import minibanner from "@/components/square/minibanner/minibanner.vue";
+import bigBanner from "@/components/study/Big task card/bigTaskCard-phone.vue";
 </script>
 
 <style scoped>
@@ -41,6 +38,5 @@ import minibanner from "@/components/square/minibanner/minibanner.vue";
 
 .tabBar {
   width: 100%;
-  z-index: 2;
 }
 </style>
