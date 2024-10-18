@@ -20,6 +20,12 @@ const routes = ref([
     title: "广场",
   },
   {
+    path: "/study",
+    image:
+      "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E5%AD%A6%E4%B9%A0%E9%A1%B5/%E5%AD%A6%E4%B9%A0%E9%A1%B5.png",
+    title: "学习页",
+  },
+  {
     path: "/mine",
     image:
       "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E7%9B%AE%E5%BD%95%E9%A1%B5/%E6%88%91%E7%9A%84%E9%A1%B5.png",

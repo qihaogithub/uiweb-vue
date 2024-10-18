@@ -4,6 +4,7 @@ import popup from "../pages/pop-up.vue";
 import test from "@/components/test/ceshi.vue";
 import square from "@/pages/square.vue";
 import mine from "@/pages/mine.vue";
+import study from "@/pages/study.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -29,8 +30,8 @@ const router = createRouter({
       component: mine,
     },
     {
-      path: "/test",
-      component: test,
+      path: "/study",
+      component: study,
     },
     {
       path: "/size",
