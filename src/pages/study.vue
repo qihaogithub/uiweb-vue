@@ -16,7 +16,7 @@
             <div class="zyname">
               <span>手机端配图</span>
               <a
-                href="https://alidocs.dingtalk.com/i/nodes/mExel2BLV54K0MnQCxk2Pq2wWgk9rpMq?utm_scene=team_space"
+                href="https://alidocs.dingtalk.com/i/nodes/QG53mjyd80RMX42QtXj1pmkGV6zbX04v?utm_scene=team_space"
                 target="_blank"
                 ><Help theme="outline" size="12" fill="#666"
               /></a>
@@ -27,7 +27,7 @@
             <div class="zyname">
               <span>pad端配图</span>
               <a
-                href="https://alidocs.dingtalk.com/i/nodes/mExel2BLV54K0MnQCxk2Pq2wWgk9rpMq?utm_scene=team_space"
+                href="https://alidocs.dingtalk.com/i/nodes/QG53mjyd80RMX42QtXj1pmkGV6zbX04v?utm_scene=team_space"
                 target="_blank"
                 ><Help theme="outline" size="12" fill="#666"
               /></a>
