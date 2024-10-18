@@ -1,12 +1,18 @@
 <template>
   <div class="container">
-    <img class="top" src="../../assets/img/学习页/top.png" />
+    <img
+      class="top"
+      src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E5%AD%A6%E4%B9%A0%E9%A1%B5/top.png"
+    />
     <div class="content">
       <div style="width: 89.3333333333333%">
         <bigBanner />
       </div>
     </div>
-    <img class="tabBar" src="../../assets/img/学习页/底部标签栏.png" />
+    <img
+      class="tabBar"
+      src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E5%AD%A6%E4%B9%A0%E9%A1%B5/%E5%BA%95%E9%83%A8%E6%A0%87%E7%AD%BE%E6%A0%8F.png"
+    />
   </div>
 </template>
 
