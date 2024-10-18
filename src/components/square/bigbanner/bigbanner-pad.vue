@@ -43,10 +43,11 @@ emitter.on("updateImage2", (url) => {
 .foreground-image {
   position: absolute;
   width: 100%;
-  min-width: 23.4375rem;
+  min-width: 23.4375rem; /* 最小宽度375px */
   height: auto; /* 高度自适应 */
-  bottom: 0rem;
+  bottom: 0rem; /* 底部对齐 */
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%); /* 水平居中 */
+  border-radius: 1.25rem; /* 圆角20px */
 }
 </style>

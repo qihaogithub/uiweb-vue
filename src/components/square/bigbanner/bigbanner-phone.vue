@@ -47,6 +47,7 @@ emitter.on("updateImage2", (url) => {
   bottom: 0em;
   left: 50%;
   transform: translateX(-50%);
+  border-radius: 1em;
   object-fit: cover;
 }
 </style>
