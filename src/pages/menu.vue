@@ -20,10 +20,16 @@ const routes = ref([
     title: "广场",
   },
   {
-    path: "/study",
+    path: "/TaskCard",
     image:
       "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E5%AD%A6%E4%B9%A0%E9%A1%B5/%E5%AD%A6%E4%B9%A0%E9%A1%B5.png",
-    title: "学习页",
+    title: "学习页任务卡片",
+  },
+  {
+    path: "/CalendarKuoke",
+    image:
+      "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E5%AD%A6%E4%B9%A0%E9%A1%B5/%E6%89%A9%E7%A7%91%E5%8D%A1%E7%89%87/%E6%89%A9%E7%A7%91%E5%8D%A1%E7%89%87%E9%A2%84%E8%A7%88%E5%9B%BE.png",
+    title: "学习页日历扩科卡片",
   },
   {
     path: "/mine",

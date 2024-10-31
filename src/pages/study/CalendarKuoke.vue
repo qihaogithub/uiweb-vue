@@ -41,8 +41,8 @@
 </template>
 
 <script setup>
-import phone from "@/components/study/study-phone.vue";
-import pad from "@/components/study/study-pad.vue";
+import phone from "@/components/study/Kuoke/kuoke-phone.vue";
+import pad from "@/components/study/Kuoke/kuoke-pad.vue";
 import upload from "@/components/general/upload/upload-simple.vue";
 
 import { Help } from "@icon-park/vue-next";

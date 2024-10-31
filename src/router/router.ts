@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router";
 import menu from "@/pages/menu.vue";
 import popup from "../pages/pop-up.vue";
-import test from "@/components/test/ceshi.vue";
 import square from "@/pages/square.vue";
 import mine from "@/pages/mine.vue";
-import study from "@/pages/study.vue";
+import TaskCard from "@/pages/study/TaskCard.vue";
+import CalendarKuoke from "@/pages/study/CalendarKuoke.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -30,8 +30,12 @@ const router = createRouter({
       component: mine,
     },
     {
-      path: "/study",
-      component: study,
+      path: "/TaskCard",
+      component: TaskCard,
+    },
+    {
+      path: "/CalendarKuoke",
+      component: CalendarKuoke,
     },
     {
       path: "/size",
