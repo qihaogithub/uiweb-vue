@@ -93,7 +93,8 @@ import { Help } from "@icon-park/vue-next";
   margin: 1.875em 0;
   background-color: #fff;
   flex-direction: column;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
+  overflow: hidden;
   border-radius: 1.25em;
   box-shadow: 0em 0.25em 3.125em 0em rgba(0, 0, 0, 0.08);
 }

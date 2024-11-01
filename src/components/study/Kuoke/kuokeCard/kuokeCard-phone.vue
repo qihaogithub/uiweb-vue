@@ -29,11 +29,13 @@ emitter.on("updateImage1", (url) => {
 .task-card {
   display: flex;
   justify-content: space-between;
-  height: 66px;
-  padding: 0px 8px;
+  height: 88px;
+  width: 307px;
+
+  padding: 0px 14px;
   align-items: center;
   border-radius: 1.5rem;
-  background: #fff3eb;
+  background: #fff0f3;
 }
 .task-card img {
   width: 60px;
@@ -42,37 +44,41 @@ emitter.on("updateImage1", (url) => {
 .text {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
   justify-content: center;
   height: 100%;
 }
 .neirong {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 12px;
   flex: 1 0 0;
 }
 .title {
   color: #780a23;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1.2;
   height: auto;
 }
 
 .subtitle {
   color: #cc2d52;
-  font-size: 10px;
+  font-size: 14px;
   font-style: normal;
-  font-weight: 500;
-  line-height: 1.2;
+  font-weight: 400;
+  line-height: 150%; /* 21px */
 }
 .participate-button {
-  background-color: #fcda00;
   color: #6b430b;
   text-align: center;
-  font-size: 0.8rem;
   border: none;
-  padding: 5px 10px;
-  border-radius: 1.5625rem;
+  padding: 7px 12px;
+  border-radius: 25px;
+  background-color: #fcda00;
+
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 21px */
 }
 </style>
