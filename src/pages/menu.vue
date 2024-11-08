@@ -11,6 +11,9 @@
 
 <script setup>
 import { ref } from "vue";
+import kuokeImage from "@/assets/img/目录页/扩科卡片.png";
+// import squareImage from '@/assets/img/目录页/广场页.png'
+// import taskImage from '@/assets/img/学习页/学习页.png'
 
 const routes = ref([
   {
@@ -27,8 +30,7 @@ const routes = ref([
   },
   {
     path: "/CalendarKuoke",
-    image:
-      "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E5%AD%A6%E4%B9%A0%E9%A1%B5/%E6%89%A9%E7%A7%91%E5%8D%A1%E7%89%87/%E6%89%A9%E7%A7%91%E5%8D%A1%E7%89%87%E9%A2%84%E8%A7%88%E5%9B%BE.png",
+    image: kuokeImage,
     title: "学习页日历扩科卡片",
   },
   {

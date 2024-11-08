@@ -37,9 +37,10 @@ const router = createRouter({
       path: "/CalendarKuoke",
       component: CalendarKuoke,
     },
+
     {
-      path: "/size",
-      component: () => import("../components/尺寸检查/批量尺寸检查.vue"),
+      path: "/test",
+      component: () => import("@/components/study/Kuoke/kuoke-pad.vue"),
     },
   ],
 });
