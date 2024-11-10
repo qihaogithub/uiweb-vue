@@ -6,14 +6,28 @@
         <div class="box-title">{{ route.title }}</div>
       </router-link>
     </div>
+    
+    <!-- 根据域名判断是否显示底部文字 -->
+    <div v-if="shouldShowFooterText" class="footer-text">
+      <div class="footer-links">
+        <a href="http://10.130.35.137" target="_blank" class="link-item">
+          <span class="link-label">局域网网址（推荐）：</span>
+          <span class="link-url">10.130.35.137</span>
+        </a>
+        <span class="divider">|</span>
+        <a href="https://jojo-preview.netlify.app/" target="_blank" class="link-item">
+          <span class="link-label">公网网址（备用）：</span>
+          <span class="link-url">jojo-preview.netlify.app</span>
+        </a>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import kuokeImage from "@/assets/img/目录页/扩科卡片.png";
-// import squareImage from '@/assets/img/目录页/广场页.png'
-// import taskImage from '@/assets/img/学习页/学习页.png'
+
 
 const routes = ref([
   {
@@ -46,6 +60,26 @@ const routes = ref([
     title: "通用弹窗",
   },
 ]);
+
+const shouldShowFooterText = computed(() => {
+  const hostname = window.location.hostname;
+  
+  // 方案1：指定域名完全匹配
+  // return hostname === 'example.com';
+  
+  // 方案2：匹配多个指定域名
+  return ['127.0.0.1', '10.130.35.137', 'jojo-preview.netlify.app', 'https://www.jojoui.work/'].includes(hostname);
+  
+  // 方案3：匹配特定后缀
+  // return hostname.endsWith('.example.com');
+  
+  // 方案4：排除特定开发环境
+  // return !['10.130.35.137'].includes(hostname);
+  // return !['localhost', '127.0.0.1'].includes(hostname);
+
+  // 方案5：组合判断（示例：排除本地环境且必须是特定域名）
+  // return !['localhost', '127.0.0.1'].includes(hostname) && hostname.endsWith('.example.com');
+});
 </script>
 
 <style scoped>
@@ -66,6 +100,7 @@ html {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  padding-bottom: 60px;
 }
 
 .box {
@@ -97,5 +132,50 @@ html {
   font-size: 1.2rem;
   margin-top: 10px;
   text-align: center;
+}
+
+.footer-text {
+  width: 100%;
+  text-align: center;
+  padding: 15px 0;
+  position: fixed;
+  bottom: 0;
+  background-color: #fff;
+  font-size: 14px;
+  color: #666;
+  border-top: 1px solid #eee;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.link-item {
+  text-decoration: none;
+  color: #666;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+
+.link-item:hover {
+  color: #1890ff;
+}
+
+.link-label {
+  font-weight: 500;
+}
+
+.link-url {
+  color: #1890ff;
+}
+
+.divider {
+  color: #ddd;
+  font-weight: 300;
 }
 </style>
