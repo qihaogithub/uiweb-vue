@@ -40,7 +40,7 @@ const router = createRouter({
 
     {
       path: "/test",
-      component: () => import("@/components/study/Kuoke/kuoke-pad.vue"),
+      component: () => import("@/pages/study/xinnianke.vue"),
     },
   ],
 });
