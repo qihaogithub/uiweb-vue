@@ -82,6 +82,7 @@ img {
 }
 .renewal-card {
   display: flex;
+  margin-top: 16px;
   width: 678px;
   padding: 14px;
   flex-direction: column;
