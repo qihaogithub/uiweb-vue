@@ -6,7 +6,7 @@
         <div class="box-title">{{ route.title }}</div>
       </router-link>
     </div>
-    
+
     <!-- 根据域名判断是否显示底部文字 -->
     <div v-if="shouldShowFooterText" class="footer-text">
       <div class="footer-links">
@@ -15,7 +15,11 @@
           <span class="link-url">10.130.35.137</span>
         </a>
         <span class="divider">|</span>
-        <a href="https://jojo-preview.netlify.app/" target="_blank" class="link-item">
+        <a
+          href="https://jojo-preview.netlify.app/"
+          target="_blank"
+          class="link-item"
+        >
           <span class="link-label">公网网址（备用）：</span>
           <span class="link-url">jojo-preview.netlify.app</span>
         </a>
@@ -27,7 +31,6 @@
 <script setup>
 import { ref, computed } from "vue";
 import kuokeImage from "@/assets/img/目录页/扩科卡片.png";
-
 
 const routes = ref([
   {
@@ -48,6 +51,11 @@ const routes = ref([
     title: "学习页日历扩科卡片",
   },
   {
+    path: "/xinnianke",
+    image: "src/assets/img/目录页/开启新年课.png",
+    title: "学习页新年课",
+  },
+  {
     path: "/mine",
     image:
       "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E7%9B%AE%E5%BD%95%E9%A1%B5/%E6%88%91%E7%9A%84%E9%A1%B5.png",
@@ -63,16 +71,21 @@ const routes = ref([
 
 const shouldShowFooterText = computed(() => {
   const hostname = window.location.hostname;
-  
+
   // 方案1：指定域名完全匹配
   // return hostname === 'example.com';
-  
+
   // 方案2：匹配多个指定域名
-  return ['127.0.0.1', '10.130.35.137', 'jojo-preview.netlify.app', 'https://www.jojoui.work/'].includes(hostname);
-  
+  return [
+    "127.0.0.1",
+    "10.130.35.137",
+    "jojo-preview.netlify.app",
+    "https://www.jojoui.work/",
+  ].includes(hostname);
+
   // 方案3：匹配特定后缀
   // return hostname.endsWith('.example.com');
-  
+
   // 方案4：排除特定开发环境
   // return !['10.130.35.137'].includes(hostname);
   // return !['localhost', '127.0.0.1'].includes(hostname);

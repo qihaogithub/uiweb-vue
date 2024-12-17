@@ -12,8 +12,8 @@
           <div class="renewal-card" :class="subjectClass">
             <img :src="img" />
             <div class="entrance">
-              <span> 了解益智2阶系统包</span>
-              <img src="@/assets/img/学习页/年课续费/箭头.svg" />
+              <span class="title"> 了解益智2阶系统包</span>
+              <img class="arrow" src="@/assets/img/学习页/年课续费/箭头.svg" />
             </div>
           </div>
         </div>
@@ -106,30 +106,26 @@ img {
   border-radius: 24px;
   background: #fff3eb;
 }
-.entrance {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.entrance span {
-  color: #e35b00;
-  text-align: center;
-  font-feature-settings: "liga" off, "clig" off;
-  font-family: "PingFang SC";
-  font-size: 17.5px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 150%; /* 26.25px */
-}
-.entrance img {
-  width: 30px;
-  height: 30px;
-}
+
 .tabBar {
   width: 1133px;
   z-index: 999;
   position: fixed; /* 改为 fixed */
   bottom: 0;
+}
+.entrance {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.entrance .arrow {
+  width: 30px;
+  height: 30px;
+  fill: currentColor;
+  /* 默认使用 reading 主题的颜色和 filter */
+  color: #6b2d03 !important;
+  filter: invert(19%) sepia(85%) saturate(1011%) hue-rotate(23deg)
+    brightness(93%) contrast(103%) !important;
 }
 
 /* 阅读主题 */
@@ -137,8 +133,11 @@ img {
   background: #fff3eb !important;
   box-shadow: 0px -4px 10px 0px hsla(24, 100%, 96%, 0.96) inset !important;
 }
-.subject-reading .title {
+.subject-reading .title,
+.subject-reading .arrow {
   color: #6b2d03 !important;
+  filter: invert(19%) sepia(85%) saturate(1011%) hue-rotate(23deg)
+    brightness(93%) contrast(103%);
 }
 .subject-reading .subtitle {
   color: #e35b00 !important;
@@ -149,8 +148,11 @@ img {
   background: #ebf9ff !important;
   box-shadow: 0px -4px 10px 0px hsla(198, 100%, 92%, 1) inset !important;
 }
-.subject-puzzle .title {
+.subject-puzzle .title,
+.subject-puzzle .arrow {
   color: #004161 !important;
+  filter: invert(14%) sepia(86%) saturate(1845%) hue-rotate(182deg)
+    brightness(97%) contrast(102%);
 }
 .subject-puzzle .subtitle {
   color: #0090d9 !important;
@@ -161,8 +163,15 @@ img {
   background: #f9f5ff !important;
   box-shadow: 0px -4px 10px 0px hsla(264, 100%, 98%, 0.96) inset !important;
 }
-.subject-art .title {
+.subject-art .title,
+.subject-art .entrance .title {
   color: #452270 !important;
+}
+.subject-art .arrow,
+.subject-art .entrance .arrow {
+  color: #452270 !important;
+  filter: invert(14%) sepia(29%) saturate(4159%) hue-rotate(256deg)
+    brightness(94%) contrast(93%) !important;
 }
 .subject-art .subtitle {
   color: #8d4bde !important;
@@ -173,22 +182,59 @@ img {
   background: #eefceb !important;
   box-shadow: 0px -4px 10px 0px hsla(109, 74%, 95%, 0.96) inset !important;
 }
-.subject-writing .title {
+.subject-writing .title,
+.subject-writing .arrow {
   color: #0e5200 !important;
+  filter: invert(23%) sepia(93%) saturate(1311%) hue-rotate(89deg)
+    brightness(94%) contrast(106%);
 }
 .subject-writing .subtitle {
   color: #40a12d !important;
 }
 
-/* 英语主题（原有样式） */
+/* 英语主题 */
 .subject-english {
   background: #fff0f3 !important;
   box-shadow: 0px -4px 10px 0px hsla(348, 100%, 97%, 0.96) inset !important;
 }
-.subject-english .title {
+.subject-english .title,
+.subject-english .arrow {
   color: #cc2d52 !important;
+  filter: invert(23%) sepia(83%) saturate(2350%) hue-rotate(325deg)
+    brightness(87%) contrast(88%);
 }
 .subject-english .subtitle {
   color: #780a23 !important;
+}
+
+/* 为每个主题单独设置箭头样式，确保优先级一致 */
+.subject-reading .entrance .arrow {
+  filter: invert(19%) sepia(85%) saturate(1011%) hue-rotate(23deg)
+    brightness(93%) contrast(103%) !important;
+}
+
+.subject-puzzle .entrance .arrow {
+  filter: invert(14%) sepia(86%) saturate(1845%) hue-rotate(182deg)
+    brightness(97%) contrast(102%) !important;
+}
+
+.subject-art .entrance .arrow {
+  filter: invert(14%) sepia(29%) saturate(4159%) hue-rotate(256deg)
+    brightness(94%) contrast(93%) !important;
+}
+
+.subject-writing .entrance .arrow {
+  filter: invert(23%) sepia(93%) saturate(1311%) hue-rotate(89deg)
+    brightness(94%) contrast(106%) !important;
+}
+
+.subject-english .entrance .arrow {
+  filter: invert(23%) sepia(83%) saturate(2350%) hue-rotate(325deg)
+    brightness(87%) contrast(88%) !important;
+}
+
+.entrance .title {
+  border-bottom: none !important;
+  text-decoration: none !important;
 }
 </style>

@@ -27,7 +27,7 @@ const subjectClass = computed(() => {
       </div>
       <div class="task-card" :class="subjectClass">
         <img class="ziyuan" :src="img" />
-        <!-- <img class="rukou" src="@\assets\img\学习页\年课续费\card\button.png" /> -->
+
         <div class="entrance">
           <span class="title"> 了解益智2阶系统包</span>
           <img class="arrow" src="@/assets/img/学习页/年课续费/箭头.svg" />
@@ -76,7 +76,6 @@ const subjectClass = computed(() => {
 }
 .ziyuan {
   width: 307px;
-  height: 280px;
 }
 .rukou {
   width: 145px;
@@ -101,6 +100,7 @@ const subjectClass = computed(() => {
   filter: invert(19%) sepia(85%) saturate(1011%) hue-rotate(23deg)
     brightness(93%) contrast(103%) !important;
 }
+
 /* 阅读主题 */
 .subject-reading {
   background: #fff3eb !important;
@@ -131,18 +131,20 @@ const subjectClass = computed(() => {
   color: #0090d9 !important;
 }
 
-/* 美育主题 */
-.subject-art {
+/* 美育主题 - 增加选择器特异性 */
+.task-card.subject-art {
   background: #f9f5ff !important;
   box-shadow: 0px -4px 10px 0px hsla(264, 100%, 98%, 0.96) inset !important;
 }
-.subject-art .title,
-.subject-art .arrow {
+.task-card.subject-art .title {
+  color: #452270 !important;
+}
+.task-card.subject-art .entrance .arrow {
   color: #452270 !important;
   filter: invert(14%) sepia(29%) saturate(4159%) hue-rotate(256deg)
-    brightness(94%) contrast(93%);
+    brightness(94%) contrast(93%) !important;
 }
-.subject-art .subtitle {
+.task-card.subject-art .subtitle {
   color: #8d4bde !important;
 }
 
@@ -176,31 +178,27 @@ const subjectClass = computed(() => {
   color: #780a23 !important;
 }
 
-/* 阅读主题 */
+/* 为每个主题单独设置箭头样式，确保优先级一致 */
 .subject-reading .entrance .arrow {
   filter: invert(19%) sepia(85%) saturate(1011%) hue-rotate(23deg)
     brightness(93%) contrast(103%) !important;
 }
 
-/* 益智主题 */
 .subject-puzzle .entrance .arrow {
   filter: invert(14%) sepia(86%) saturate(1845%) hue-rotate(182deg)
     brightness(97%) contrast(102%) !important;
 }
 
-/* 美育主题 */
 .subject-art .entrance .arrow {
   filter: invert(14%) sepia(29%) saturate(4159%) hue-rotate(256deg)
     brightness(94%) contrast(93%) !important;
 }
 
-/* 小作家主题 */
 .subject-writing .entrance .arrow {
   filter: invert(23%) sepia(93%) saturate(1311%) hue-rotate(89deg)
     brightness(94%) contrast(106%) !important;
 }
 
-/* 英语主题 */
 .subject-english .entrance .arrow {
   filter: invert(23%) sepia(83%) saturate(2350%) hue-rotate(325deg)
     brightness(87%) contrast(88%) !important;

@@ -39,7 +39,7 @@ const router = createRouter({
     },
 
     {
-      path: "/test",
+      path: "/xinnianke",
       component: () => import("@/pages/study/xinnianke.vue"),
     },
   ],

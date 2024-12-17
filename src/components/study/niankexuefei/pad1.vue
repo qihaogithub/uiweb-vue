@@ -1,7 +1,7 @@
 <template>
   <div class="scale-container">
     <div class="popup">
-      <div class="popup-content" :class="subjectClass">
+      <div class="popup-content gradation" :class="subjectClass">
         <img :src="img" />
       </div>
       <img src="@/assets/img/学习页/年课续费/pad/按钮.png" />
@@ -56,7 +56,18 @@ const subjectClass = computed(() => {
   flex-direction: column;
   align-items: center;
   border-radius: 29.952px 29.952px 0px 0px;
-  background: #ebf9ff;
+  position: relative;
+  overflow: hidden;
+}
+.gradation::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-image: linear-gradient(0deg, #ffffff 0%, #ffffff00 100%);
+  pointer-events: none;
 }
 .popup img {
   width: 100%;
