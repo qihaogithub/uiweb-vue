@@ -4,18 +4,18 @@
       <div class="canvas">
         <div class="preview-row">
           <div class="phone-frame">
-            <phone1 :color1="value1"/>
+            <phone1 :color1="value1" />
           </div>
           <div class="pad-frame">
-            <pad :color1="value1"/>
+            <pad1 :color1="value1" />
           </div>
         </div>
         <div class="preview-row">
           <div class="phone-frame">
-            <phone2 :color1="value1"/>
+            <phone2 :color1="value1" />
           </div>
           <div class="pad-frame">
-            <pad :color1="value1"/>
+            <pad2 :color1="value1" />
           </div>
         </div>
       </div>
@@ -30,9 +30,7 @@
           <div class="list">
             <div class="resource-title">
               <span>图片上传</span>
-              <a href="规范链接" 
-                 target="_blank"
-                 class="help-link">
+              <a href="规范链接" target="_blank" class="help-link">
                 <Help theme="outline" size="12" fill="#666" />
               </a>
             </div>
@@ -42,16 +40,18 @@
           <div class="list">
             <div class="resource-title">
               <span>科目</span>
-              <a href="https://alidocs.dingtalk.com/i/nodes/QG53mjyd80RMX42QtXj1pmkGV6zbX04v" 
-                 target="_blank"
-                 class="help-link">
+              <a
+                href="https://alidocs.dingtalk.com/i/nodes/QG53mjyd80RMX42QtXj1pmkGV6zbX04v"
+                target="_blank"
+                class="help-link"
+              >
                 <Help theme="outline" size="12" fill="#666" />
               </a>
             </div>
-            <a-select 
+            <a-select
               class="subject-select"
               size="mini"
-              placeholder="选择" 
+              placeholder="选择"
               @change="handleSubjectChange"
               :trigger-props="{ autoFitPopupMinWidth: true }"
             >
@@ -64,17 +64,17 @@
           </div>
 
           <div class="list-input">
-            <a-input 
+            <a-input
               :model-value="mainTitle"
               @update:model-value="updateTitle"
-              placeholder="主标题" 
-              allow-clear 
+              placeholder="主标题"
+              allow-clear
             />
-            <a-input 
+            <a-input
               :model-value="subTitle"
               @update:model-value="updateSubtitle"
-              placeholder="副标题" 
-              allow-clear 
+              placeholder="副标题"
+              allow-clear
             />
           </div>
 
@@ -104,33 +104,34 @@
 
 <script setup>
 // 导入必要的组件和工具
-import phone1 from "@/components/study/niankexuefei/Box-phone1.vue";  // 手机预览组件
-import phone2 from "@/components/study/niankexuefei/Box-phone2.vue"; 
-import pad from "@/components/example/example-pad.vue";      // 平板预览组件
-import upload from "@/components/general/upload/upload-simple.vue";  // 图片上传组件
-import { Help } from "@icon-park/vue-next";  // 帮助图标组件
-import { ref } from 'vue';
-import emitter from "@/utils/emitter";  // 事件总线，用于组件间通信
- 
+import phone1 from "@/components/study/niankexuefei/Box-phone1.vue"; // 手机预览组件
+import phone2 from "@/components/study/niankexuefei/Box-phone2.vue";
+import pad1 from "@/components/study/niankexuefei/pad1.vue"; // 平板预览组件
+import pad2 from "@/components/study/niankexuefei/pad2.vue"; // 平板预览组件
+import upload from "@/components/general/upload/upload-simple.vue"; // 图片上传组件
+import { Help } from "@icon-park/vue-next"; // 帮助图标组件
+import { ref } from "vue";
+import emitter from "@/utils/emitter"; // 事件总线，用于组件间通信
+
 // 标题和副标题的响应式数据
-const mainTitle = ref('趣味英语训练营');
-const subTitle = ref('沉浸体验 激发兴趣');
+const mainTitle = ref("趣味英语训练营");
+const subTitle = ref("沉浸体验 激发兴趣");
 
 // 更新标题并通过事件总线广播更新
 const updateTitle = (value) => {
   mainTitle.value = value;
-  emitter.emit('updateTitle', value);
+  emitter.emit("updateTitle", value);
 };
 
 // 更新副标题并通过事件总线广播更新
 const updateSubtitle = (value) => {
   subTitle.value = value;
-  emitter.emit('updateSubtitle', value);
+  emitter.emit("updateSubtitle", value);
 };
 
 // 处理科目变更并广播
 const handleSubjectChange = (value) => {
-  emitter.emit('updateSubject', value);
+  emitter.emit("updateSubject", value);
 };
 
 const value1 = ref("#fcf9de");
@@ -146,8 +147,6 @@ const presetColors = ref([
   "#FFF2F0",
   "#FFF3EB",
 ]);
-
-
 </script>
 
 <style scoped>

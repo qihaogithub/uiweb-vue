@@ -1,25 +1,22 @@
-<script setup>
-
-</script>
+<script setup></script>
 
 <template>
-<div class=" page">
-  <div class="flex-col">
-    <div class="top">
-      <img  src="@\assets\img\学习页\年课续费\card\Calendar.png" />
-      <img class=" pos" src="@\assets\img\学习页\年课续费\card\top.png" />
+  <div class="page">
+    <div class="flex-col">
+      <div class="top">
+        <img src="@\assets\img\学习页\年课续费\card\Calendar.png" />
+        <img class="pos" src="@\assets\img\学习页\年课续费\card\top.png" />
+      </div>
+      <div class="task-card">
+        <img class="ziyuan" src="@\assets\img\学习页\年课续费\card\img.png" />
+        <img class="rukou" src="@\assets\img\学习页\年课续费\card\button.png" />
+      </div>
     </div>
-    <div class="task-card">
-      <img class="ziyuan" src="@\assets\img\学习页\年课续费\card\img.png" />
-      <img class="rukou" src="@\assets\img\学习页\年课续费\card\button.png" />
-    </div>
+    <img class="tabbar" src="@\assets\img\学习页\年课续费\card\tabbar.png" />
   </div>
-  <img class="tabbar" src="@\assets\img\学习页\年课续费\card\tabbar.png" />
-</div>
 </template>
 
-<style scoped >
-
+<style scoped>
 .page {
   border-radius: 24px;
   height: 812px;
@@ -68,5 +65,4 @@
   position: absolute;
   bottom: 0;
 }
-
 </style>
