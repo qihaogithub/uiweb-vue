@@ -29,19 +29,37 @@
         <div class="resources">
           <div class="list">
             <div class="resource-title">
-              <span>图片上传</span>
-              <a href="规范链接" target="_blank" class="help-link">
+              <span>手机版资源</span>
+              <a
+                href="https://alidocs.dingtalk.com/i/nodes/EpGBa2Lm8azLY0OAtLXZqAmoWgN7R35y"
+                target="_blank"
+                class="help-link"
+              >
                 <Help theme="outline" size="12" fill="#666" />
               </a>
             </div>
-            <upload :id="1" :width-exact="180" :height-exact="180" />
+            <upload :id="1" :widthExact="1125" :maxHeight="1500" />
+          </div>
+
+          <div class="list">
+            <div class="resource-title">
+              <span>pad版资源</span>
+              <a
+                href="https://alidocs.dingtalk.com/i/nodes/EpGBa2Lm8azLY0OAtLXZqAmoWgN7R35y"
+                target="_blank"
+                class="help-link"
+              >
+                <Help theme="outline" size="12" fill="#666" />
+              </a>
+            </div>
+            <upload :id="2" :widthExact="1950" />
           </div>
 
           <div class="list">
             <div class="resource-title">
               <span>科目</span>
               <a
-                href="https://alidocs.dingtalk.com/i/nodes/QG53mjyd80RMX42QtXj1pmkGV6zbX04v"
+                href="https://alidocs.dingtalk.com/i/nodes/EpGBa2Lm8azLY0OAtLXZqAmoWgN7R35y"
                 target="_blank"
                 class="help-link"
               >
@@ -61,40 +79,6 @@
               <a-option value="writing">小作家</a-option>
               <a-option value="english">英语</a-option>
             </a-select>
-          </div>
-
-          <div class="list-input">
-            <a-input
-              :model-value="mainTitle"
-              @update:model-value="updateTitle"
-              placeholder="主标题"
-              allow-clear
-            />
-            <a-input
-              :model-value="subTitle"
-              @update:model-value="updateSubtitle"
-              placeholder="副标题"
-              allow-clear
-            />
-          </div>
-
-          <div class="list">
-            <div class="zyname">
-              <span>通知条-背景色 </span>
-              <a
-                href="https://alidocs.dingtalk.com/i/nodes/NZQYprEoWoe9jQgXHROmK7YXJ1waOeDk?utm_scene=team_space"
-                target="_blank"
-                ><Help theme="outline" size="12" fill="#666"
-              /></a>
-            </div>
-            <a-color-picker
-              v-model="value1"
-              show-text
-              disabled-alpha
-              size="mini"
-              showPreset
-              :presetColors="presetColors"
-            />
           </div>
         </div>
       </div>

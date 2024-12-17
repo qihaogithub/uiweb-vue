@@ -23,8 +23,8 @@
             </div>
             <upload
               :id="1"
-              :minSize="{ width: 670, height: 670 }"
-              :maxSize="{ width: 670, height: 890 }"
+              :minSize="{ width: 1125, height: 0 }"
+              :maxSize="{ width: 1125, height: 1500 }"
             />
           </div>
           <div class="list">
