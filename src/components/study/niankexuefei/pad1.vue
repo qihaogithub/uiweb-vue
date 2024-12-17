@@ -4,7 +4,7 @@
       <div class="popup-content gradation" :class="subjectClass">
         <img :src="img" />
       </div>
-      <img src="@/assets/img/学习页/年课续费/pad/按钮.png" />
+      <img :src="buttonImg" />
     </div>
   </div>
 </template>
@@ -12,7 +12,10 @@
 <script setup>
 import { ref } from "vue";
 import emitter from "@/utils/emitter";
-const img = ref("/src/assets/img/学习页/年课续费/resource_img.png");
+import resourceImg from "@/assets/img/学习页/年课续费/resource_img.png";
+import buttonImg from "@/assets/img/学习页/年课续费/pad/按钮.png";
+
+const img = ref(resourceImg);
 const currentSubject = ref("reading");
 
 // 上传组件组件注册事件监听

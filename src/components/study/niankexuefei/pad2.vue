@@ -1,11 +1,11 @@
 <template>
   <div class="scale-container">
-    <img class="top" src="@/assets/img/通用/状态栏/状态栏-pad.png" />
-    <img class="top" src="@/assets/img/学习页/年课续费/pad/顶部按钮.png" />
+    <img class="top" :src="statusBarImg" />
+    <img class="top" :src="topButtonImg" />
     <div class="column">
       <div class="two-columns">
         <div class="left-column">
-          <img src="@/assets/img/学习页/年课续费/pad/日历.png" />
+          <img :src="calendarImg" />
         </div>
         <div class="right-column">
           <span class="date">9月15日 </span>
@@ -13,20 +13,27 @@
             <img :src="img" />
             <div class="entrance">
               <span class="title"> 了解益智2阶系统包</span>
-              <img class="arrow" src="@/assets/img/学习页/年课续费/箭头.svg" />
+              <img class="arrow" :src="arrowImg" />
             </div>
           </div>
         </div>
       </div>
     </div>
-    <img class="tabBar" src="@\assets\img\学习页\任务卡片\底部标签栏-pad.png" />
+    <img class="tabBar" :src="tabBarImg" />
   </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
 import emitter from "@/utils/emitter";
-const img = ref("/src/assets/img/学习页/年课续费/pad/年课续费-pad.png");
+import resourceImg from "@/assets/img/学习页/年课续费/pad/年课续费-pad.png";
+import statusBarImg from "@/assets/img/通用/状态栏/状态栏-pad.png";
+import topButtonImg from "@/assets/img/学习页/年课续费/pad/顶部按钮.png";
+import calendarImg from "@/assets/img/学习页/年课续费/pad/日历.png";
+import tabBarImg from "@/assets/img/学习页/任务卡片/底部标签栏-pad.png";
+import arrowImg from "@/assets/img/学习页/年课续费/箭头.svg";
+
+const img = ref(resourceImg);
 const currentSubject = ref("reading");
 // 上传组件组件注册事件监听
 emitter.on("updateImage2", (url) => {

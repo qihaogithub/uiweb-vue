@@ -31,7 +31,7 @@
 <script setup>
 import { ref, computed } from "vue";
 import kuokeImage from "@/assets/img/目录页/扩科卡片.png";
-
+import xinniankeImage from "@/assets/img/目录页/开启新年课.png";
 const routes = ref([
   {
     path: "/square",
@@ -52,7 +52,7 @@ const routes = ref([
   },
   {
     path: "/xinnianke",
-    image: "src/assets/img/目录页/开启新年课.png",
+    image: xinniankeImage,
     title: "学习页新年课",
   },
   {

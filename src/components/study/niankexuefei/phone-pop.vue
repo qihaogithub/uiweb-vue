@@ -2,7 +2,12 @@
 const props = defineProps({});
 import { ref } from "vue";
 import emitter from "@/utils/emitter";
-const img = ref("/src/assets/img/学习页/年课续费/resource_img.png");
+import resourceImg from "@/assets/img/学习页/年课续费/resource_img.png";
+import buttonImg from "@/assets/img/学习页/年课续费/button.png";
+import tabbarImg from "@/assets/img/学习页/年课续费/tabbar.png";
+import bgImg from "@/assets/img/学习页/年课续费/bg.png";
+
+const img = ref(resourceImg);
 const currentSubject = ref("reading");
 // 上传组件组件注册事件监听
 emitter.on("updateImage1", (url) => {
@@ -25,8 +30,8 @@ const subjectClass = computed(() => {
         <img class="image" :src="img" />
         <div class="relative gradation"></div>
       </div>
-      <img class="image_2" src="@/assets/img/学习页/年课续费/button.png" />
-      <img class="image_3" src="@/assets/img/学习页/年课续费/tabbar.png" />
+      <img class="image_2" :src="buttonImg" />
+      <img class="image_3" :src="tabbarImg" />
     </div>
   </div>
 </template>
