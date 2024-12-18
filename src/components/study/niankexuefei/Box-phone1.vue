@@ -1,13 +1,13 @@
 <template>
   <div class="scale-container">
     <div class="container">
-     <phone/>
+      <phone />
     </div>
   </div>
 </template>
 
 <script setup>
-import phone from './phone-pop.vue';
+import phone from "./phone-pop.vue";
 </script>
 
 <style scoped>

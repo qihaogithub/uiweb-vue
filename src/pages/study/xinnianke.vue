@@ -82,6 +82,12 @@
           </div>
         </div>
       </div>
+
+      <div class="save-button-container">
+        <a-button type="primary" @click="saveCanvas" :loading="isLoading">
+          {{ isLoading ? "正在生成图片..." : "保存效果图" }}
+        </a-button>
+      </div>
     </div>
   </div>
 </template>
@@ -96,6 +102,7 @@ import upload from "@/components/general/upload/upload-simple.vue"; // 图片上
 import { Help } from "@icon-park/vue-next"; // 帮助图标组件
 import { ref } from "vue";
 import emitter from "@/utils/emitter"; // 事件总线，用于组件间通信
+import html2canvas from "html2canvas";
 
 // 标题和副标题的响应式数据
 const mainTitle = ref("趣味英语训练营");
@@ -131,6 +138,141 @@ const presetColors = ref([
   "#FFF2F0",
   "#FFF3EB",
 ]);
+
+// 添加加载状态
+const isLoading = ref(false);
+
+// 修改 saveCanvas 方法
+const saveCanvas = async () => {
+  isLoading.value = true;
+
+  try {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    const element = document.querySelector(".canvas");
+    if (!element) return;
+
+    // 等待所有图片加载完成
+    const images = Array.from(element.getElementsByTagName("img"));
+    await Promise.all(
+      images.map((img) => {
+        if (img.complete) return Promise.resolve();
+        return new Promise((resolve) => {
+          img.onload = resolve;
+          img.onerror = resolve;
+        });
+      })
+    );
+
+    // 保存原始样式
+    const originalStyles = new Map();
+    const frames = element.querySelectorAll(".phone-frame, .pad-frame");
+    frames.forEach((frame) => {
+      originalStyles.set(frame, frame.getAttribute("style") || "");
+      frame.style.transform = "none";
+      frame.style.position = "relative";
+      frame.style.overflow = "visible";
+    });
+
+    // 创建一个容器div来包装内容
+    const container = document.createElement("div");
+    container.style.padding = "40px";
+    container.style.position = "relative";
+    container.style.width = "fit-content";
+
+    const canvas = await html2canvas(element, {
+      useCORS: true,
+      allowTaint: true,
+      scale: 2,
+      backgroundColor: null,
+      alpha: true,
+      onclone: (clonedDoc) => {
+        const clonedElement = clonedDoc.querySelector(".canvas");
+        if (clonedElement) {
+          // 将克隆的元素包装在容器中
+          const wrapper = container.cloneNode(true);
+          wrapper.style.backgroundColor = "transparent";
+          clonedElement.style.backgroundColor = "transparent";
+          clonedElement.parentNode.insertBefore(wrapper, clonedElement);
+          wrapper.appendChild(clonedElement);
+
+          // 处理所有手机和平板框架
+          const clonedFrames = clonedElement.querySelectorAll(
+            ".phone-frame, .pad-frame"
+          );
+          clonedFrames.forEach((frame) => {
+            frame.style.transform = "none";
+            frame.style.position = "relative";
+            frame.style.overflow = "visible";
+          });
+
+          // 特别处理phone-card组件中的元素
+          const phoneCards = clonedElement.querySelectorAll(".page");
+          phoneCards.forEach((card) => {
+            card.style.position = "relative";
+            card.style.height = "812px";
+
+            // 处理顶部图片
+            const topImg = card.querySelector(".pos");
+            if (topImg) {
+              topImg.style.position = "absolute";
+              topImg.style.top = "0";
+              topImg.style.left = "0";
+              topImg.style.right = "-1px";
+              topImg.style.zIndex = "1";
+            }
+
+            // 处理底部tabbar
+            const tabbar = card.querySelector(".tabbar");
+            if (tabbar) {
+              tabbar.style.position = "absolute";
+              tabbar.style.bottom = "0";
+              tabbar.style.left = "0";
+              tabbar.style.width = "375px";
+              tabbar.style.zIndex = "1";
+            }
+          });
+        }
+      },
+      // 不设置具体的width和height，让它自动计算
+      scrollX: 0,
+      scrollY: 0,
+      ignoreElements: (element) => {
+        return element.classList.contains("resource-list");
+      },
+      logging: true,
+      imageTimeout: 0,
+    });
+
+    // 恢复原始样式
+    frames.forEach((frame) => {
+      const originalStyle = originalStyles.get(frame);
+      if (originalStyle) {
+        frame.setAttribute("style", originalStyle);
+      }
+    });
+
+    const link = document.createElement("a");
+    link.download = "效果图.png";
+    link.href = canvas.toDataURL("image/png", 1.0);
+    link.click();
+  } catch (error) {
+    console.error("保存图片失败:", error);
+  } finally {
+    isLoading.value = false;
+  }
+};
+
+// 辅助函数：获取元素的唯一选择器
+const getUniqueSelector = (element) => {
+  if (!element) return null;
+  if (element.id) return `#${element.id}`;
+  if (element.className) {
+    const classes = Array.from(element.classList).join(".");
+    return classes ? `.${classes}` : null;
+  }
+  return null;
+};
 </script>
 
 <style scoped>
@@ -154,9 +296,15 @@ const presetColors = ref([
   display: flex;
   flex-direction: column;
   gap: 20px;
-  background-color: #edeff3;
+  /* background-color: #edeff3; */
   min-height: 100%;
-  padding: 5vw 0;
+  /* 修改padding为固定值，确保四周留白一致 */
+  padding: 40px;
+  /* 添加居中样式 */
+  margin: 0 auto;
+  width: fit-content;
+  max-width: 100%;
+  background-color: transparent;
 }
 
 /* 预览行样式 */
@@ -164,10 +312,10 @@ const presetColors = ref([
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 40px; /* 增加间距，使布局更加协调 */
   padding: 0;
-  flex-wrap: nowrap; /* 防止换行 */
-  min-height: fit-content; /* 确保最小高度适应内容 */
+  flex-wrap: nowrap;
+  min-height: fit-content;
 }
 
 /* 手机和平板预览框公共样式 */
@@ -177,15 +325,16 @@ const presetColors = ref([
   border-radius: 15px;
   overflow: hidden;
   flex-direction: column;
-  flex-shrink: 0; /* 防止压缩 */
+  flex-shrink: 0;
+  /* 添加阴影效果，使预览效果更好 */
+  box-shadow: 0 20px 37.5px rgba(0, 0, 0, 0.08);
 }
 
-/* 手机预览框特有样式 */
+/* 移除手机预览框的单独阴影设置，使用公共样式 */
 .phone-frame {
   width: var(--phone-width);
   height: var(--phone-height);
   margin: 0;
-  box-shadow: 0 20px 37.5px rgba(0, 0, 0, 0.08);
 }
 
 /* 平板预览框特有样式 */
@@ -264,5 +413,29 @@ const presetColors = ref([
 /* 科目选择器宽度 */
 .subject-select {
   width: 110px;
+}
+
+/* 添加保存按钮容器样式 */
+.save-button-container {
+  position: sticky;
+  bottom: 20px;
+  width: 100%;
+  padding: 0 12px;
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  padding-top: 12px;
+  border-top: 1px solid #f5f4f4;
+}
+
+.save-button-container :deep(.arco-btn) {
+  width: 100%;
+}
+
+/* 确保所有图片都正确显示 */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 </style>

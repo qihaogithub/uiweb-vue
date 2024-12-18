@@ -46,6 +46,7 @@ const subjectClass = computed(() => {
 
 <style scoped>
 .page {
+  position: relative;
   border-radius: 24px;
   height: 812px;
   overflow-y: auto;
@@ -69,6 +70,7 @@ const subjectClass = computed(() => {
   left: 0;
   right: -1px;
   top: 0;
+  z-index: 1;
 }
 .task-card {
   display: flex;
@@ -88,9 +90,11 @@ const subjectClass = computed(() => {
   height: 24px;
 }
 .tabbar {
-  width: 375px;
   position: absolute;
   bottom: 0;
+  left: 0;
+  width: 375px;
+  z-index: 1;
 }
 .entrance {
   display: flex;
