@@ -32,6 +32,7 @@
 import { ref, computed } from "vue";
 import kuokeImage from "@/assets/img/目录页/扩科卡片.png";
 import xinniankeImage from "@/assets/img/目录页/开启新年课.png";
+import HomeActivityCard from "@/assets/img/目录页/首页活动卡片.png";
 const routes = ref([
   {
     path: "/square",
@@ -49,6 +50,11 @@ const routes = ref([
     path: "/CalendarKuoke",
     image: kuokeImage,
     title: "学习页日历扩科卡片",
+  },
+  {
+    path: "/HomeActivityCard",
+    image: HomeActivityCard,
+    title: "首页活动卡片",
   },
   {
     path: "/xinnianke",

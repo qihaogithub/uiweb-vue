@@ -42,6 +42,11 @@ const router = createRouter({
       path: "/xinnianke",
       component: () => import("@/pages/study/xinnianke.vue"),
     },
+
+    {
+      path: "/HomeActivityCard",
+      component: () => import("@/pages/study/HomeActivityCard.vue"),
+    },
   ],
 });
 
