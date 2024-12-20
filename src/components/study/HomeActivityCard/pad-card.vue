@@ -3,6 +3,7 @@
     <div class="column">
       <div class="top">
         <img src="@/assets/img/通用/状态栏/状态栏-pad.png" />
+        <img src="@/assets/img/学习页/首页活动卡片/pad/切换按钮.png" />
       </div>
       <div class="two-columns">
         <div class="left-column">

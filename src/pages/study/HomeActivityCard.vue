@@ -27,7 +27,7 @@
 
           <div class="list">
             <div class="zyname">
-              <span>科目</span>
+              <span>配色</span>
               <a
                 href="https://alidocs.dingtalk.com/i/nodes/QG53mjyd80RMX42QtXj1pmkGV6zbX04v"
                 target="_blank"

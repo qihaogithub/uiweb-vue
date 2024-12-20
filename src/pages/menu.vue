@@ -54,7 +54,7 @@ const routes = ref([
   {
     path: "/HomeActivityCard",
     image: HomeActivityCard,
-    title: "首页活动卡片",
+    title: "学习页活动卡片",
   },
   {
     path: "/xinnianke",
@@ -123,7 +123,7 @@ html {
 }
 
 .box {
-  width: 200px;
+  width: 170px;
   margin: 10px;
   border-radius: 1.25rem;
   background-color: #fff;
@@ -148,7 +148,7 @@ html {
 }
 
 .box-title {
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin-top: 10px;
   text-align: center;
 }
