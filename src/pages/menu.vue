@@ -10,9 +10,9 @@
     <!-- 根据域名判断是否显示底部文字 -->
     <div v-if="shouldShowFooterText" class="footer-text">
       <div class="footer-links">
-        <a href="http://188.8.12.201" target="_blank" class="link-item">
+        <a href="http://188.8.12.201:3001/" target="_blank" class="link-item">
           <span class="link-label">局域网网址（推荐）：</span>
-          <span class="link-url">188.8.12.201</span>
+          <span class="link-url">188.8.12.201:3001</span>
         </a>
         <span class="divider">|</span>
         <a
