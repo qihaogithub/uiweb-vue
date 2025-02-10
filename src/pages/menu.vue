@@ -10,9 +10,9 @@
     <!-- 根据域名判断是否显示底部文字 -->
     <div v-if="shouldShowFooterText" class="footer-text">
       <div class="footer-links">
-        <a href="http://10.130.35.137" target="_blank" class="link-item">
+        <a href="http://188.8.12.201" target="_blank" class="link-item">
           <span class="link-label">局域网网址（推荐）：</span>
-          <span class="link-url">10.130.35.137</span>
+          <span class="link-url">188.8.12.201</span>
         </a>
         <span class="divider">|</span>
         <a
@@ -84,7 +84,7 @@ const shouldShowFooterText = computed(() => {
   // 方案2：匹配多个指定域名
   return [
     "127.0.0.1",
-    "10.130.35.137",
+    "188.8.12.201",
     "jojo-preview.netlify.app",
     "https://www.jojoui.work/",
   ].includes(hostname);
@@ -93,7 +93,7 @@ const shouldShowFooterText = computed(() => {
   // return hostname.endsWith('.example.com');
 
   // 方案4：排除特定开发环境
-  // return !['10.130.35.137'].includes(hostname);
+  // return !['188.8.12.201'].includes(hostname);
   // return !['localhost', '127.0.0.1'].includes(hostname);
 
   // 方案5：组合判断（示例：排除本地环境且必须是特定域名）

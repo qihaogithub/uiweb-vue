@@ -13,7 +13,7 @@ const deploy = async () => {
     // rsync 同步到服务器
     console.log("开始部署...");
     await execAsync(
-      "rsync -avz --chmod=u=rwx,g=rwx,o=rx dist/* qihao@10.130.35.137:/var/www/uipreview"
+      "rsync -avz --chmod=u=rwx,g=rwx,o=rx dist/* qihao@188.8.12.201:/var/www/uipreview"
     );
 
     console.log("部署完成!");

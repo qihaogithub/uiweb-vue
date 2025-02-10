@@ -15,7 +15,7 @@ location / {
 ```nginx
 server {
     listen 80;
-    server_name 10.130.35.137;
+    server_name 188.8.12.201;
     index index.html index.htm default.htm default.html;
     root /www/wwwroot/uipreview;
 
