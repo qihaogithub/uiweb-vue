@@ -75,7 +75,8 @@ const routes = ref([
   },
   {
     path: "/bottom-pop-up",
-    image: "src/assets/img/目录页/底部弹窗.png",
+    image:
+      "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E7%9B%AE%E5%BD%95%E9%A1%B5/%E5%BA%95%E9%83%A8%E5%BC%B9%E7%AA%97_3c58fec3.png",
     title: "底部弹窗",
   },
 ]);

@@ -9,7 +9,7 @@ const __dirname = dirname(__filename);
 
 // SFTP 客户端配置
 const config = {
-  host: "188.8.12.201",
+  host: "10.130.33.131",
   port: 22,
   username: "qihao",
   password: "qh9189",
