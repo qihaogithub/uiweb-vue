@@ -75,8 +75,7 @@ const routes = ref([
   },
   {
     path: "/bottom-pop-up",
-    image:
-      "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E7%9B%AE%E5%BD%95%E9%A1%B5/%E9%80%9A%E7%94%A8%E5%BC%B9%E7%AA%97.png",
+    image: "src/assets/img/目录页/底部弹窗.png",
     title: "底部弹窗",
   },
 ]);
@@ -120,14 +119,15 @@ html {
 }
 
 .main {
-  height: 100%;
+  min-height: 100vh;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-items: center;
-  align-items: center;
-  padding: 200px 0;
+  align-items: start;
+  padding: min(200px, calc((100vh - 600px) / 2)) 0;
   max-width: 1200px;
   margin: 0 auto;
+  overflow-y: auto;
 }
 
 .box {
