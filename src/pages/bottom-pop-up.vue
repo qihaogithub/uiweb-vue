@@ -25,32 +25,49 @@
             <upload :id="1" :widthExact="750" :maxHeight="800" />
           </div>
 
+
           <div class="list-input">
-            <a-input
-              :model-value="title1"
-              @update:model-value="updateTitle1"
-              placeholder="主标题"
-              allow-clear
-            />
-            <a-input
-              :model-value="title2"
-              @update:model-value="updateTitle2"
-              placeholder="副标题"
-              allow-clear
-            />
+            <div class="zyname">
+              <span>按钮文案</span>
+            </div>
             <a-input
               :model-value="ButtonText1"
               @update:model-value="updateButtonText1"
-              placeholder="按钮文案"
+              placeholder="主按钮文案"
               allow-clear
             />
             <a-input
               :model-value="ButtonText2"
               @update:model-value="updateButtonText2"
-              placeholder="按钮文案"
+              placeholder="次按钮文案"
               allow-clear
             />
           </div>
+          <div class="text-toggle">
+            <div class="zyname">
+              <span>弹窗标题</span>
+            </div>
+            <a-switch 
+              v-model:checked="showTextConfig" 
+              @change="toggleTextConfig"
+            />
+          </div>
+          <div class="list-input" v-if="showTextConfig">
+            <a-input
+              :model-value="title1"
+              @update:model-value="updateTitle1"
+              placeholder="主标题文案"
+              allow-clear
+            />
+            <a-input
+              :model-value="title2"
+              @update:model-value="updateTitle2"
+              placeholder="副标题文案"
+              allow-clear
+            />
+
+          </div>
+
         </div>
       </div>
     </div>
@@ -63,13 +80,14 @@ import pad from "@/components/bottom-pop-up/Box-pad.vue";
 import upload from "@/components/general/upload/upload-simple.vue";
 
 import { FontSize, Help } from "@icon-park/vue-next";
-import { ref } from "vue";
+import { ref, watch, onMounted, nextTick } from "vue";
 import emitter from "@/utils/emitter";
 
-const title1 = ref("主标题文案");
-const title2 = ref("副标题文案");
-const ButtonText1 = ref("主按钮文案");
-const ButtonText2 = ref("次按钮文案");
+const showTextConfig = ref(false);
+const title1 = ref( );
+const title2 = ref( );
+const ButtonText1 = ref( );
+const ButtonText2 = ref( );
 
 const updateTitle1 = (value) => {
   title1.value = value;
@@ -80,14 +98,35 @@ const updateTitle2 = (value) => {
   title2.value = value;
   emitter.emit("updateTitle2", value);
 };
+
 const updateButtonText1 = (value) => {
   ButtonText1.value = value;
   emitter.emit("updateButtonText1", value);
 };
+
 const updateButtonText2 = (value) => {
   ButtonText2.value = value;
   emitter.emit("updateButtonText2", value);
 };
+
+// 切换开关时的处理函数
+const toggleTextConfig = (value) => {
+  showTextConfig.value = value;
+  nextTick(() => {
+    emitter.emit("updateShowText", value);
+  });
+};
+
+// 监听开关状态变化，发送事件通知手机和平板组件
+watch(showTextConfig, (newValue) => {
+  emitter.emit("updateShowText", newValue);
+}, { immediate: true });
+
+// 组件挂载时发送一次显示状态
+onMounted(() => {
+  // 初始化时发送一次显示状态
+  emitter.emit("updateShowText", showTextConfig.value);
+});
 </script>
 
 <style scoped>
@@ -189,6 +228,13 @@ const updateButtonText2 = (value) => {
   align-items: center;
   justify-content: space-between;
   width: 100%;
+}
+.text-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 5px;
 }
 .list-input {
   display: flex;

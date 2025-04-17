@@ -4,7 +4,7 @@
       <div class="pop-up">
         <img class="image" :src="img" />
         <div class="bottom">
-          <div class="title">
+          <div class="title" v-if="showText">
             <div class="text1">{{ title1 }}</div>
             <div class="text2">{{ title2 }}</div>
           </div>
@@ -21,28 +21,41 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import emitter from "@/utils/emitter";
 import resourceImg from "@/assets/img/底部广告弹窗/配图.png";
 const img = ref(resourceImg);
+const showText = ref(false);
 const title1 = ref("孩子已完成第1节课程");
 const title2 = ref("快来成长计划看看孩子的进步吧～");
 const ButtonText1 = ref("去看看");
 const ButtonText2 = ref("下次再说");
-emitter.on("updateImage1", (url) => {
-  img.value = url;
-});
-emitter.on("updateTitle1", (newTitle) => {
-  title1.value = newTitle;
-});
-emitter.on("updateTitle2", (newTitle) => {
-  title2.value = newTitle;
-});
-emitter.on("updateButtonText1", (newTitle) => {
-  ButtonText1.value = newTitle;
-});
-emitter.on("updateButtonText2", (newTitle) => {
-  ButtonText2.value = newTitle;
+
+// 在组件挂载后注册事件监听器
+onMounted(() => {
+  emitter.on("updateImage1", (url) => {
+    img.value = url;
+  });
+  
+  emitter.on("updateTitle1", (newTitle) => {
+    title1.value = newTitle;
+  });
+  
+  emitter.on("updateTitle2", (newTitle) => {
+    title2.value = newTitle;
+  });
+  
+  emitter.on("updateButtonText1", (newTitle) => {
+    ButtonText1.value = newTitle;
+  });
+  
+  emitter.on("updateButtonText2", (newTitle) => {
+    ButtonText2.value = newTitle;
+  });
+  
+  emitter.on("updateShowText", (value) => {
+    showText.value = value;
+  });
 });
 </script>
 
