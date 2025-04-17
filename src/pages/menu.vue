@@ -10,9 +10,9 @@
     <!-- 根据域名判断是否显示底部文字 -->
     <div v-if="shouldShowFooterText" class="footer-text">
       <div class="footer-links">
-        <a href="http://188.8.12.201:3001/" target="_blank" class="link-item">
+        <a href="http://10.130.33.131:3001/" target="_blank" class="link-item">
           <span class="link-label">局域网网址（推荐）：</span>
-          <span class="link-url">188.8.12.201:3001</span>
+          <span class="link-url">10.130.33.131:3001</span>
         </a>
         <span class="divider">|</span>
         <a
@@ -73,6 +73,12 @@ const routes = ref([
       "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E7%9B%AE%E5%BD%95%E9%A1%B5/%E9%80%9A%E7%94%A8%E5%BC%B9%E7%AA%97.png",
     title: "通用弹窗",
   },
+  {
+    path: "/bottom-pop-up",
+    image:
+      "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E7%9B%AE%E5%BD%95%E9%A1%B5/%E9%80%9A%E7%94%A8%E5%BC%B9%E7%AA%97.png",
+    title: "底部弹窗",
+  },
 ]);
 
 const shouldShowFooterText = computed(() => {
@@ -115,11 +121,13 @@ html {
 
 .main {
   height: 100%;
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
   align-items: center;
-  flex-wrap: wrap;
-  padding-bottom: 60px;
+  padding: 200px 0;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .box {

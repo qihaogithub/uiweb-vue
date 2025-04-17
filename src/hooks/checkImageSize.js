@@ -1,3 +1,29 @@
+/**
+ * 图片尺寸校验工具函数
+ *
+ * 该函数用于检查上传图片的尺寸是否符合指定的要求。支持以下验证方式：
+ * 1. 精确尺寸校验：通过 widthExact 和 heightExact 指定图片的精确宽高
+ * 2. 范围尺寸校验：通过 minWidth/maxWidth 和 minHeight/maxHeight 指定图片的尺寸范围
+ *
+ * @param {File} file - 要检查的图片文件对象
+ * @param {number} [widthExact] - 要求的精确宽度（可选）
+ * @param {number} [heightExact] - 要求的精确高度（可选）
+ * @param {number} [minWidth] - 最小宽度（可选）
+ * @param {number} [maxWidth] - 最大宽度（可选）
+ * @param {number} [minHeight] - 最小高度（可选）
+ * @param {number} [maxHeight] - 最大高度（可选）
+ *
+ * @returns {Promise<boolean>} 返回一个 Promise
+ * - resolve(true): 图片尺寸符合要求，或用户确认继续上传
+ * - reject(string|Error): 用户取消上传或图片加载失败
+ *
+ * @example
+ * // 检查图片是否为 800x600
+ * checkImageSize(file, 800, 600)
+ *
+ * // 检查图片宽度是否在 800-1200 之间，高度是否在 600-900 之间
+ * checkImageSize(file, null, null, 800, 1200, 600, 900)
+ */
 // checkImageSize.js
 import { Modal } from "@arco-design/web-vue";
 
@@ -38,7 +64,9 @@ export const checkImageSize = (
       const heightCondition = heightExact
         ? `高度=${heightExact}`
         : minHeight || maxHeight
-        ? `${minHeight || ""}≤高度≤${maxHeight || ""}`
+        ? `${minHeight ? minHeight + "≤" : ""}高度${
+            maxHeight ? "≤" + maxHeight : ""
+          }`
         : "高度=不限";
 
       // 检查图片尺寸

@@ -47,6 +47,10 @@ const router = createRouter({
       path: "/HomeActivityCard",
       component: () => import("@/pages/study/HomeActivityCard.vue"),
     },
+    {
+      path: "/bottom-pop-up",
+      component: () => import("@/pages/bottom-pop-up.vue"),
+    },
   ],
 });
 

@@ -1,0 +1,50 @@
+:root {
+  --t20m-font-family: "PingFang SC", Helvetica;
+  --t20m-font-weight: 500;
+  --t20m-font-size: 20px;
+  --t20m-letter-spacing: 0px;
+  --t20m-line-height: 150%;
+  --t20m-font-style: normal;
+  --t18m-font-family: "PingFang SC", Helvetica;
+  --t18m-font-weight: 500;
+  --t18m-font-size: 18px;
+  --t18m-letter-spacing: 0px;
+  --t18m-line-height: 150%;
+  --t18m-font-style: normal;
+  --6: rgba(84, 67, 0, 1);
+  --5: rgba(102, 102, 102, 1);
+  --4: rgba(252, 218, 0, 1);
+  --: 20px;
+}
+
+/*
+
+To enable a theme in your HTML, simply add one of the following data attributes to an HTML element, like so:
+
+<body data-mode="">
+        <!-- the rest of your content -->
+</body>
+
+You can apply the theme on any DOM node, not just the `body`
+
+*/
+
+[data-mode=""] {
+  --6: rgba(84, 67, 0, 1);
+  --5: rgba(102, 102, 102, 1);
+  --4: rgba(252, 218, 0, 1);
+}
+
+[data-mode=""] {
+  --6: rgba(255, 250, 207, 1);
+  --5: rgba(255, 255, 255, 0.65);
+  --4: rgba(229, 211, 96, 1);
+}
+
+[data-mode="375"] {
+  --: 20px;
+}
+
+[data-mode="860"] {
+  --: 40px;
+}
