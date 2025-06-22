@@ -53,7 +53,15 @@ defineProps({
   overflow-y: auto;
   overflow-x: hidden;
   position: relative;
-
+  /* 隐藏滚动条但保留滚动功能 */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
 }
 .scale-container.pad {
   width: 1133px;
@@ -61,5 +69,13 @@ defineProps({
   overflow-y: auto;
   overflow-x: hidden;
   position: relative;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <top />
   <div class="neirong">
-    <subjects style="width: 89.3333333333333%" />
+    <subjects/>
     <div style="width: 89.3333333333333%">
       <bigBanner style="height: 12em" />
     </div>

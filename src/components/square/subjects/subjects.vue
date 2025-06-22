@@ -37,32 +37,34 @@
 .subject {
   display: flex;
   align-items: center;
-  gap: 0.6875em;
-  width: 100%;
+  justify-content: space-between;
+  padding: 0 20px;
+  gap: 11px;
+  margin-top: 16px;
 }
 
 .km {
   display: flex;
-  padding: 0.125em 0em var(--, 0.25em) 0em;
+  padding: 4px 0px 8px 0px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.125em;
-  width: 3.6375em;
-  /* 设置每个.km元素的宽度为6.25em */
-  height: 3.25em;
-  border-radius: 0.75em 0.75em 1.5em 0.75em;
+  gap: 2px;
+  width: 58.2px;
+  height: auto;
+  border-radius: 12px 12px 24px 12px;
 }
 
 .km img {
-  width: 2em;
+  width: 32px;
+  height: 32px;
 }
 
 .km span {
-  font-size: 0.75em;
-
-  height: 1em;
-  border-radius: 0.38em 0.38em 0.75em 0.38em;
+  font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: 18px; /* 150% */
 }
 
 .s1 {
