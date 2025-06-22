@@ -30,56 +30,38 @@
 
 <script setup>
 import { ref, computed } from "vue";
+import pagesConfig from "@/config/pages.json";
 import kuokeImage from "@/assets/img/目录页/扩科卡片.png";
 import xinniankeImage from "@/assets/img/目录页/开启新年课.png";
 import HomeActivityCard from "@/assets/img/目录页/首页活动卡片.png";
-const routes = ref([
-  {
-    path: "/square",
-    image:
-      "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E7%9B%AE%E5%BD%95%E9%A1%B5/%E5%B9%BF%E5%9C%BA%E9%A1%B5.png",
-    title: "广场",
-  },
-  {
-    path: "/TaskCard",
-    image:
-      "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E5%AD%A6%E4%B9%A0%E9%A1%B5/%E5%AD%A6%E4%B9%A0%E9%A1%B5.png",
-    title: "学习页任务卡片",
-  },
-  {
-    path: "/CalendarKuoke",
-    image: kuokeImage,
-    title: "学习页日历扩科卡片",
-  },
-  {
-    path: "/HomeActivityCard",
-    image: HomeActivityCard,
-    title: "学习页活动卡片",
-  },
-  {
-    path: "/xinnianke",
-    image: xinniankeImage,
-    title: "学习页新年课",
-  },
-  {
-    path: "/mine",
-    image:
-      "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E7%9B%AE%E5%BD%95%E9%A1%B5/%E6%88%91%E7%9A%84%E9%A1%B5.png",
-    title: "我的",
-  },
+
+// 从配置文件加载页面路由
+const configRoutes = pagesConfig.pages.map(page => ({
+  path: page.path,
+  image: page.image.startsWith('@/') ? 
+    // 处理本地图片路径
+    page.image === '@/assets/img/目录页/扩科卡片.png' ? kuokeImage :
+    page.image === '@/assets/img/目录页/开启新年课.png' ? xinniankeImage :
+    page.image === '@/assets/img/目录页/首页活动卡片.png' ? HomeActivityCard :
+    page.image : page.image,
+  title: page.title,
+  category: page.category
+}))
+
+// 手动维护的特殊路由
+const specialRoutes = ref([
   {
     path: "/popup",
-    image:
-      "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E7%9B%AE%E5%BD%95%E9%A1%B5/%E9%80%9A%E7%94%A8%E5%BC%B9%E7%AA%97.png",
+    image: "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/目录页/通用弹窗.png",
     title: "通用弹窗",
-  },
-  {
-    path: "/bottom-pop-up",
-    image:
-      "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E7%9B%AE%E5%BD%95%E9%A1%B5/%E5%BA%95%E9%83%A8%E5%BC%B9%E7%AA%97_3c58fec3.png",
-    title: "底部弹窗",
-  },
-]);
+    category: "special"
+  }
+])
+
+// 合并所有路由
+const routes = computed(() => {
+  return [...configRoutes, ...specialRoutes.value]
+})
 
 const shouldShowFooterText = computed(() => {
   const hostname = window.location.hostname;

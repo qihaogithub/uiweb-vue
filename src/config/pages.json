@@ -1,0 +1,213 @@
+{
+  "pages": [
+    {
+      "id": "square",
+      "title": "广场",
+      "path": "/square",
+      "image": "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/目录页/广场页.png",
+      "category": "main",
+      "components": {
+        "phone": "square/square-phone",
+        "pad": "square/square-pad"
+      },
+      "resources": [
+        {
+          "id": 1,
+          "name": "大banner前景图",
+          "type": "upload",
+          "widthExact": 1248,
+          "heightExact": 384,
+          "helpLink": "https://alidocs.dingtalk.com/i/nodes/mExel2BLV54K0MnQCxk2Pq2wWgk9rpMq"
+        },
+        {
+          "id": 2,
+          "name": "大banner背景图",
+          "type": "upload",
+          "widthExact": 1248,
+          "heightExact": 344,
+          "helpLink": "https://alidocs.dingtalk.com/i/nodes/mExel2BLV54K0MnQCxk2Pq2wWgk9rpMq"
+        },
+        {
+          "id": 3,
+          "name": "小banner",
+          "type": "upload-picture-card",
+          "minSize": { "width": 480, "height": 270 },
+          "helpLink": "https://alidocs.dingtalk.com/i/nodes/gwva2dxOW4KX7gmQCQN1X2oz8bkz3BRL"
+        }
+      ]
+    },
+    {
+      "id": "homeActivityCard",
+      "title": "学习页活动卡片",
+      "path": "/HomeActivityCard",
+      "image": "@/assets/img/目录页/首页活动卡片.png",
+      "category": "study",
+      "components": {
+        "phone": "study/HomeActivityCard/box-phone",
+        "pad": "study/HomeActivityCard/box-pad"
+      },
+      "resources": [
+        {
+          "id": 1,
+          "name": "资源图",
+          "type": "upload",
+          "widthExact": 360,
+          "heightExact": 264,
+          "helpLink": "https://alidocs.dingtalk.com/i/nodes/QG53mjyd80RMX42QtXj1pmkGV6zbX04v"
+        },
+        {
+          "id": 2,
+          "name": "配色",
+          "type": "select",
+          "options": [
+            { "value": "yellow", "label": "黄" },
+            { "value": "puzzle", "label": "橙" },
+            { "value": "brown", "label": "棕" },
+            { "value": "blue", "label": "蓝" },
+            { "value": "green", "label": "绿" },
+            { "value": "purple", "label": "紫" },
+            { "value": "pink", "label": "粉" },
+            { "value": "red", "label": "红" },
+            { "value": "grassy", "label": "草" },
+            { "value": "cyan", "label": "青" }
+          ],
+          "helpLink": "https://alidocs.dingtalk.com/i/nodes/QG53mjyd80RMX42QtXj1pmkGV6zbX04v",
+          "eventName": "handleSubjectChange"
+        },
+        {
+          "id": 3,
+          "name": "主标题",
+          "type": "input",
+          "placeholder": "主标题",
+          "eventName": "updateTitle"
+        },
+        {
+          "id": 4,
+          "name": "副标题",
+          "type": "input",
+          "placeholder": "副标题",
+          "eventName": "updateSubtitle"
+        },
+        {
+          "id": 5,
+          "name": "按钮文案",
+          "type": "input",
+          "placeholder": "按钮文案",
+          "eventName": "updateButtonText"
+        }
+      ]
+    },
+    {
+      "id": "taskCard",
+      "title": "学习页任务卡片",
+      "path": "/TaskCard",
+      "image": "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/学习页/学习页.png",
+      "category": "study",
+      "components": {
+        "phone": "study/TaskCard/study-phone",
+        "pad": "study/TaskCard/study-pad"
+      },
+      "resources": [
+        {
+          "id": 1,
+          "name": "手机端配图",
+          "type": "upload",
+          "widthExact": 750,
+          "maxHeight": 600,
+          "helpLink": "https://alidocs.dingtalk.com/i/nodes/QG53mjyd80RMX42QtXj1pmkGV6zbX04v"
+        },
+        {
+          "id": 2,
+          "name": "平板端配图",
+          "type": "upload",
+          "widthExact": 1133,
+          "maxHeight": 800,
+          "helpLink": "https://alidocs.dingtalk.com/i/nodes/QG53mjyd80RMX42QtXj1pmkGV6zbX04v"
+        }
+      ]
+    },
+    {
+      "id": "calendarKuoke",
+      "title": "学习页日历扩科卡片",
+      "path": "/CalendarKuoke",
+      "image": "@/assets/img/目录页/扩科卡片.png",
+      "category": "study",
+      "components": {
+        "phone": "study/Kuoke/kuoke-phone",
+        "pad": "study/Kuoke/kuoke-pad"
+      },
+      "resources": [
+        
+      ]
+    },
+    {
+      "id": "mine",
+      "title": "我的",
+      "path": "/mine",
+      "image": "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/目录页/我的页.png",
+      "category": "main",
+      "components": {
+        "phone": "mine/mine-phone",
+        "pad": "mine/mine-pad"
+      },
+      "resources": []
+    },
+    {
+      "id": "bottomPopUp",
+      "title": "底部弹窗",
+      "path": "/bottom-pop-up",
+      "image": "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/目录页/底部弹窗_3c58fec3.png",
+      "category": "popup",
+      "components": {
+        "phone": "bottom-pop-up/phone-screen",
+        "pad": "bottom-pop-up/pad-screen"
+      },
+      "resources": [
+        {
+          "id": 1,
+          "name": "资源图",
+          "type": "upload",
+          "widthExact": 750,
+          "maxHeight": 800,
+          "helpLink": "https://alidocs.dingtalk.com/i/nodes/QOG9lyrgJP3gl9knin1Kleo9VzN67Mw4"
+        },
+        {
+          "id": 2,
+          "name": "主按钮文案",
+          "type": "input",
+          "placeholder": "主按钮文案",
+          "eventName": "updateButtonText1"
+        },
+        {
+          "id": 3,
+          "name": "次按钮文案",
+          "type": "input",
+          "placeholder": "次按钮文案",
+          "eventName": "updateButtonText2"
+        },
+        {
+          "id": 4,
+          "name": "弹窗标题开关",
+          "type": "switch",
+          "eventName": "updateShowText"
+        },
+        {
+          "id": 5,
+          "name": "主标题文案",
+          "type": "input",
+          "placeholder": "主标题文案",
+          "eventName": "updateTitle1",
+          "condition": "showTextConfig"
+        },
+        {
+          "id": 6,
+          "name": "副标题文案",
+          "type": "input",
+          "placeholder": "副标题文案",
+          "eventName": "updateTitle2",
+          "condition": "showTextConfig"
+        }
+      ]
+    }
+  ]
+}

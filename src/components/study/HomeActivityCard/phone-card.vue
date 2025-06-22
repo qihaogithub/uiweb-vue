@@ -1,6 +1,5 @@
 <template>
-  <div class="page">
-    <div class="flex-col">
+    <div class="Page-UI">
       <div class="top">
         <img
           src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E5%AD%A6%E4%B9%A0%E9%A1%B5/top.png"
@@ -12,7 +11,6 @@
       </div>
     </div>
     <img class="tabbar" :src="tabbarImg" />
-  </div>
 </template>
 
 <script setup>
@@ -22,18 +20,13 @@ import Card2 from "./Card/Card2.vue";
 </script>
 
 <style scoped>
-.page {
-  position: relative;
-  border-radius: 24px;
-  height: 812px;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-.flex-col {
+
+.Page-UI {
   display: flex;
   flex-direction: column;
   gap: 0px;
-  width: 375px;
+  width: 100%;
+  height: 100%;
 }
 .top {
   display: flex;

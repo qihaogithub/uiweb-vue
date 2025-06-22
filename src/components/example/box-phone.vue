@@ -1,26 +1,10 @@
 <template>
-  <div class="scale-container">
-    <div class="container">
-     <phone/>
-    </div>
-  </div>
+  <DeviceContainer device-type="phone">
+    <phone />
+  </DeviceContainer>
 </template>
 
 <script setup>
 import phone from './example-phone.vue';
+import DeviceContainer from "@/components/common/DeviceContainer.vue";
 </script>
-
-<style scoped>
-.scale-container {
-  transform: scale(var(--phone-scale));
-  transform-origin: left top;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  width: 375px;
-  /* padding: 20px; */
-  background-color: #ff9595;
-}
-</style>

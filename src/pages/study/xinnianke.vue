@@ -98,8 +98,8 @@
 
 <script setup>
 // 导入必要的组件和工具
-import phone1 from "@/components/study/niankexuefei/Box-phone1.vue"; // 手机预览组件
-import phone2 from "@/components/study/niankexuefei/Box-phone2.vue";
+import phone1 from "@/components/study/niankexuefei/box-phone1.vue"; // 手机预览组件
+import phone2 from "@/components/study/niankexuefei/box-phone2.vue";
 import pad1 from "@/components/study/niankexuefei/pad1.vue"; // 平板预览组件
 import pad2 from "@/components/study/niankexuefei/pad2.vue"; // 平板预览组件
 import upload from "@/components/general/upload/upload-simple.vue"; // 图片上传组件

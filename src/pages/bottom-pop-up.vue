@@ -2,10 +2,14 @@
   <div class="page">
     <div class="canvas">
       <div class="phone-frame">
-        <phone />
+        <DeviceContainer device-type="phone">
+          <phone />
+        </DeviceContainer>
       </div>
       <div class="pad-frame">
-        <pad />
+        <DeviceContainer device-type="pad">
+          <pad />
+        </DeviceContainer>
       </div>
     </div>
 
@@ -75,8 +79,9 @@
 </template>
 
 <script setup>
-import phone from "@/components/bottom-pop-up/Box-phone.vue";
-import pad from "@/components/bottom-pop-up/Box-pad.vue";
+import phone from "@/components/bottom-pop-up/phone-screen.vue";
+import pad from "@/components/bottom-pop-up/pad-screen.vue";
+import DeviceContainer from "@/components/common/DeviceContainer.vue";
 import upload from "@/components/general/upload/upload-simple.vue";
 
 import { FontSize, Help } from "@icon-park/vue-next";
@@ -130,11 +135,6 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.page {
-  font-size: 12px;
-  width: 100%;
-  height: 100%;
-}
 
 .canvas {
   background-color: #edeff3;

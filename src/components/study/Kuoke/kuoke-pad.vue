@@ -1,35 +1,34 @@
 <template>
-  <div class="scale-container">
+  <DeviceContainer device-type="pad">
     <img class="top" src="@/assets/img/通用/状态栏/状态栏-pad.png" />
-      <div class="column">
-    
-          <div class="two-columns">
-            <div class="left-column">
-              <img
-                src="@/assets/img/学习页/扩科卡片/pad/左侧顶部.png"
-              />
-              <div class="kuoke-card">
-                <KuokeCard />
-              </div>
-              <img src="@/assets/img/学习页/扩科卡片/pad/回到今天.png" />
-            </div>
-            <div class="right-column">
-              <img
-                src="@/assets/img/学习页/扩科卡片/pad/右侧.png"
-              />
-            </div>
+    <div class="column">
+      <div class="two-columns">
+        <div class="left-column">
+          <img
+            src="@/assets/img/学习页/扩科卡片/pad/左侧顶部.png"
+          />
+          <div class="kuoke-card">
+            <KuokeCard />
           </div>
-
+          <img src="@/assets/img/学习页/扩科卡片/pad/回到今天.png" />
+        </div>
+        <div class="right-column">
+          <img
+            src="@/assets/img/学习页/扩科卡片/pad/右侧.png"
+          />
+        </div>
       </div>
-      <img
-          class="tabBar"
-          src="@\assets\img\学习页\任务卡片\底部标签栏-pad.png"
-        />
-  </div>
+    </div>
+    <img
+      class="tabBar"
+      src="@\assets\img\学习页\任务卡片\底部标签栏-pad.png"
+    />
+  </DeviceContainer>
 </template>
 
 <script setup>
 import KuokeCard from "@/components/study/Kuoke/kuokeCard/kuokeCard.vue";
+import DeviceContainer from "@/components/common/DeviceContainer.vue";
 </script>
 
 <style scoped>

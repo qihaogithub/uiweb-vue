@@ -98,7 +98,7 @@ import upload from "@/components/general/upload/upload-simple.vue";  // 图片�
 import { Help } from "@icon-park/vue-next";  // 帮助图标组件
 import { ref } from 'vue';
 import emitter from "@/utils/emitter";  // 事件总线，用于组件间通信
-import phone from "@/components/study/niankexuefei/Box-phone1.vue";  
+import phone from "@/components/study/niankexuefei/box-phone1.vue";  
 // 标题和副标题的响应式数据
 const mainTitle = ref('趣味英语训练营');
 const subTitle = ref('沉浸体验 激发兴趣');

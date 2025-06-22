@@ -1,5 +1,5 @@
 <template>
-  <div class="page">
+  <div class="phone-screen">
     <div class="element">
       <div class="pop-up">
         <img class="image" :src="img" />
@@ -60,14 +60,11 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.page {
-  position: relative;
-  border-radius: 24px;
-  height: 812px;
-  overflow-y: auto;
-  overflow-x: hidden;
+.phone-screen {
   background-image: url(https://uiweb.oss-cn-chengdu.aliyuncs.com/img/通用广告弹窗/广场页phone.png);
   background-size: cover;
+  width: 100%;
+  height: 100%;
 }
 .element {
   background-color: rgba(0, 0, 0, 0.7);
@@ -75,6 +72,7 @@ onMounted(() => {
   flex-direction: row;
   justify-content: center;
   width: 100%;
+  height: 100%;
   align-items: flex-end;
 }
 

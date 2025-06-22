@@ -80,8 +80,8 @@
 </template>
 
 <script setup>
-import phone from "@/components/study/HomeActivityCard/Box-phone.vue";
-import pad from "@/components/study/HomeActivityCard/Box-pad.vue";
+import phone from "@/components/study/HomeActivityCard/box-phone.vue";
+import pad from "@/components/study/HomeActivityCard/box-pad.vue";
 import upload from "@/components/general/upload/upload-simple.vue";
 
 import { FontSize, Help } from "@icon-park/vue-next";
