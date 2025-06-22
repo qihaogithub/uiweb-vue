@@ -13,37 +13,44 @@ body,
   --phone-height: calc(var(--phone-width) * (812 / 375));
   --pad-height: calc(var(--pad-width) * (744 / 1133));
 }
-
-@media (max-width: 1300px) {
+@media   (max-width: 1200px) {
   :root {
-    --phone-width: 193px;
-    --pad-width: 636px;
-    --phone-scale: calc(193 / 375);
-    --pad-scale: calc(636 / 1133);
+    --phone-width: 170px;
+    --pad-width: 550px;
+    --phone-scale: calc(170 / 375);
+    --pad-scale: calc(550 / 1133);
+  }
+}
+@media  (min-width: 1201px) and (max-width: 1300px) {
+  :root {
+    --phone-width: 170px;
+    --pad-width: 550px;
+    --phone-scale: calc(170 / 375);
+    --pad-scale: calc(550 / 1133);
   }
 }
 
-@media (min-width: 1300px) and (max-width: 1600px) {
+@media (min-width: 1301px) and (max-width: 1600px) {
   :root {
-    --phone-width: 227px;
-    --pad-width: 749px;
-    --phone-scale: calc(227 / 375);
-    --pad-scale: calc(749 / 1133);
+    --phone-width: 185px;
+    --pad-width: 610px;
+    --phone-scale: calc(185 / 375);
+    --pad-scale: calc(610 / 1133);
   }
 }
 @media (min-width: 1601px) and (max-width: 1900px) {
   :root {
-    --phone-width: 295px;
-    --pad-width: 973px;
-    --phone-scale: calc(295 / 375);
-    --pad-scale: calc(973 / 1133);
+    --phone-width: 260px;
+    --pad-width: 850px;
+    --phone-scale: calc(260 / 375);
+    --pad-scale: calc(850 / 1133);
   }
 }
 @media (min-width: 1901px) {
   :root {
-    --phone-width: 295px;
-    --pad-width: 973px;
-    --phone-scale: calc(295 / 375);
-    --pad-scale: calc(973 / 1133);
+    --phone-width: 330px;
+    --pad-width: 1100px;
+    --phone-scale: calc(330 / 375);
+    --pad-scale: calc(1100 / 1133);
   }
 }

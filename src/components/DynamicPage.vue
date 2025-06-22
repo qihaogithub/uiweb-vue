@@ -90,8 +90,8 @@ const createComponentMap = () => {
   const componentMap = {
     'square/square-phone': () => import('@/components/square/square-phone.vue'),
     'square/square-pad': () => import('@/components/square/square-pad.vue'),
-    'study/HomeActivityCard/box-phone': () => import('@/components/study/HomeActivityCard/phone-card.vue'),
-    'study/HomeActivityCard/box-pad': () => import('@/components/study/HomeActivityCard/pad-card.vue'),
+    'study/HomeActivityCard/ActivityCardPhone': () => import('@/components/study/HomeActivityCard/ActivityCardPhone.vue'),
+    'study/HomeActivityCard/ActivityCardPad': () => import('@/components/study/HomeActivityCard/ActivityCardPad.vue'),
     'study/TaskCard/study-phone': () => import('@/components/study/TaskCard/study-phone.vue'),
     'study/TaskCard/study-pad': () => import('@/components/study/TaskCard/study-pad.vue'),
     'study/Kuoke/kuoke-phone': () => import('@/components/study/Kuoke/kuoke-phone.vue'),
@@ -151,7 +151,7 @@ const componentProps = ref({})
  * @param {Object} data - 资源变化数据
  */
 const handleResourceChange = (data) => {
-  const { resourceId, value, eventName } = data
+  const { resourceId, value, eventName, type } = data
   
   // 更新组件属性
   if (eventName) {
@@ -159,7 +159,11 @@ const handleResourceChange = (data) => {
   }
   
   // 触发全局事件（保持与现有系统兼容）
-  if (resourceId) {
+  if (eventName) {
+    // 优先使用配置的事件名称
+    emitter.emit(eventName, value)
+  } else if (resourceId) {
+    // 兼容旧的图片上传事件命名
     const event = `updateImage${resourceId}`
     emitter.emit(event, value)
   }
@@ -179,10 +183,10 @@ const handleResourceChange = (data) => {
 .canvas {
   display: flex;
   flex: 1;
+  gap: 1.875em;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 2.5em;
   background-color: #edeff3;
   padding: 1.875em;
 }

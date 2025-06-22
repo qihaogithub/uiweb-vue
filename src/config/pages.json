@@ -43,8 +43,8 @@
       "image": "@/assets/img/目录页/首页活动卡片.png",
       "category": "study",
       "components": {
-        "phone": "study/HomeActivityCard/box-phone",
-        "pad": "study/HomeActivityCard/box-pad"
+        "phone": "study/HomeActivityCard/ActivityCardPhone",
+        "pad": "study/HomeActivityCard/ActivityCardPad"
       },
       "resources": [
         {
@@ -72,7 +72,7 @@
             { "value": "cyan", "label": "青" }
           ],
           "helpLink": "https://alidocs.dingtalk.com/i/nodes/QG53mjyd80RMX42QtXj1pmkGV6zbX04v",
-          "eventName": "handleSubjectChange"
+          "eventName": "updateSubject"
         },
         {
           "id": 3,

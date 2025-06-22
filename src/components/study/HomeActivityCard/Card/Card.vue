@@ -15,11 +15,11 @@ import { ref, computed } from "vue";
 import emitter from "@/utils/emitter";
 import zyimg from "@/assets/img/学习页/首页活动卡片/资源配图.png";
 const bgimage = ref(zyimg);
-
 const title = ref("主标题文案");
 const subtitle = ref("副标题文案");
 const buttonText = ref("按钮文案");
 const currentSubject = ref("yellow"); // 默认英语
+
 // 监听标题更新事件
 emitter.on("updateTitle", (newTitle) => {
   title.value = newTitle;

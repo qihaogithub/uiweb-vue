@@ -1,6 +1,6 @@
 <template>
-  <div class="scale-container" :class="deviceType">
-    <div class="container">
+  <div class="container" :class="deviceType">
+    <div class="scale-container" :class="deviceType">
       <slot />
     </div>
   </div>
@@ -22,7 +22,7 @@ defineProps({
 
 <style scoped>
 .scale-container {
-  transform-origin: center center;
+  transform-origin: top left;
 }
 
 .scale-container.phone {
@@ -34,28 +34,32 @@ defineProps({
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
+  border-radius: 24px;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+.container.phone {
+  width: var(--phone-width);
+  height: var(--phone-height);
+}
+.container.pad {
+  width: var(--pad-width);
+  height: var(--pad-height);
 }
 
 .scale-container.phone {
   width: 375px;
   height: 812px;
-  border-radius: 24px;
   overflow-y: auto;
   overflow-x: hidden;
   position: relative;
-  background-color: #ffffff;
+
 }
 .scale-container.pad {
   width: 1133px;
-  height: 744px;
-  border-radius: 24px;
+  height: 749px;
   overflow-y: auto;
   overflow-x: hidden;
   position: relative;
-  background-color: #ffffff;
 }
 </style>
