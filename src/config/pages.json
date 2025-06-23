@@ -276,7 +276,7 @@
           "widthExact": 307,
           "heightExact": 200,
           "helpLink": "https://alidocs.dingtalk.com/i/nodes/example",
-          "eventName": "updateImage1"
+          "eventName": "updateImage2"
         },
         {
           "id": 3,
@@ -285,7 +285,7 @@
           "widthExact": 678,
           "heightExact": 400,
           "helpLink": "https://alidocs.dingtalk.com/i/nodes/example",
-          "eventName": "updateImage2"
+          "eventName": "updateImage3"
         },
         {
           "id": 4,

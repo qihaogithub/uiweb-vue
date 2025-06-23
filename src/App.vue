@@ -12,7 +12,5 @@ import { RouterView } from "vue-router";
 </script>
 
 <style scoped>
-.main-content {
-  height: 100%;
-}
-</style>
+
+</style> 

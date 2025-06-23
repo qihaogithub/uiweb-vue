@@ -1,15 +1,15 @@
 <template>
   <DeviceContainer device-type="phone">
     <div class="page">
-    <div class="flex-col">
+      <div class="flex-col">
       <div class="section" :class="subjectClass">
         <img class="image" :src="img" />
         <div class="relative gradation"></div>
       </div>
       <img class="image_2" :src="buttonImg" />
       <img class="image_3" :src="tabbarImg" />
+      </div>
     </div>
-  </div>
   </DeviceContainer>
 </template>
 
@@ -44,7 +44,7 @@ const subjectClass = computed(() => {
 <style scoped lang="css">
 .page {
   background-image: url("@/assets/img/学习页/年课续费/bg.png");
-  width: 100%;
+  width: 375px;
   height: 812px;
   overflow-y: auto;
   overflow-x: hidden;

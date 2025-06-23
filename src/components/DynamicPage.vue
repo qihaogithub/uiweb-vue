@@ -103,7 +103,7 @@
 </template>
 
 <script setup>
-import { ref, computed, defineAsyncComponent } from 'vue'
+import { ref, computed, defineAsyncComponent, onMounted, onUpdated, nextTick } from 'vue'
 import { Help } from '@icon-park/vue-next'
 import ResourceRenderer from './ResourceRenderer.vue'
 import DeviceContainer from '@/components/common/DeviceContainer.vue'
@@ -144,8 +144,9 @@ const createComponentMap = () => {
   const componentMap = {
     'square/square-phone': () => import('@/components/square/square-phone.vue'),
     'square/square-pad': () => import('@/components/square/square-pad.vue'),
-    'study/HomeActivityCard/ActivityCardPhone': () => import('@/components/study/HomeActivityCard/ActivityCardPhone.vue'),
-    'study/HomeActivityCard/ActivityCardPad': () => import('@/components/study/HomeActivityCard/ActivityCardPad.vue'),
+    // 活动卡片
+    'study/HomeActivityCard/ActivityCardPhone': () => import('@/pages/APP_learning/old/ActivityCard/ActivityCardPhone.vue'),
+    'study/HomeActivityCard/ActivityCardPad': () => import('@/pages/APP_learning/old/ActivityCard/ActivityCardPad.vue'),
     'study/TaskCard/study-phone': () => import('@/components/study/TaskCard/study-phone.vue'),
     'study/TaskCard/study-pad': () => import('@/components/study/TaskCard/study-pad.vue'),
     'study/Kuoke/kuoke-phone': () => import('@/components/study/Kuoke/kuoke-phone.vue'),
@@ -266,13 +267,50 @@ const handleResourceChange = (data) => {
     emitter.emit(event, value)
   }
 }
+
+/**
+ * 检测canvas内容高度并动态调整对齐方式
+ */
+const checkCanvasHeight = () => {
+  nextTick(() => {
+    const canvasElement = document.querySelector('.canvas')
+    if (!canvasElement) return
+    
+    const viewportHeight = window.innerHeight
+    const canvasScrollHeight = canvasElement.scrollHeight
+    const canvasPadding = 60 // 1.875em * 16px * 2 = 60px (上下padding)
+    
+    // 移除之前的类
+    canvasElement.classList.remove('content-fits', 'content-overflows')
+    
+    // 如果内容高度（包括padding）小于等于视口高度，则居中对齐
+    if (canvasScrollHeight <= viewportHeight) {
+      canvasElement.classList.add('content-fits')
+    } else {
+      canvasElement.classList.add('content-overflows')
+    }
+  })
+}
+
+// 组件挂载后检测高度
+onMounted(() => {
+  checkCanvasHeight()
+  // 监听窗口大小变化
+  window.addEventListener('resize', checkCanvasHeight)
+})
+
+// 组件更新后重新检测高度
+onUpdated(() => {
+  checkCanvasHeight()
+})
 </script>
 
 <style scoped>
 .dynamic-page {
   font-size: 12px;
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
+  min-height: 100vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -287,6 +325,17 @@ const handleResourceChange = (data) => {
   flex-wrap: wrap;
   background-color: #edeff3;
   padding: 1.875em;
+  overflow-y: auto;
+  min-height: 100vh;
+}
+
+/* 动态调整对齐方式 */
+.canvas.content-fits {
+  align-items: center !important;
+}
+
+.canvas.content-overflows {
+  align-items: flex-start !important;
 }
 
 /* 组件分组样式 */
