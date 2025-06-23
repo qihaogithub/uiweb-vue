@@ -240,14 +240,24 @@
       ]
     },
     {
-      "id": "niankexuefei1",
-      "title": "年课续费弹窗",
-      "path": "/niankexuefei1",
-      "image": "@/assets/img/学习页/年课续费/resource_img.png",
+      "id": "niankexuefei",
+      "title": "年课续费",
+      "path": "/niankexuefei",
+      "image": "@/assets/img/目录页/开启新年课.png",
       "category": "study",
       "components": {
-        "phone": "study/niankexuefei/Box-phone1",
-        "pad": "study/niankexuefei/pad1"
+        "groups": [
+          {
+            "name": "弹窗组",
+            "phone": "study/niankexuefei/Box-phone1",
+            "pad": "study/niankexuefei/pad1"
+          },
+          {
+            "name": "卡片组",
+            "phone": "study/niankexuefei/box-phone2",
+            "pad": "study/niankexuefei/pad2"
+          }
+        ]
       },
       "resources": [
         {
@@ -261,33 +271,6 @@
         },
         {
           "id": 2,
-          "name": "配色方案",
-          "type": "select",
-          "options": [
-            { "value": "reading", "label": "阅读" },
-            { "value": "puzzle", "label": "益智" },
-            { "value": "art", "label": "美育" },
-            { "value": "writing", "label": "小作家" },
-            { "value": "english", "label": "英语" }
-          ],
-          "helpLink": "https://alidocs.dingtalk.com/i/nodes/example",
-          "eventName": "updateSubject"
-        }
-      ]
-    },
-    {
-      "id": "niankexuefei2",
-      "title": "年课续费卡片",
-      "path": "/niankexuefei2",
-      "image": "@/assets/img/学习页/年课续费/pad/年课续费-pad.png",
-      "category": "study",
-      "components": {
-        "phone": "study/niankexuefei/box-phone2",
-        "pad": "study/niankexuefei/pad2"
-      },
-      "resources": [
-        {
-          "id": 1,
           "name": "手机端资源图",
           "type": "upload",
           "widthExact": 307,
@@ -296,7 +279,7 @@
           "eventName": "updateImage1"
         },
         {
-          "id": 2,
+          "id": 3,
           "name": "平板端资源图",
           "type": "upload",
           "widthExact": 678,
@@ -305,7 +288,7 @@
           "eventName": "updateImage2"
         },
         {
-          "id": 3,
+          "id": 4,
           "name": "配色方案",
           "type": "select",
           "options": [

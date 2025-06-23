@@ -1,18 +1,72 @@
 <template>
   <div class="dynamic-page">
     <div class="canvas">
-        <DeviceContainer device-type="phone">
-          <component 
-            :is="phoneComponent" 
-            v-bind="componentProps" 
-          />
-        </DeviceContainer>
-        <DeviceContainer device-type="pad">
-          <component 
-            :is="padComponent" 
-            v-bind="componentProps" 
-          />
-        </DeviceContainer>
+        <!-- 分组模式：每组包含phone和pad组件 -->
+        <template v-if="componentGroups.length > 0">
+          <div 
+            v-for="(group, groupIndex) in componentGroups" 
+            :key="`group-${groupIndex}`"
+            class="component-group"
+          >
+            <!-- 组标题（可选） -->
+            <div v-if="group.name" class="group-title">{{ group.name }}</div>
+            
+            <div class="group-content">
+              <!-- 手机端组件 -->
+              <DeviceContainer 
+                v-if="group.phoneComponent"
+                device-type="phone"
+              >
+                <component 
+                  :is="group.phoneComponent" 
+                  v-bind="componentProps" 
+                />
+              </DeviceContainer>
+              
+              <!-- 平板端组件 -->
+              <DeviceContainer 
+                v-if="group.padComponent"
+                device-type="pad"
+              >
+                <component 
+                  :is="group.padComponent" 
+                  v-bind="componentProps" 
+                />
+              </DeviceContainer>
+            </div>
+          </div>
+        </template>
+        
+        <!-- 兼容模式：传统的单独phone和pad组件 -->
+        <template v-else>
+          <!-- 支持多个手机端组件 -->
+          <template v-if="phoneComponents.length > 0">
+            <DeviceContainer 
+              v-for="(component, index) in phoneComponents" 
+              :key="`phone-${index}`"
+              device-type="phone"
+            >
+              <component 
+                :is="component" 
+                v-bind="componentProps" 
+              />
+            </DeviceContainer>
+          </template>
+          
+          <!-- 支持多个平板端组件 -->
+          <template v-if="padComponents.length > 0">
+            <DeviceContainer 
+              v-for="(component, index) in padComponents" 
+              :key="`pad-${index}`"
+              device-type="pad"
+            >
+              <component 
+                :is="component" 
+                v-bind="componentProps" 
+              />
+            </DeviceContainer>
+          </template>
+        </template>
     </div>
     
     <div class="resource-list">
@@ -140,17 +194,51 @@ const createAsyncComponent = (componentPath) => {
 }
 
 /**
- * 动态加载手机端组件
+ * 处理组件配置，支持字符串或数组格式
+ * @param {string|Array} componentConfig - 组件配置
+ * @returns {Array} 组件数组
  */
-const phoneComponent = computed(() => {
-  return createAsyncComponent(pageConfig.value.components?.phone)
+const processComponentConfig = (componentConfig) => {
+  if (!componentConfig) return []
+  
+  // 如果是字符串，转换为数组
+  const componentPaths = Array.isArray(componentConfig) ? componentConfig : [componentConfig]
+  
+  // 创建异步组件数组
+  return componentPaths.map(path => createAsyncComponent(path)).filter(Boolean)
+}
+
+/**
+ * 处理分组组件配置
+ * @returns {Array} 组件分组数组
+ */
+const componentGroups = computed(() => {
+  const components = pageConfig.value.components
+  if (!components || !components.groups) return []
+  
+  return components.groups.map(group => ({
+    name: group.name,
+    phoneComponent: createAsyncComponent(group.phone),
+    padComponent: createAsyncComponent(group.pad)
+  })).filter(group => group.phoneComponent || group.padComponent)
 })
 
 /**
- * 动态加载平板端组件
+ * 动态加载手机端组件（兼容模式）
  */
-const padComponent = computed(() => {
-  return createAsyncComponent(pageConfig.value.components?.pad)
+const phoneComponents = computed(() => {
+  // 如果有分组配置，则不使用兼容模式
+  if (pageConfig.value.components?.groups) return []
+  return processComponentConfig(pageConfig.value.components?.phone)
+})
+
+/**
+ * 动态加载平板端组件（兼容模式）
+ */
+const padComponents = computed(() => {
+  // 如果有分组配置，则不使用兼容模式
+  if (pageConfig.value.components?.groups) return []
+  return processComponentConfig(pageConfig.value.components?.pad)
 })
 
 // 组件属性
@@ -195,17 +283,38 @@ const handleResourceChange = (data) => {
   flex: 1;
   gap: 1.875em;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
   background-color: #edeff3;
   padding: 1.875em;
 }
 
+/* 组件分组样式 */
+.component-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2em;
+}
 
+.group-title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+.group-content {
+  display: flex;
+  gap: 1.875em;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
 .resource-list {
   width: 25rem;
-  height: 100vh;
   background-color: #fff;
   border-left: 1px solid #f0f0f0;
   overflow-y: auto;
