@@ -50,12 +50,12 @@ const configRoutes = pagesConfig.pages.map(page => ({
 
 // 手动维护的特殊路由
 const specialRoutes = ref([
-  {
-    path: "/popup",
-    image: "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/目录页/通用弹窗.png",
-    title: "通用弹窗",
-    category: "special"
-  }
+  // {
+  //   path: "/popup",
+  //   image: "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/目录页/通用弹窗.png",
+  //   title: "通用弹窗",
+  //   category: "special"
+  // }
 ])
 
 // 合并所有路由
@@ -66,10 +66,7 @@ const routes = computed(() => {
 const shouldShowFooterText = computed(() => {
   const hostname = window.location.hostname;
 
-  // 方案1：指定域名完全匹配
-  // return hostname === 'example.com';
 
-  // 方案2：匹配多个指定域名
   return [
     "127.0.0.1",
     "188.8.12.201",
@@ -77,15 +74,7 @@ const shouldShowFooterText = computed(() => {
     "https://www.jojoui.work/",
   ].includes(hostname);
 
-  // 方案3：匹配特定后缀
-  // return hostname.endsWith('.example.com');
 
-  // 方案4：排除特定开发环境
-  // return !['188.8.12.201'].includes(hostname);
-  // return !['localhost', '127.0.0.1'].includes(hostname);
-
-  // 方案5：组合判断（示例：排除本地环境且必须是特定域名）
-  // return !['localhost', '127.0.0.1'].includes(hostname) && hostname.endsWith('.example.com');
 });
 </script>
 

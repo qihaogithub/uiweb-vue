@@ -1,7 +1,7 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHistory } from 'vue-router'
 import menu from "@/pages/menu.vue";
 import DynamicPage from "@/components/DynamicPage.vue";
-import pagesConfig from "@/config/pages.json";
+import pagesConfig from "@/config/pages";
 
 // 静态路由
 const staticRoutes = [
@@ -25,26 +25,17 @@ const dynamicRoutes = pagesConfig.pages.map(page => ({
   }
 }))
 
-// 保留现有的特殊页面路由
+// 特殊路由（如果需要的话）
 const specialRoutes = [
-  {
-    path: "/popup",
-    component: () => import("@/pages/pop-up.vue"),
-  },
-  {
-    path: "/bottom-pop-up",
-    name: "bottom-pop-up",
-    component: () => import("@/components/DynamicPage.vue"),
-    props: { pageId: "bottomPopUp" }
-  }
+  // 在这里添加特殊路由配置
+  // 例如：404页面、错误页面等
 ]
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
     ...staticRoutes,
-    ...dynamicRoutes,
-    ...specialRoutes
+    ...dynamicRoutes
   ],
 });
 

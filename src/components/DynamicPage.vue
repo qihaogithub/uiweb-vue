@@ -96,10 +96,20 @@ const createComponentMap = () => {
     'study/TaskCard/study-pad': () => import('@/components/study/TaskCard/study-pad.vue'),
     'study/Kuoke/kuoke-phone': () => import('@/components/study/Kuoke/kuoke-phone.vue'),
     'study/Kuoke/kuoke-pad': () => import('@/components/study/Kuoke/kuoke-pad.vue'),
+    //我的页
     'mine/mine-phone': () => import('@/components/mine/mine-phone.vue'),
     'mine/mine-pad': () => import('@/components/mine/mine-pad.vue'),
+    // 底部广告弹窗
     'bottom-pop-up/phone-screen': () => import('@/components/bottom-pop-up/phone-screen.vue'),
-    'bottom-pop-up/pad-screen': () => import('@/components/bottom-pop-up/pad-screen.vue')
+    'bottom-pop-up/pad-screen': () => import('@/components/bottom-pop-up/pad-screen.vue'),
+    // 通用弹窗
+    'pop-up/pop-up-phone': () => import('@/components/pop-up/pop-up-phone.vue'),
+    'pop-up/pop-up-pad': () => import('@/components/pop-up/pop-up-pad.vue'),
+    // 年课续费组件 - 修正路径大小写和目录结构
+    'study/niankexuefei/Box-phone1': () => import('@/components/study/niankexuefei/box-phone1.vue'),
+    'study/niankexuefei/pad1': () => import('@/components/study/niankexuefei/pad1.vue'),
+    'study/niankexuefei/box-phone2': () => import('@/components/study/niankexuefei/box-phone2.vue'),
+    'study/niankexuefei/pad2': () => import('@/components/study/niankexuefei/pad2.vue')
   }
   
   return componentMap

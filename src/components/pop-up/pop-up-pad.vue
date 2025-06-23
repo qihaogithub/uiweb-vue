@@ -37,12 +37,16 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from "vue";
+import { ref, onMounted, onUnmounted, watch } from "vue";
 import emitter from "@/utils/emitter";
 import SVGA from "svgaplayerweb";
 
 const svgaurl = ref("/src/assets/svga/rk_gc_tc_02.svga");
 const timeId = ref(Math.floor(new Date().getTime() * Math.random())); // 使该图表保持唯一id
+
+/**
+ * 初始化SVGA动画播放器
+ */
 const guideFn = () => {
   // 获取id的dom元素
   var player = new SVGA.Player(`#guide${timeId.value}`);
@@ -54,25 +58,44 @@ const guideFn = () => {
     player.startAnimation(); // 开始动画
   });
 };
+
+/**
+ * 处理PNG图片更新
+ * @param {string} url - 图片URL
+ */
+const handleImage1Update = (url) => {
+  pngurl.value = url;
+};
+
+/**
+ * 处理SVGA文件更新
+ * @param {string} url - SVGA文件URL
+ */
+const handleImage2Update = (url) => {
+  svgaurl.value = url;
+};
+
 onMounted(() => {
   guideFn();
+  // 注册事件监听
+  emitter.on("updateImage1", handleImage1Update);
+  emitter.on("updateImage2", handleImage2Update);
+});
+
+// 组件卸载时清理事件监听
+onUnmounted(() => {
+  emitter.off("updateImage1", handleImage1Update);
+  emitter.off("updateImage2", handleImage2Update);
 });
 
 const pngurl = ref(
   "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/通用广告弹窗/默认弹窗.png"
 );
 
-// 上传组件组件注册事件监听
-emitter.on("updateImage1", (url) => {
-  pngurl.value = url;
-});
-emitter.on("updateImage2", (url) => {
-  svgaurl.value = url;
-});
-
 //默认显示png，隐藏svga
 const showImage = ref(true); // 默认显示图片
 const showSVGA = ref(false); // 默认不显示SVGA
+
 // 监听pngurl的变化
 watch(pngurl, (newVal, oldVal) => {
   if (newVal !== oldVal) {
@@ -80,6 +103,7 @@ watch(pngurl, (newVal, oldVal) => {
     showSVGA.value = false; // 隐藏SVGA
   }
 });
+
 // 监听svgaurl的变化
 watch(svgaurl, (newVal, oldVal) => {
   if (newVal !== oldVal) {
@@ -93,6 +117,8 @@ watch(svgaurl, (newVal, oldVal) => {
 <style scoped>
 .page {
   background-image: url("https://uiweb.oss-cn-chengdu.aliyuncs.com/img/通用广告弹窗/广场页pad.png");
+  width: 100%;
+  height: 100%;
   background-size: cover;
 }
 .main {
