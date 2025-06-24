@@ -1,28 +1,23 @@
 <template>
-  <DeviceContainer device-type="phone">
-    <div class="page">
-      <div class="flex-col">
+  <div class="page">
+    <div class="flex-col">
       <div class="section" :class="subjectClass">
         <img class="image" :src="img" />
         <div class="relative gradation"></div>
       </div>
       <img class="image_2" :src="buttonImg" />
       <img class="image_3" :src="tabbarImg" />
-      </div>
     </div>
-  </DeviceContainer>
+  </div>
 </template>
 
 <script setup>
-
-import DeviceContainer from "@/components/common/DeviceContainer.vue";
 const props = defineProps({});
 import { ref } from "vue";
 import emitter from "@/utils/emitter";
 import resourceImg from "@/assets/img/学习页/年课续费/resource_img.png";
 import buttonImg from "@/assets/img/学习页/年课续费/button.png";
 import tabbarImg from "@/assets/img/学习页/年课续费/tabbar.png";
-
 
 const img = ref(resourceImg);
 const currentSubject = ref("reading");
@@ -39,7 +34,6 @@ const subjectClass = computed(() => {
   return `subject-${currentSubject.value}`;
 });
 </script>
-
 
 <style scoped lang="css">
 .page {

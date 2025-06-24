@@ -1,11 +1,13 @@
 <template>
   <top />
   <div class="neirong">
-    <subjects/>
-    <div style="width: 89.3333333333333%">
-      <bigBanner style="height: 12em" />
+    <subjects />
+    <div style="width: 335px">
+      <bigBanner style="height: 192px" />
     </div>
-    <div style="width: 100%">
+    <div
+      style="width: 100%; padding-left: 16px; height: 91px; margin-top: 16px"
+    >
       <minibanner />
     </div>
     <img
@@ -20,10 +22,10 @@
 </template>
 
 <script setup>
-import bigBanner from "@/components/square/bigbanner/bigbanner-phone.vue";
-import top from "@/components/square/top/top.vue";
-import subjects from "@/components/square/subjects/subjects.vue";
-import minibanner from "@/components/square/minibanner/minibanner.vue";
+import bigBanner from "@/pages/square/bigbanner/bigbanner-phone.vue";
+import top from "@/pages/square/top/top.vue";
+import subjects from "@/pages/square/subjects/subjects.vue";
+import minibanner from "@/pages/square/minibanner/minibanner.vue";
 </script>
 
 <style scoped>

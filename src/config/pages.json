@@ -137,7 +137,42 @@
         "pad": "study/Kuoke/kuoke-pad"
       },
       "resources": [
-        
+        {
+          "id": 1,
+          "name": "资源图",
+          "type": "upload",
+          "widthExact": 180,
+          "heightExact": 180,
+          "helpLink": "https://alidocs.dingtalk.com/i/nodes/QG53mjyd80RMX42QtXj1pmkGV6zbX04v"
+        },
+        {
+          "id": 2,
+          "name": "科目",
+          "type": "select",
+          "options": [
+            { "value": "reading", "label": "阅读" },
+            { "value": "puzzle", "label": "益智" },
+            { "value": "art", "label": "美育" },
+            { "value": "writing", "label": "小作家" },
+            { "value": "english", "label": "英语" }
+          ],
+          "helpLink": "https://alidocs.dingtalk.com/i/nodes/QG53mjyd80RMX42QtXj1pmkGV6zbX04v",
+          "eventName": "updateSubject"
+        },
+        {
+          "id": 3,
+          "name": "主标题",
+          "type": "input",
+          "placeholder": "主标题文案",
+          "eventName": "updateTitle"
+        },
+        {
+          "id": 4,
+          "name": "副标题",
+          "type": "input",
+          "placeholder": "副标题文案",
+          "eventName": "updateSubtitle"
+        }
       ]
     },
     {

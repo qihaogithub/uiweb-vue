@@ -37,57 +37,55 @@
 .subject {
   display: flex;
   align-items: center;
-  gap: 1.03125em;
+  gap: 20px;
   width: 100%;
 }
 
 .km {
   display: flex;
-  flex-direction: row;
+  padding: 10px 0px;
   justify-content: center;
   align-items: center;
-  gap: 0.125em;
-  width: 100%;
-  height: 3.25em;
-  border-radius: 0.9375em 0.9375em 1.875em 0.9375em;
+  gap: 8px;
+  flex: 1 0 0;
+  border-radius: 15px 15px 30px 15px;
+  background: #fff0f3;
+  box-shadow: 0px -2.5px 5px 0px #ffe5eb inset;
 }
 
 .km img {
-  width: 2em;
+  width: 39.727px;
 }
 
 .km span {
-  font-size: 1.25em;
+  text-align: center;
+  font-size: 20px;
   font-style: normal;
   font-weight: 500;
+  line-height: normal;
 }
 
 .s1 {
-  padding: 0.13em 0 0.34em;
   background-color: #fff2ea;
   box-shadow: 0em -0.062em 0.125em #ffede0 inset;
 }
 
 .s2 {
-  padding: 0.13em 0 0.34em;
   background: rgba(234, 249, 255, 1);
   box-shadow: 0em -0.083em 0.167em rgba(224, 246, 255, 1) inset;
 }
 
 .s3 {
-  padding: 0.13em 0 0.34em;
   background: rgba(249, 245, 255, 1);
   box-shadow: 0em -0.083em 0.167em rgba(243, 235, 255, 1) inset;
 }
 
 .s4 {
-  padding: 0.13em 0 0.34em;
   background: rgba(238, 252, 235, 1);
   box-shadow: 0em -0.083em 0.167em rgba(229, 250, 224, 1) inset;
 }
 
 .s5 {
-  padding: 0.13em 0 0.34em;
   background: #fff0f3;
   box-shadow: 0em -0.083em 0.167em #ffe5eb inset;
 }

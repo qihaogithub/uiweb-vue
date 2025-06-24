@@ -1,15 +1,17 @@
 <template>
   <top />
   <div class="neirong">
-    <subjectsPad style="width: 89.3333333333333%" />
-    <div style="width: 89.3333333333333%">
-      <bigBanner style="height: 15em" />
+    <subjectsPad style="padding: 0 40px" />
+    <div style="width: 1052px">
+      <bigBanner />
     </div>
-    <div style="width: 100%">
-      <minibanner style="padding: 0 2.65em; height: 7.1195375em" />
+    <div
+      style="width: 100%; padding-left: 40px; height: 137px; margin-top: 20px"
+    >
+      <minibanner />
     </div>
     <img
-      style="width: 89.3333333333333%; margin: 1em 0 5em 0"
+      style="width: 1052px; margin: 1em 0 5em 0"
       src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E5%B9%BF%E5%9C%BA%E9%A1%B5/%E5%86%85%E5%AE%B9/pad%E5%86%85%E5%AE%B9%E5%8D%A0%E4%BD%8D.png"
     />
   </div>
@@ -20,10 +22,10 @@
 </template>
 
 <script setup>
-import bigBanner from "@/components/square/bigbanner/bigbanner-pad.vue";
-import top from "@/components/square/top/top-pad.vue";
-import subjectsPad from "@/components/square/subjects/subjects-pad.vue";
-import minibanner from "@/components/square/minibanner/minibanner.vue";
+import bigBanner from "@/pages/square/bigbanner/bigbanner-pad.vue";
+import top from "@/pages/square/top/top-pad.vue";
+import subjectsPad from "@/pages/square/subjects/subjects-pad.vue";
+import minibanner from "@/pages/square/minibanner/minibanner.vue";
 </script>
 
 <style scoped>

@@ -15,9 +15,9 @@ defineProps({
   deviceType: {
     type: String,
     required: true,
-    validator: (value) => ['phone', 'pad'].includes(value)
-  }
-})
+    validator: (value) => ["phone", "pad"].includes(value),
+  },
+});
 </script>
 
 <style scoped>
@@ -56,7 +56,7 @@ defineProps({
   /* 隐藏滚动条但保留滚动功能 */
   scrollbar-width: none;
   -ms-overflow-style: none;
-  
+
   &::-webkit-scrollbar {
     display: none;
     width: 0;
@@ -71,7 +71,7 @@ defineProps({
   position: relative;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  
+
   &::-webkit-scrollbar {
     display: none;
     width: 0;

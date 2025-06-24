@@ -23,31 +23,30 @@ emitter.on("updateImage2", (url) => {
   bgimage.value = url;
 });
 </script>
+
 <style scoped>
 .bigBanner {
   position: relative;
-  width: 100%; /* 宽度继承父级盒子的宽度 */
-  height: calc(100% * 0.307692307692308);
   overflow: hidden;
 }
+
 .background-image {
   position: absolute;
   width: 100%;
-  min-width: 23.4375rem;
-  height: auto; /* 高度自适应 */
+  height: 89.5833333333333%;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  border-radius: 1.25rem;
+  border-radius: 16px;
+  object-fit: cover;
 }
 .foreground-image {
   position: absolute;
   width: 100%;
-  min-width: 23.4375rem; /* 最小宽度375px */
-  height: auto; /* 高度自适应 */
-  bottom: 0rem; /* 底部对齐 */
+  height: 100%;
+  bottom: 0em;
   left: 50%;
-  transform: translateX(-50%); /* 水平居中 */
-  border-radius: 1.25rem; /* 圆角20px */
+  transform: translateX(-50%);
+  object-fit: cover;
 }
 </style>

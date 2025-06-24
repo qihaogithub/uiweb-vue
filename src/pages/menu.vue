@@ -1,6 +1,37 @@
 <template>
   <div class="main">
-    <div v-for="(route, index) in routes" :key="index" class="box">
+    <!-- 合并搜索栏和标签筛选栏到同一行 -->
+    <div class="search-filter-container">
+      <!-- 标签筛选栏 -->
+      <div class="tag-filter">
+        <div
+          v-for="category in uniqueCategories"
+          :key="category"
+          :class="['tag-item', selectedTag === category ? 'active' : '']"
+          @click="selectedTag = category"
+        >
+          {{ categoryNameMap[category] || category }}
+        </div>
+        <div
+          :class="['tag-item', selectedTag === 'all' ? 'active' : '']"
+          @click="selectedTag = 'all'"
+        >
+          全部
+        </div>
+      </div>
+
+      <!-- 搜索栏 -->
+      <div class="search-bar">
+        <input
+          type="text"
+          v-model="searchKeyword"
+          placeholder="搜索页面..."
+          class="search-input"
+        />
+      </div>
+    </div>
+
+    <div v-for="(route, index) in filteredRoutes" :key="index" class="box">
       <router-link :to="route.path" style="color: #404040">
         <img :src="route.image" :alt="route.title" />
         <div class="box-title">{{ route.title }}</div>
@@ -34,6 +65,17 @@ import pagesConfig from "@/config/pages.json";
 import kuokeImage from "@/assets/img/目录页/扩科卡片.png";
 import xinniankeImage from "@/assets/img/目录页/开启新年课.png";
 import HomeActivityCard from "@/assets/img/目录页/首页活动卡片.png";
+
+// 添加搜索和筛选相关响应式变量
+const searchKeyword = ref('');
+const selectedTag = ref('all');
+
+// 添加标签名称映射表 - 在这里自定义标签名称
+const categoryNameMap = {
+  // 示例: 'original-category': '自定义名称',
+  // 'study': '学习中心',
+  // 'activity': '活动专区',
+};
 
 // 从配置文件加载页面路由
 const configRoutes = pagesConfig.pages.map(page => ({
@@ -75,6 +117,26 @@ const shouldShowFooterText = computed(() => {
   ].includes(hostname);
 
 
+});
+
+// 修改路由数据处理逻辑，添加筛选功能
+const filteredRoutes = computed(() => {
+  return [...configRoutes, ...specialRoutes.value]
+    .filter(route => {
+      // 搜索筛选
+      const matchesSearch = route.title.toLowerCase().includes(searchKeyword.value.toLowerCase());
+      // 标签筛选
+      const matchesTag = selectedTag.value === 'all' || route.category === selectedTag.value;
+      return matchesSearch && matchesTag;
+    });
+});
+
+// 获取所有唯一的分类标签
+const uniqueCategories = computed(() => {
+  const categories = [...configRoutes, ...specialRoutes.value]
+    .map(route => route.category)
+    .filter(Boolean);
+  return [...new Set(categories)];
 });
 </script>
 
@@ -176,5 +238,79 @@ html {
 .divider {
   color: #ddd;
   font-weight: 300;
+}
+
+/* 添加搜索栏样式 */
+.search-bar {
+  grid-column: 1 / -1; /* 横跨所有列 */
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.search-input:focus {
+  border-color: #1890ff;
+}
+
+/* 添加标签筛选栏样式 */
+.tag-filter {
+  grid-column: 1 / -1; /* 横跨所有列 */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.tag-item {
+  padding: 6px 12px;
+  background-color: #fff;
+  border-radius: 15px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.tag-item.active {
+  background-color: #1890ff;
+  color: white;
+}
+
+.tag-item:hover:not(.active) {
+  background-color: #e8f0fe;
+}
+
+/* 修改为同一行布局 */
+.search-filter-container {
+  grid-column: 1 / -1; /* 横跨所有列 */
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.tag-filter {
+  flex: 1; /* 标签栏占据剩余空间 */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.search-bar {
+  width: 300px; /* 固定搜索栏宽度 */
 }
 </style>

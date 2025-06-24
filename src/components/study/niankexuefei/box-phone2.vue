@@ -1,6 +1,5 @@
 <template>
-  <DeviceContainer device-type="phone">
-    <div class="page">
+  <div class="page">
     <div class="flex-col">
       <div class="top">
         <img :src="calendarImg" />
@@ -17,11 +16,9 @@
     </div>
     <img class="tabbar" :src="tabbarImg" />
   </div>
-  </DeviceContainer>
 </template>
 
 <script setup>
-import DeviceContainer from "@/components/common/DeviceContainer.vue";
 const props = defineProps({});
 import { ref } from "vue";
 import emitter from "@/utils/emitter";
