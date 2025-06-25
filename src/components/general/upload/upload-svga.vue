@@ -7,12 +7,29 @@
     accept=".svga"
   >
     <template #upload-button>
-      <button class="button_line">
-        <span>上传SVGA</span>
-      </button>
+      <div class="icon-upload">
+        <icon-upload />
+      </div>
     </template>
   </a-upload>
 </template>
+
+<style scoped>
+.icon-upload {
+  padding: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #666666;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  background-color: #f2f3f5;
+  border: 1px solid #eaebed;
+}
+
+.icon-upload:hover {
+  background-color: #e0e0e0;
+}
+</style>
 
 <script setup>
 import { ref } from "vue";

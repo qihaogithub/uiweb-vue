@@ -8,9 +8,9 @@
     @change="onChange"
   >
     <template #upload-button>
-      <button class="button_line">
-        <span>上传</span>
-      </button>
+      <div class="icon-upload">
+        <icon-upload />
+      </div>
     </template>
   </a-upload>
 </template>
@@ -56,16 +56,17 @@ const onChange = (_, file) => {
 // };
 </script>
 <style scoped>
-.button_line {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 100%;
-  padding: 4px 10px;
-  background-color: #f0f0f0;
-  border: 1px solid #d9d9d9;
-  border-radius: 4px;
+.icon-upload {
+  padding: 4px;
   cursor: pointer;
+  font-size: 14px;
+  color: #666666;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  background-color: #f2f3f5;
+  border: 1px solid #eaebed;
+}
+.icon-upload:hover {
+  background-color: #e0e0e0;
 }
 </style>

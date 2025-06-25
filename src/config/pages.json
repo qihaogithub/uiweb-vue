@@ -219,28 +219,6 @@
           "type": "input",
           "placeholder": "次按钮文案",
           "eventName": "updateButtonText2"
-        },
-        {
-          "id": 4,
-          "name": "弹窗标题开关",
-          "type": "switch",
-          "eventName": "updateShowText"
-        },
-        {
-          "id": 5,
-          "name": "主标题文案",
-          "type": "input",
-          "placeholder": "主标题文案",
-          "eventName": "updateTitle1",
-          "condition": "showTextConfig"
-        },
-        {
-          "id": 6,
-          "name": "副标题文案",
-          "type": "input",
-          "placeholder": "副标题文案",
-          "eventName": "updateTitle2",
-          "condition": "showTextConfig"
         }
       ]
     },

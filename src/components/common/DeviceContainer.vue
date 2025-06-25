@@ -34,7 +34,7 @@ defineProps({
 }
 
 .container {
-  border-radius: 24px;
+  border-radius: 10px;
   background-color: #ffffff;
   overflow: hidden;
 }
