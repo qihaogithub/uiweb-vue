@@ -7,11 +7,11 @@
         <!-- 确认v-for循环使用categories数组 -->
         <div
           v-for="category in categories"
-          :key="category"
-          :class="['tag-item', selectedTag === category ? 'active' : '']"
-          @click="selectedTag = category"
+          :key="category.key"
+          :class="['tag-item', selectedTag === category.key ? 'active' : '']"
+          @click="selectedTag = category.key"
         >
-          {{ categoryNameMap[category] || category }}
+          {{ category.label }}
         </div>
       </div>
 
@@ -63,21 +63,12 @@ import HomeActivityCard from "@/assets/img/目录页/首页活动卡片.png";
 
 // 手动配置标签列表 - 确保全部标签在最前面
 const categories = ref([
-  "all", // 全部标签（第一位）
-  "study", // 学习中心（第二位）
-  "activity", // 活动专区（第三位）
-  "special", // 特殊页面（第四位）
+  { key: "all", label: "全部" }, // 全部标签（第一位）
+  { key: "study", label: "学习中心" }, // 学习中心（第二位）
+  { key: "activity", label: "活动专区" }, // 活动专区（第三位）
+  { key: "其他", label: "其他" }, // 特殊页面（第四位）
   // 在此处添加或删除其他标签
 ]);
-
-// 添加标签名称映射表 - 在这里自定义标签名称
-const categoryNameMap = {
-  all: "全部",
-  study: "学习中心",
-  activity: "活动专区",
-  special: "特殊页面",
-  // 添加其他标签的名称映射
-};
 
 // 添加搜索和筛选相关响应式变量
 const searchKeyword = ref("");

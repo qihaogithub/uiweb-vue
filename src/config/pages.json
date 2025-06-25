@@ -249,7 +249,7 @@
       "title": "通用弹窗",
       "path": "/GeneralPopUp",
       "image": "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/目录页/通用弹窗.png",
-      "category": "popup",
+      "category": "其他",
       "components": {
         "phone": "pop-up/pop-up-phone",
         "pad": "pop-up/pop-up-pad"
