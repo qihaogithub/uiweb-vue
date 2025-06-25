@@ -21,6 +21,14 @@
       @upload="handleUpload"
     />
 
+    <!-- SVGA动画上传组件 -->
+    <upload-svga
+      v-else-if="resource.type === 'upload-svga'"
+      :id="resource.id"
+      :min-size="resource.minSize"
+      @upload="handleUpload"
+    />
+
     <!-- 颜色选择器 -->
     <a-color-picker
       v-else-if="resource.type === 'color'"
@@ -67,6 +75,7 @@
 import { ref, defineEmits } from "vue";
 import upload from "@/components/general/upload/upload-simple.vue";
 import uploadPictureCard from "@/components/general/upload/upload-picture-card.vue";
+import uploadSvga from "@/components/general/upload/upload-svga.vue";
 
 const props = defineProps({
   resource: {
@@ -103,7 +112,8 @@ const handleUpload = (file) => {
   emit("resource-change", {
     resourceId: props.resource.id,
     value: url,
-    type: "upload",
+    type: props.resource.type,
+    eventName: props.resource.eventName,
   });
 };
 

@@ -267,7 +267,7 @@
         {
           "id": 2,
           "name": "动画文件(SVGA)",
-          "type": "upload",
+          "type": "upload-svga",
           "accept": ".svga",
           "helpLink": "https://alidocs.dingtalk.com/i/nodes/example",
           "eventName": "updateImage2"
