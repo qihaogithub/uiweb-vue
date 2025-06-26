@@ -21,9 +21,8 @@
     </div>
     <div class="huodong">
       <div class="hdbiaoti">
-        <p>邀请活动</p>
+        <p>叫叫商场</p>
         <div class="hdbiaoti_r">
-          <span class="text_2">邀请奖励记录</span>
           <iconpark-icon name="right"></iconpark-icon>
         </div>
       </div>
@@ -76,9 +75,12 @@ defineProps(["color2"]);
 }
 .hdbiaoti p {
   color: #666;
-  font-size: 1.125em;
+  font-size: 22.5px;
   font-style: normal;
   font-weight: 500;
+}
+.text_2 {
+  font-size: 18px;
 }
 .hdbiaoti_r {
   display: flex;

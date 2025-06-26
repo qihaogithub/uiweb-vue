@@ -64,9 +64,10 @@ import HomeActivityCard from "@/assets/img/目录页/首页活动卡片.png";
 // 手动配置标签列表 - 确保全部标签在最前面
 const categories = ref([
   { key: "all", label: "全部" }, // 全部标签（第一位）
-  { key: "study", label: "学习中心" }, // 学习中心（第二位）
-  { key: "activity", label: "活动专区" }, // 活动专区（第三位）
-  { key: "其他", label: "其他" }, // 特殊页面（第四位）
+  { key: "学习页", label: "学习页" }, // 学习中心（第二位）
+  { key: "广场页", label: "广场页" }, // 活动专区（第三位）
+  { key: "弹窗", label: "弹窗" }, // 特殊页面（第四位）
+  { key: "伴读页", label: "伴读页" }, // 伴读页（第五位）
   // 在此处添加或删除其他标签
 ]);
 
@@ -153,10 +154,10 @@ html {
 .main {
   min-height: 100vh;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   justify-items: center;
   align-items: start;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   overflow-y: auto;
 }
@@ -176,7 +177,7 @@ html {
 }
 
 .box img {
-  border-radius: 1rem;
+  border-radius: 0.7rem;
   max-width: 100%;
   height: auto;
 }

@@ -5,7 +5,7 @@
       "title": "广场",
       "path": "/square",
       "image": "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/目录页/广场页.png",
-      "category": "main",
+      "category": "广场页",
       "components": {
         "phone": "square/square-phone",
         "pad": "square/square-pad"
@@ -37,11 +37,137 @@
       ]
     },
     {
+      "id": "bottomPopUp",
+      "title": "底部弹窗",
+      "path": "/bottom-pop-up",
+      "image": "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/目录页/底部弹窗_3c58fec3.png",
+      "category": "弹窗",
+      "components": {
+        "phone": "bottom-pop-up/phone-screen",
+        "pad": "bottom-pop-up/pad-screen"
+      },
+      "resources": [
+        {
+          "id": 1,
+          "name": "资源图",
+          "type": "upload",
+          "widthExact": 750,
+          "maxHeight": 800,
+          "helpLink": "https://alidocs.dingtalk.com/i/nodes/QOG9lyrgJP3gl9knin1Kleo9VzN67Mw4"
+        },
+        {
+          "id": 2,
+          "name": "主按钮文案",
+          "type": "input",
+          "placeholder": "主按钮文案",
+          "eventName": "updateButtonText1"
+        },
+        {
+          "id": 3,
+          "name": "次按钮文案",
+          "type": "input",
+          "placeholder": "次按钮文案",
+          "eventName": "updateButtonText2"
+        }
+      ]
+    },
+    {
+      "id": "GeneralPopUp",
+      "title": "通用弹窗",
+      "path": "/GeneralPopUp",
+      "image": "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/目录页/通用弹窗.png",
+      "category": "弹窗",
+      "components": {
+        "phone": "pop-up/pop-up-phone",
+        "pad": "pop-up/pop-up-pad"
+      },
+      "resources": [
+        {
+          "id": 1,
+          "name": "弹窗图片(PNG)",
+          "type": "upload",
+          "widthExact": 670,
+          "minHeight": 670,
+          "maxHeight": 890,
+          "helpLink": "https://alidocs.dingtalk.com/i/nodes/o14dA3GK8g5LAOBvS0xZGmMrV9ekBD76",
+          "eventName": "updateImage1"
+        },
+        {
+          "id": 2,
+          "name": "动画文件(SVGA)",
+          "type": "upload-svga",
+          "accept": ".svga",
+          "helpLink": "https://alidocs.dingtalk.com/i/nodes/o14dA3GK8g5LAOBvS0xZGmMrV9ekBD76",
+          "eventName": "updateImage2"
+        }
+      ]
+    },
+    {
+      "id": "kehou",
+      "title": "课后服务",
+      "path": "/AfterClass",
+      "image": "src/assets/img/目录页/课后服务.png",
+      "category": "学习页",
+      "components": {
+        "phone": "APP_learning/AfterClass/phone",
+        "pad": "APP_learning/AfterClass/pad"
+      },
+      "resources": [
+        {
+          "id": 1,
+          "name": "广告图",
+          "type": "upload",
+          "widthExact": 1720,
+          "heightExact": 224,
+          "helpLink": "https://alidocs.dingtalk.com/i/nodes/6LeBq413JAzE475vtndm6x2L8DOnGvpb"
+        }
+      ]
+    },
+    {
+      "id": "banduAd",
+      "title": "伴读广告",
+      "path": "/banduAd",
+      "image": "src/assets/img/目录页/伴读广告.png",
+      "category": "伴读页",
+      "components": {
+        "phone": "bandu/banduAd/phone",
+        "pad": "bandu/banduAd/pad"
+      },
+      "resources": [
+        {
+          "id": 1,
+          "name": "手机广告图：1行1个",
+          "type": "upload",
+          "widthExact": 1029,
+          "heightExact": 540,
+          "helpLink": "https://alidocs.dingtalk.com/i/nodes/YQBnd5ExVEwOkYEMFenmx7xn8yeZqMmz?utm_scene=team_space&iframeQuery=anchorId%3Duu_lq1xas96z4md9dedh8b",
+          "eventName": "updateImage1"
+        },
+        {
+          "id": 2,
+          "name": "平板广告图：1行1个",
+          "type": "upload",
+          "widthExact": 2832,
+          "helpLink": "https://alidocs.dingtalk.com/i/nodes/YQBnd5ExVEwOkYEMFenmx7xn8yeZqMmz?utm_scene=team_space&iframeQuery=anchorId%3Duu_lq1xas96z4md9dedh8b",
+          "eventName": "updateImage2"
+        },
+        {
+          "id": 3,
+          "name": "广告图：轮播",
+          "type": "upload",
+          "widthExact": 1029,
+          "heightExact": 540,
+          "helpLink": "https://alidocs.dingtalk.com/i/nodes/YQBnd5ExVEwOkYEMFenmx7xn8yeZqMmz?utm_scene=team_space&iframeQuery=anchorId%3Duu_mccsrzj3u75tcoauzch",
+          "eventName": "updateImage3"
+        }
+      ]
+    },
+    {
       "id": "homeActivityCard",
       "title": "学习页活动卡片",
       "path": "/HomeActivityCard",
       "image": "@/assets/img/目录页/首页活动卡片.png",
-      "category": "study",
+      "category": "学习页",
       "components": {
         "phone": "study/HomeActivityCard/ActivityCardPhone",
         "pad": "study/HomeActivityCard/ActivityCardPad"
@@ -102,7 +228,7 @@
       "title": "学习页任务卡片",
       "path": "/TaskCard",
       "image": "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/学习页/学习页.png",
-      "category": "study",
+      "category": "学习页",
       "components": {
         "phone": "study/TaskCard/study-phone",
         "pad": "study/TaskCard/study-pad"
@@ -112,16 +238,16 @@
           "id": 1,
           "name": "手机端配图",
           "type": "upload",
-          "widthExact": 750,
-          "maxHeight": 600,
+          "widthExact": 921,
+          "heightExact": 519,
           "helpLink": "https://alidocs.dingtalk.com/i/nodes/QG53mjyd80RMX42QtXj1pmkGV6zbX04v"
         },
         {
           "id": 2,
           "name": "平板端配图",
           "type": "upload",
-          "widthExact": 1133,
-          "maxHeight": 800,
+          "widthExact": 1910,
+          "heightExact": 519,
           "helpLink": "https://alidocs.dingtalk.com/i/nodes/QG53mjyd80RMX42QtXj1pmkGV6zbX04v"
         }
       ]
@@ -131,7 +257,7 @@
       "title": "学习页日历扩科卡片",
       "path": "/CalendarKuoke",
       "image": "@/assets/img/目录页/扩科卡片.png",
-      "category": "study",
+      "category": "学习页",
       "components": {
         "phone": "study/Kuoke/kuoke-phone",
         "pad": "study/Kuoke/kuoke-pad"
@@ -180,84 +306,37 @@
       "title": "我的",
       "path": "/mine",
       "image": "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/目录页/我的页.png",
-      "category": "main",
+      "category": "我的页",
       "components": {
         "phone": "mine/mine-phone",
         "pad": "mine/mine-pad"
       },
-      "resources": []
-    },
-    {
-      "id": "bottomPopUp",
-      "title": "底部弹窗",
-      "path": "/bottom-pop-up",
-      "image": "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/目录页/底部弹窗_3c58fec3.png",
-      "category": "popup",
-      "components": {
-        "phone": "bottom-pop-up/phone-screen",
-        "pad": "bottom-pop-up/pad-screen"
-      },
       "resources": [
         {
           "id": 1,
-          "name": "资源图",
+          "name": "活动Banner图",
           "type": "upload",
-          "widthExact": 750,
-          "maxHeight": 800,
-          "helpLink": "https://alidocs.dingtalk.com/i/nodes/QOG9lyrgJP3gl9knin1Kleo9VzN67Mw4"
+          "widthExact": 296,
+          "heightExact": 128,
+          "helpLink": "https://alidocs.dingtalk.com/i/nodes/Qnp9zOoBVBZ79RqrHw2xLQ4QV1DK0g6l?utm_scene=team_space",
+          "eventName": "updateImage3"
         },
         {
           "id": 2,
-          "name": "主按钮文案",
-          "type": "input",
-          "placeholder": "主按钮文案",
-          "eventName": "updateButtonText1"
-        },
-        {
-          "id": 3,
-          "name": "次按钮文案",
-          "type": "input",
-          "placeholder": "次按钮文案",
-          "eventName": "updateButtonText2"
+          "name": "活动Banner颜色",
+          "type": "color",
+          "presetColors": ["#FF9045", "#FF715C", "#FFB443", "#7EA4FF"],
+          "eventName": "color2"
         }
       ]
     },
-    {
-      "id": "GeneralPopUp",
-      "title": "通用弹窗",
-      "path": "/GeneralPopUp",
-      "image": "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/目录页/通用弹窗.png",
-      "category": "其他",
-      "components": {
-        "phone": "pop-up/pop-up-phone",
-        "pad": "pop-up/pop-up-pad"
-      },
-      "resources": [
-        {
-          "id": 1,
-          "name": "弹窗图片(PNG)",
-          "type": "upload",
-          "widthExact": 420,
-          "heightExact": 558,
-          "helpLink": "https://alidocs.dingtalk.com/i/nodes/example",
-          "eventName": "updateImage1"
-        },
-        {
-          "id": 2,
-          "name": "动画文件(SVGA)",
-          "type": "upload-svga",
-          "accept": ".svga",
-          "helpLink": "https://alidocs.dingtalk.com/i/nodes/example",
-          "eventName": "updateImage2"
-        }
-      ]
-    },
+
     {
       "id": "niankexuefei",
       "title": "年课续费",
       "path": "/niankexuefei",
       "image": "@/assets/img/目录页/开启新年课.png",
-      "category": "study",
+      "category": "学习页",
       "components": {
         "groups": [
           {

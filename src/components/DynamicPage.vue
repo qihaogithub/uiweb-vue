@@ -166,6 +166,14 @@ const createComponentMap = () => {
       import("@/components/study/niankexuefei/box-phone2.vue"),
     "study/niankexuefei/pad2": () =>
       import("@/components/study/niankexuefei/pad2.vue"),
+    // 课后服务
+    "APP_learning/AfterClass/phone": () =>
+      import("@/pages/APP_learning/AfterClass/phone.vue"),
+    "APP_learning/AfterClass/pad": () =>
+      import("@/pages/APP_learning/AfterClass/pad.vue"),
+    // 伴读广告
+    "bandu/banduAd/phone": () => import("@/pages/bandu/banduAd/phone.vue"),
+    "bandu/banduAd/pad": () => import("@/pages/bandu/banduAd/pad.vue"),
   };
 
   return componentMap;
