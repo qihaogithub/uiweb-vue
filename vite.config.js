@@ -32,26 +32,4 @@ export default defineConfig({
     host: "127.0.0.1",
     port: 3000,
   },
-  build: {
-    minify: "terser", // 使用terser进行压缩
-    terserOptions: {
-      compress: {
-        // 忽略警告
-        warnings: false,
-        // 允许eval
-        unsafe_Function: true,
-        unsafe_math: true,
-        unsafe_proto: true,
-        unsafe_regexp: true,
-      },
-    },
-    // 处理svga.min.js中的eval警告
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          svga: ["svgaplayerweb"],
-        },
-      },
-    },
-  },
 });
