@@ -4,9 +4,17 @@
 
 [build.environment]
   NODE_VERSION = "18" # 使用稳定的Node.js版本
+  NPM_FLAGS = "--no-audit --no-fund"
+  VITE_UNSAFE_EVAL = "true" # 允许svga.min.js使用eval
 
 # 单页应用路由重写规则
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200 
+
+# 添加Content-Security-Policy头，允许eval执行
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline';" 
