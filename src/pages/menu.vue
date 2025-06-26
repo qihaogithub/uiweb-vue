@@ -1,6 +1,32 @@
 <template>
   <div class="main">
-    <div v-for="(route, index) in routes" :key="index" class="box">
+    <!-- 合并搜索栏和标签筛选栏到同一行 -->
+    <div class="search-filter-container">
+      <!-- 标签筛选栏 -->
+      <div class="tag-filter">
+        <!-- 确认v-for循环使用categories数组 -->
+        <div
+          v-for="category in categories"
+          :key="category.key"
+          :class="['tag-item', selectedTag === category.key ? 'active' : '']"
+          @click="selectedTag = category.key"
+        >
+          {{ category.label }}
+        </div>
+      </div>
+
+      <!-- 搜索栏 -->
+      <div class="search-bar">
+        <input
+          type="text"
+          v-model="searchKeyword"
+          placeholder="搜索页面..."
+          class="search-input"
+        />
+      </div>
+    </div>
+
+    <div v-for="(route, index) in filteredRoutes" :key="index" class="box">
       <router-link :to="route.path" style="color: #404040">
         <img :src="route.image" :alt="route.title" />
         <div class="box-title">{{ route.title }}</div>
@@ -8,7 +34,7 @@
     </div>
 
     <!-- 根据域名判断是否显示底部文字 -->
-    <div v-if="shouldShowFooterText" class="footer-text">
+    <!-- <div v-if="shouldShowFooterText" class="footer-text">
       <div class="footer-links">
         <a href="http://10.130.33.131:3001/" target="_blank" class="link-item">
           <span class="link-label">局域网网址（推荐）：</span>
@@ -24,86 +50,92 @@
           <span class="link-url">jojo-preview.netlify.app</span>
         </a>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script setup>
 import { ref, computed } from "vue";
+import pagesConfig from "@/config/pages.json";
 import kuokeImage from "@/assets/img/目录页/扩科卡片.png";
 import xinniankeImage from "@/assets/img/目录页/开启新年课.png";
 import HomeActivityCard from "@/assets/img/目录页/首页活动卡片.png";
-const routes = ref([
-  {
-    path: "/square",
-    image:
-      "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E7%9B%AE%E5%BD%95%E9%A1%B5/%E5%B9%BF%E5%9C%BA%E9%A1%B5.png",
-    title: "广场",
-  },
-  {
-    path: "/TaskCard",
-    image:
-      "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E5%AD%A6%E4%B9%A0%E9%A1%B5/%E5%AD%A6%E4%B9%A0%E9%A1%B5.png",
-    title: "学习页任务卡片",
-  },
-  {
-    path: "/CalendarKuoke",
-    image: kuokeImage,
-    title: "学习页日历扩科卡片",
-  },
-  {
-    path: "/HomeActivityCard",
-    image: HomeActivityCard,
-    title: "学习页活动卡片",
-  },
-  {
-    path: "/xinnianke",
-    image: xinniankeImage,
-    title: "学习页新年课",
-  },
-  {
-    path: "/mine",
-    image:
-      "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E7%9B%AE%E5%BD%95%E9%A1%B5/%E6%88%91%E7%9A%84%E9%A1%B5.png",
-    title: "我的",
-  },
-  {
-    path: "/popup",
-    image:
-      "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E7%9B%AE%E5%BD%95%E9%A1%B5/%E9%80%9A%E7%94%A8%E5%BC%B9%E7%AA%97.png",
-    title: "通用弹窗",
-  },
-  {
-    path: "/bottom-pop-up",
-    image:
-      "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E7%9B%AE%E5%BD%95%E9%A1%B5/%E5%BA%95%E9%83%A8%E5%BC%B9%E7%AA%97_3c58fec3.png",
-    title: "底部弹窗",
-  },
+
+// 手动配置标签列表 - 确保全部标签在最前面
+const categories = ref([
+  { key: "all", label: "全部" }, // 全部标签（第一位）
+  { key: "学习页", label: "学习页" }, // 学习中心（第二位）
+  { key: "广场页", label: "广场页" }, // 活动专区（第三位）
+  { key: "弹窗", label: "弹窗" }, // 特殊页面（第四位）
+  { key: "伴读页", label: "伴读页" }, // 伴读页（第五位）
+  // 在此处添加或删除其他标签
 ]);
+
+// 添加搜索和筛选相关响应式变量
+const searchKeyword = ref("");
+const selectedTag = ref("all");
+
+// 从配置文件加载页面路由
+const configRoutes = pagesConfig.pages.map((page) => ({
+  path: page.path,
+  image: page.image.startsWith("@/")
+    ? // 处理本地图片路径
+      page.image === "@/assets/img/目录页/扩科卡片.png"
+      ? kuokeImage
+      : page.image === "@/assets/img/目录页/开启新年课.png"
+      ? xinniankeImage
+      : page.image === "@/assets/img/目录页/首页活动卡片.png"
+      ? HomeActivityCard
+      : page.image
+    : page.image,
+  title: page.title,
+  category: page.category,
+}));
+
+// 手动维护的特殊路由
+const specialRoutes = ref([
+  // {
+  //   path: "/popup",
+  //   image: "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/目录页/通用弹窗.png",
+  //   title: "通用弹窗",
+  //   category: "special"
+  // }
+]);
+
+// 合并所有路由
+const routes = computed(() => {
+  return [...configRoutes, ...specialRoutes.value];
+});
 
 const shouldShowFooterText = computed(() => {
   const hostname = window.location.hostname;
 
-  // 方案1：指定域名完全匹配
-  // return hostname === 'example.com';
-
-  // 方案2：匹配多个指定域名
   return [
     "127.0.0.1",
     "188.8.12.201",
     "jojo-preview.netlify.app",
     "https://www.jojoui.work/",
   ].includes(hostname);
+});
 
-  // 方案3：匹配特定后缀
-  // return hostname.endsWith('.example.com');
+// 修改路由数据处理逻辑，添加筛选功能
+const filteredRoutes = computed(() => {
+  return [...configRoutes, ...specialRoutes.value].filter((route) => {
+    // 搜索筛选
+    const matchesSearch = route.title
+      .toLowerCase()
+      .includes(searchKeyword.value.toLowerCase());
+    // 标签筛选
+    const matchesTag =
+      selectedTag.value === "all" || route.category === selectedTag.value;
+    return matchesSearch && matchesTag;
+  });
+});
 
-  // 方案4：排除特定开发环境
-  // return !['188.8.12.201'].includes(hostname);
-  // return !['localhost', '127.0.0.1'].includes(hostname);
-
-  // 方案5：组合判断（示例：排除本地环境且必须是特定域名）
-  // return !['localhost', '127.0.0.1'].includes(hostname) && hostname.endsWith('.example.com');
+// 获取所有唯一的分类标签
+const uniqueCategories = computed(() => {
+  // 返回手动配置的标签列表（排除'全部'）
+  return categories.value.filter((cat) => cat !== "all");
 });
 </script>
 
@@ -122,11 +154,10 @@ html {
 .main {
   min-height: 100vh;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   justify-items: center;
   align-items: start;
-  padding: min(200px, calc((100vh - 600px) / 2)) 0;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   overflow-y: auto;
 }
@@ -146,7 +177,7 @@ html {
 }
 
 .box img {
-  border-radius: 1rem;
+  border-radius: 0.7rem;
   max-width: 100%;
   height: auto;
 }
@@ -205,5 +236,67 @@ html {
 .divider {
   color: #ddd;
   font-weight: 300;
+}
+
+/* 添加搜索栏样式 */
+.search-bar {
+  grid-column: 1 / -1; /* 横跨所有列 */
+  width: 100%;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.search-input:focus {
+  border-color: #1890ff;
+}
+
+/* 添加标签筛选栏样式 */
+.tag-filter {
+  grid-column: 1 / -1; /* 横跨所有列 */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.tag-item {
+  padding: 6px 12px;
+  background-color: #fff;
+  border-radius: 15px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.tag-item.active {
+  background-color: #1890ff;
+  color: white;
+}
+
+.tag-item:hover:not(.active) {
+  background-color: #e8f0fe;
+}
+
+/* 修改为同一行布局 */
+.search-filter-container {
+  padding: 20px 0;
+  grid-column: 1 / -1; /* 横跨所有列 */
+  display: flex;
+  gap: 15px;
+  width: 100%;
+  align-items: center;
+}
+
+.search-bar {
+  width: 200px; /* 固定搜索栏宽度 */
 }
 </style>

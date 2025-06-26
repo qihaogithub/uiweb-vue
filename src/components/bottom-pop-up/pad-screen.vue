@@ -1,5 +1,5 @@
 <template>
-  <div class="page">
+  <div class="pad-screen">
     <div class="element">
       <div class="pop-up">
         <img class="image" :src="img" />
@@ -60,15 +60,11 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.page {
-  position: relative;
-  border-radius: 24px;
-  height: 744px;
-  width: 1133px;
-  overflow-y: auto;
-  overflow-x: hidden;
+.pad-screen {
   background-image: url("https://uiweb.oss-cn-chengdu.aliyuncs.com/img/通用广告弹窗/广场页pad.png");
   background-size: cover;
+  width: 100%;
+  height: 100%;
 }
 .element {
   background-color: rgba(0, 0, 0, 0.7);

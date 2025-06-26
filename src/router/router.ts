@@ -1,56 +1,41 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHistory } from 'vue-router'
 import menu from "@/pages/menu.vue";
-import popup from "../pages/pop-up.vue";
-import square from "@/pages/square.vue";
-import mine from "@/pages/mine.vue";
-import TaskCard from "@/pages/study/TaskCard.vue";
-import CalendarKuoke from "@/pages/study/CalendarKuoke.vue";
+import DynamicPage from "@/components/DynamicPage.vue";
+import pagesConfig from "@/config/pages";
+
+// 静态路由
+const staticRoutes = [
+  {
+    path: "/",
+    component: menu,
+  },
+  {
+    path: "/menu",
+    component: menu,
+  }
+]
+
+// 动态生成路由
+const dynamicRoutes = pagesConfig.pages.map(page => ({
+  path: page.path,
+  component: DynamicPage,
+  meta: {
+    pageId: page.id,
+    title: page.title
+  }
+}))
+
+// 特殊路由（如果需要的话）
+const specialRoutes = [
+  // 在这里添加特殊路由配置
+  // 例如：404页面、错误页面等
+]
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    {
-      path: "/",
-      component: menu,
-    },
-    {
-      path: "/menu",
-      component: menu,
-    },
-    {
-      path: "/popup",
-      component: popup,
-    },
-    {
-      path: "/square",
-      component: square,
-    },
-    {
-      path: "/mine",
-      component: mine,
-    },
-    {
-      path: "/TaskCard",
-      component: TaskCard,
-    },
-    {
-      path: "/CalendarKuoke",
-      component: CalendarKuoke,
-    },
-
-    {
-      path: "/xinnianke",
-      component: () => import("@/pages/study/xinnianke.vue"),
-    },
-
-    {
-      path: "/HomeActivityCard",
-      component: () => import("@/pages/study/HomeActivityCard.vue"),
-    },
-    {
-      path: "/bottom-pop-up",
-      component: () => import("@/pages/bottom-pop-up.vue"),
-    },
+    ...staticRoutes,
+    ...dynamicRoutes
   ],
 });
 
