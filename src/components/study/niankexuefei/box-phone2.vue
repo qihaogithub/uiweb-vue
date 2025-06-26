@@ -31,7 +31,7 @@ import arrowImg from "@/assets/img/学习页/年课续费/箭头.svg";
 const img = ref(resourceImg);
 const currentSubject = ref("reading");
 // 上传组件组件注册事件监听
-emitter.on("updateImage2", (url) => {
+emitter.on("updateImage1", (url) => {
   img.value = url;
 });
 // 监听科目更新事件

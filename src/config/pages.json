@@ -354,28 +354,19 @@
       "resources": [
         {
           "id": 1,
-          "name": "弹窗资源图",
+          "name": "手机/弹窗资源图",
           "type": "upload",
-          "widthExact": 420,
-          "heightExact": 558,
+          "widthExact": 1125,
+          "maxHeight": 1500,
           "helpLink": "https://alidocs.dingtalk.com/i/nodes/example",
           "eventName": "updateImage1"
         },
-        {
-          "id": 2,
-          "name": "手机端资源图",
-          "type": "upload",
-          "widthExact": 307,
-          "heightExact": 200,
-          "helpLink": "https://alidocs.dingtalk.com/i/nodes/example",
-          "eventName": "updateImage2"
-        },
+
         {
           "id": 3,
           "name": "平板端资源图",
           "type": "upload",
-          "widthExact": 678,
-          "heightExact": 400,
+          "widthExact": 1950,
           "helpLink": "https://alidocs.dingtalk.com/i/nodes/example",
           "eventName": "updateImage3"
         },
