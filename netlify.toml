@@ -1,11 +1,16 @@
 [build]
-  command = "npm run build"
+  command = "npm run build-with-oss"
   publish = "dist"
 
 [build.environment]
   NODE_VERSION = "18" # 使用稳定的Node.js版本
   NPM_FLAGS = "--no-audit --no-fund"
   VITE_UNSAFE_EVAL = "true" # 允许svga.min.js使用eval
+  # OSS配置环境变量（需要在Netlify后台设置）
+  # OSS_ACCESS_KEY_ID = "your_access_key_id"
+  # OSS_ACCESS_KEY_SECRET = "your_access_key_secret"
+  # OSS_REGION = "oss-cn-chengdu"
+  # OSS_BUCKET = "uiweb"
 
 # 单页应用路由重写规则
 [[redirects]]
@@ -17,4 +22,4 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline';" 
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline';"

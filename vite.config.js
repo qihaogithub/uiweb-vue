@@ -4,6 +4,7 @@ import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import { ArcoResolver } from "unplugin-vue-components/resolvers";
 import { vitePluginForArco } from "@arco-plugins/vite-vue";
+import { vitePluginOSS } from "./scripts/vite-plugin-oss.js";
 
 import { fileURLToPath } from "url"; // 从url模块导入fileURLToPath
 
@@ -21,6 +22,11 @@ export default defineConfig({
     }),
     Components({
       resolvers: [ArcoResolver({ sideEffect: true })],
+    }),
+    // OSS 插件：构建后自动上传图片到阿里云 OSS
+    vitePluginOSS({
+      enabled: process.env.NODE_ENV === 'production' || process.env.ENABLE_OSS === 'true',
+      prefix: 'uiweb'
     }),
   ],
   resolve: {
