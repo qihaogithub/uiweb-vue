@@ -34,7 +34,7 @@
     </div>
 
     <!-- 根据域名判断是否显示底部文字 -->
-    <!-- <div v-if="shouldShowFooterText" class="footer-text">
+    <div v-if="shouldShowFooterText" class="footer-text">
       <div class="footer-links">
         <a href="http://10.130.33.131:3001/" target="_blank" class="link-item">
           <span class="link-label">局域网网址（推荐）：</span>
@@ -50,7 +50,7 @@
           <span class="link-url">jojo-preview.netlify.app</span>
         </a>
       </div>
-    </div> -->
+    </div>
   </div>
 </template>
 
