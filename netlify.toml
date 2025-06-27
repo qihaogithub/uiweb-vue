@@ -18,8 +18,27 @@
   to = "/index.html"
   status = 200 
 
-# 添加Content-Security-Policy头，允许eval执行
+# 添加Content-Security-Policy头，允许eval执行和OSS图片加载
 [[headers]]
   for = "/*"
   [headers.values]
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline';"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; img-src 'self' data: https://*.aliyuncs.com https://*.alicdn.com https://*.oss-cn-*.aliyuncs.com; style-src 'self' 'unsafe-inline';"
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# 为静态资源添加缓存头
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
