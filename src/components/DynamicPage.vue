@@ -158,7 +158,7 @@ const createComponentMap = () => {
     "pop-up/pop-up-phone": () => import("@/components/pop-up/pop-up-phone.vue"),
     "pop-up/pop-up-pad": () => import("@/components/pop-up/pop-up-pad.vue"),
     // 年课续费组件 - 修正路径大小写和目录结构
-    "study/niankexuefei/Box-phone1": () =>
+    "study/niankexuefei/box-phone1": () =>
       import("@/components/study/niankexuefei/box-phone1.vue"),
     "study/niankexuefei/pad1": () =>
       import("@/components/study/niankexuefei/pad1.vue"),
