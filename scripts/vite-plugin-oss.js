@@ -1,8 +1,7 @@
 import OSS from "ali-oss";
 import fs from "fs";
 import path from "path";
-import globPkg from "glob";
-const { glob } = globPkg;
+import { glob } from "glob";
 
 /**
  * Vite 插件：构建后自动上传图片到阿里云 OSS
