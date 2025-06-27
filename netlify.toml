@@ -22,7 +22,7 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; img-src 'self' data: https://*.aliyuncs.com https://*.alicdn.com https://*.oss-cn-*.aliyuncs.com; style-src 'self' 'unsafe-inline';"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; img-src 'self' data: blob: https://*.aliyuncs.com https://*.alicdn.com https://*.oss-cn-*.aliyuncs.com; style-src 'self' 'unsafe-inline';"
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
