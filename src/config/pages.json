@@ -106,7 +106,7 @@
       "id": "kehou",
       "title": "课后服务",
       "path": "/AfterClass",
-      "image": "src/assets/img/目录页/课后服务.png",
+      "image": "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E7%9B%AE%E5%BD%95%E9%A1%B5/%E8%AF%BE%E5%90%8E%E6%9C%8D%E5%8A%A1.png",
       "category": "学习页",
       "components": {
         "phone": "APP_learning/AfterClass/phone",
@@ -127,7 +127,7 @@
       "id": "banduAd",
       "title": "伴读广告",
       "path": "/banduAd",
-      "image": "src/assets/img/目录页/伴读广告.png",
+      "image": "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/%E7%9B%AE%E5%BD%95%E9%A1%B5/%E4%BC%B4%E8%AF%BB%E5%B9%BF%E5%91%8A.png",
       "category": "伴读页",
       "components": {
         "phone": "bandu/banduAd/phone",
