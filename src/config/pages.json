@@ -314,19 +314,35 @@
       "resources": [
         {
           "id": 1,
-          "name": "活动Banner图",
+          "name": "Banner图1",
           "type": "upload",
           "widthExact": 296,
           "heightExact": 128,
           "helpLink": "https://alidocs.dingtalk.com/i/nodes/Qnp9zOoBVBZ79RqrHw2xLQ4QV1DK0g6l?utm_scene=team_space",
-          "eventName": "updateImage3"
+          "eventName": "updateImage1"
         },
         {
           "id": 2,
-          "name": "活动Banner颜色",
+          "name": "活动Banner颜色1",
           "type": "color",
           "presetColors": ["#FF9045", "#FF715C", "#FFB443", "#7EA4FF"],
           "eventName": "color2"
+        },
+        {
+          "id": 3,
+          "name": "Banner图2",
+          "type": "upload",
+          "widthExact": 296,
+          "heightExact": 128,
+          "helpLink": "https://alidocs.dingtalk.com/i/nodes/Qnp9zOoBVBZ79RqrHw2xLQ4QV1DK0g6l?utm_scene=team_space",
+          "eventName": "updateImage2"
+        },
+        {
+          "id": 4,
+          "name": "活动Banner颜色2",
+          "type": "color",
+          "presetColors": ["#FF715C", "#FF9045", "#FFB443", "#7EA4FF"],
+          "eventName": "color3"
         }
       ]
     },

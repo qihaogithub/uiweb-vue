@@ -12,10 +12,8 @@
         <div class="hdbanner1-1" :style="{ backgroundColor: color2 }">
           <img class="hdkpimg" :src="img" />
         </div>
-        <div class="hdbanner1-2">
-          <img
-            src="https://uiweb.oss-cn-chengdu.aliyuncs.com/img/我的页/资源/邀请活动02.png"
-          />
+        <div class="hdbanner1-2" :style="{ backgroundColor: color3 }">
+          <img class="hdkpimg2" :src="img2" />
         </div>
       </div>
     </div>
@@ -47,13 +45,21 @@ import { ref } from "vue";
 const img = ref(
   "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/我的页/资源/邀请活动01.png"
 );
+const img2 = ref(
+  "https://uiweb.oss-cn-chengdu.aliyuncs.com/img/我的页/资源/邀请活动02.png"
+);
 // 上传组件组件注册事件监听
-emitter.on("updateImage3", (url) => {
+// 监听 updateImage1 和 updateImage2 事件，确保图片上传功能正常工作
+emitter.on("updateImage1", (url) => {
   img.value = url;
-  console.log("收到了");
+  console.log("收到了 updateImage1 事件");
+});
+emitter.on("updateImage3", (url) => {
+  img2.value = url;
+  console.log("收到了 updateImage3 事件");
 });
 
-defineProps(["color2"]);
+defineProps(["color2", "color3"]);
 </script>
 
 <style scoped>
