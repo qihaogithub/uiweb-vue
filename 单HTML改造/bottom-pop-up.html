@@ -40,9 +40,14 @@
         height: 812px;
       }
 
+      /* 手机紧凑模式：高度减小以避开顶部切换按钮 */
+      .device-mockup.phone.phone-compact {
+        height: 720px; /* 减小高度 */
+      }
+
       .device-mockup.pad {
         width: 1024px;
-        height: 768px;
+        height: 812px; /* 修改: 与手机高度一致 */
         border-width: 16px;
         border-radius: 24px;
       }
@@ -572,12 +577,15 @@
         if (type === "compare") {
           phoneWrapper.style.display = "block";
           padWrapper.style.display = "block";
+          phoneWrapper.classList.remove("phone-compact");
         } else if (type === "phone") {
           phoneWrapper.style.display = "block";
           padWrapper.style.display = "none";
+          phoneWrapper.classList.add("phone-compact"); // 手机模式添加紧凑样式
         } else if (type === "pad") {
           phoneWrapper.style.display = "none";
           padWrapper.style.display = "block";
+          phoneWrapper.classList.remove("phone-compact");
         }
 
         // 触发自动缩放
@@ -588,13 +596,15 @@
       function autoFit() {
         const container = document.getElementById("preview-container");
         const stage = document.getElementById("presentation-stage");
+        const toolbar = document.querySelector('.absolute.top-6.left-1\\/2');
 
         // 重置缩放以获取真实尺寸
         stage.style.transform = "scale(1)";
 
-        // 获取容器尺寸 (减去padding)
+        // 获取容器尺寸 (减去padding和工具栏高度)
         const containerW = container.clientWidth - 60;
-        const containerH = container.clientHeight - 60;
+        const toolbarHeight = toolbar ? toolbar.offsetHeight + 48 : 80; // 工具栏高度 + 间距(顶部6 + 间距)
+        const containerH = container.clientHeight - 60 - toolbarHeight;
 
         // 计算内容尺寸
         let contentW = 0;
@@ -603,8 +613,9 @@
         // 硬件尺寸常量
         const PHONE_W = 399; // 375 + border 24
         const PHONE_H = 836; // 812 + border 24
+        const PHONE_COMPACT_H = 744; // 720 + border 24 (紧凑模式)
         const PAD_W = 1056; // 1024 + border 32
-        const PAD_H = 800; // 768 + border 32
+        const PAD_H = 844; // 812 + border 32 (与手机高度一致)
         const GAP = 40;
 
         if (currentMode === "compare") {
@@ -612,7 +623,7 @@
           contentH = Math.max(PHONE_H, PAD_H);
         } else if (currentMode === "phone") {
           contentW = PHONE_W;
-          contentH = PHONE_H;
+          contentH = PHONE_COMPACT_H; // 手机模式使用紧凑高度
         } else {
           contentW = PAD_W;
           contentH = PAD_H;
