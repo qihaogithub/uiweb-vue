@@ -132,6 +132,157 @@
 - 无需构建步骤
 - 即传即用
 
+## 页面结构规范
+
+### 统一布局结构
+
+每个单 HTML 页面都采用相同的左右分栏布局：
+
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <!-- 头部资源引用 -->
+  </head>
+  <body class="global-font">
+    <div class="flex h-screen">
+      <!-- 左侧实时预览区 -->
+      <div class="w-3/5 border-r border-gray-200">
+        <!-- 顶部工具栏 -->
+        <div class="h-12 bg-gray-100 border-b border-gray-200 flex items-center px-4">
+          <!-- 设备切换按钮等通用工具 -->
+        </div>
+        
+        <!-- 预览画布容器 -->
+        <div class="h-full overflow-auto bg-gray-50">
+          <!-- 舞台区域 -->
+          <div class="min-h-full flex items-center justify-center p-8">
+            <!-- 手机模拟器 -->
+            <div id="phone-preview" class="hidden">
+              <div class="w-[375px] h-[812px] bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-300">
+                <!-- 手机状态栏 -->
+                <div class="h-11 bg-black text-white flex items-center justify-between px-6 text-xs">
+                  <span>9:41</span>
+                  <div class="flex gap-1">
+                    <!-- 信号、WiFi、电池图标 -->
+                  </div>
+                </div>
+                <!-- 手机内容区域 (动态内容) -->
+                <div id="phone-content" class="h-[761px] overflow-auto">
+                  <!-- 页面特定内容 -->
+                </div>
+              </div>
+            </div>
+            
+            <!-- 平板模拟器 -->
+            <div id="tablet-preview" class="hidden">
+              <div class="w-[768px] h-[1024px] bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-300">
+                <!-- 平板状态栏 -->
+                <div class="h-11 bg-gray-100 flex items-center justify-between px-6 text-xs">
+                  <span>9:41</span>
+                  <div class="flex gap-1">
+                    <!-- 信号、WiFi、电池图标 -->
+                  </div>
+                </div>
+                <!-- 平板内容区域 (动态内容) -->
+                <div id="tablet-content" class="h-[1013px] overflow-auto">
+                  <!-- 页面特定内容 -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 右侧配置面板 -->
+      <div class="w-2/5 bg-white">
+        <!-- 配置面板标题 -->
+        <div class="h-12 bg-gray-100 border-b border-gray-200 flex items-center px-4">
+          <h3 class="font-medium">配置面板</h3>
+        </div>
+        
+        <!-- 配置选项区域 (动态内容) -->
+        <div id="config-panel" class="p-4 overflow-auto h-[calc(100vh-3rem)]">
+          <!-- 页面特定的配置选项 -->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+```
+
+### 相同部分说明
+
+以下结构在所有单 HTML 页面中完全相同：
+
+1. **顶部工具栏**
+   - 设备切换按钮（手机/平板）
+   - 刷新预览按钮
+   - 全屏预览按钮
+   - 导出代码按钮
+
+2. **预览画布容器**
+   - 灰色背景的容器
+   - 居中对齐的舞台区域
+   - 统一的间距和阴影效果
+
+3. **手机模拟器**
+   - 尺寸：375px × 812px（iPhone X 标准）
+   - 圆角边框和阴影
+   - 黑色状态栏（时间、信号、WiFi、电池）
+   - 内容区域高度：761px
+
+4. **平板模拟器**
+   - 尺寸：768px × 1024px（iPad 标准）
+   - 圆角边框和阴影
+   - 灰色状态栏
+   - 内容区域高度：1013px
+
+5. **配置面板框架**
+   - 固定宽度：40%
+   - 白色背景
+   - 标题栏和滚动区域
+
+### 动态内容范围
+
+以下内容在不同页面中有所不同：
+
+#### 手机和平板模拟器中的动态内容
+
+1. **手机内容区域** (`#phone-content`)
+   - 根据页面类型显示不同的 UI 组件
+   - 广场页面：显示科目图标、轮播图、活动卡片
+   - 弹窗页面：显示各种弹窗组件
+   - 课后服务页面：显示课程卡片、续费选项
+   - 我的页面：显示用户信息、菜单项
+
+2. **平板内容区域** (`#tablet-content`)
+   - 与手机内容功能相同，但布局适配平板尺寸
+   - 通常使用更大的卡片、更多的列数
+   - 间距和字体大小相应调整
+
+#### 右侧配置面板的动态内容
+
+1. **广场页面配置**
+   - 轮播图配置（图片上传、切换时间）
+   - 科目图标配置（名称、图标、链接）
+   - 活动卡片配置（标题、图片、跳转链接）
+
+2. **弹窗页面配置**
+   - 弹窗类型选择
+   - 弹窗内容配置（标题、描述、按钮）
+   - 触发条件设置
+
+3. **课后服务页面配置**
+   - 课程列表配置
+   - 续费选项设置
+   - 价格显示配置
+
+4. **我的页面配置**
+   - 用户信息配置
+   - 菜单项配置
+   - 功能开关设置
+
 ## 注意事项
 
 1. 所有 DaisyUI 组件必须使用原生类名
@@ -139,3 +290,5 @@
 3. 避免使用 Vue 或 React 等框架特有语法
 4. 保持代码简洁，便于 AI 理解和修改
 5. 合理使用注释说明复杂逻辑
+6. 动态内容区域必须保持相同的 ID 命名规范
+7. 设备切换逻辑在所有页面中保持一致
