@@ -742,13 +742,16 @@
       function autoFit() {
         const container = document.getElementById("preview-container");
         const stage = document.getElementById("presentation-stage");
+        const toolbar = document.querySelector('[class*="top-6"][class*="left-1/2"]');
 
         // 重置缩放以获取真实尺寸
         stage.style.transform = "scale(1)";
 
-        // 获取容器尺寸 (减去padding)
-        const containerW = container.clientWidth - 60;
-        const containerH = container.clientHeight - 60;
+        // 获取容器尺寸 (优化计算逻辑)
+        const containerRect = container.getBoundingClientRect();
+        const containerW = containerRect.width - 80; // 增加边距
+        const toolbarHeight = toolbar ? toolbar.offsetHeight + 60 : 100; // 工具栏高度 + 间距
+        const containerH = containerRect.height - 80 - toolbarHeight; // 增加边距
 
         // 计算内容尺寸
         let contentW = 0;
@@ -757,8 +760,9 @@
         // 硬件尺寸常量
         const PHONE_W = 399; // 375 + border 24
         const PHONE_H = 836; // 812 + border 24
+        const PHONE_COMPACT_H = 744; // 720 + border 24 (紧凑模式)
         const PAD_W = 1056; // 1024 + border 32
-        const PAD_H = 800; // 768 + border 32
+        const PAD_H = 844; // 812 + border 32 (与手机高度一致)
         const GAP = 40;
 
         if (currentMode === "compare") {
@@ -766,28 +770,35 @@
           contentH = Math.max(PHONE_H, PAD_H);
         } else if (currentMode === "phone") {
           contentW = PHONE_W;
-          contentH = PHONE_H;
+          contentH = PHONE_COMPACT_H; // 手机模式使用紧凑高度
         } else {
           contentW = PAD_W;
           contentH = PAD_H;
         }
 
-        // 计算缩放比例
+        // 计算缩放比例 (优化算法)
         const scaleX = containerW / contentW;
         const scaleY = containerH / contentH;
         let scale = Math.min(scaleX, scaleY);
 
-        // 限制最大缩放为1，最小缩放为0.1
-        scale = Math.min(Math.max(scale, 0.1), 1);
+        // 限制最大缩放为1，最小缩放为0.2 (提高最小缩放限制)
+        scale = Math.min(Math.max(scale, 0.2), 1);
 
         // 应用缩放
         stage.style.transform = `scale(${scale})`;
         document.getElementById("scale-val").innerText =
           Math.round(scale * 100) + "%";
+          
+        // 调试信息 (可在控制台查看)
+        console.log('容器尺寸:', containerW, 'x', containerH);
+        console.log('内容尺寸:', contentW, 'x', contentH);
+        console.log('缩放比例:', scaleX, scaleY, '->', scale);
       }
 
       // 监听窗口大小变化和侧边栏动画
-      window.addEventListener("resize", autoFit);
+      window.addEventListener("resize", () => {
+        setTimeout(autoFit, 100);
+      });
 
       // --- 4. 图片上传预览逻辑 ---
       function setupImagePreviews() {
@@ -970,8 +981,10 @@
         bindText("subject-xiezuo", "phone-subject-xiezuo", "pad-subject-xiezuo");
         bindText("subject-meiyu", "phone-subject-meiyu", "pad-subject-meiyu");
 
-        // 初始执行一次缩放
-        autoFit();
+        // 初始执行一次缩放 (延迟执行确保DOM完全渲染)
+        setTimeout(() => {
+          autoFit();
+        }, 100);
       });
     </script>
   </body>
