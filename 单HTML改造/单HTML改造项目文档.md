@@ -4,20 +4,10 @@
 
 本项目旨在将原有的 Vue 组件化项目改造为单 HTML 文件结构，每个页面都是独立的 HTML 文件，便于 AI 编程时的增删改操作。项目基于 DaisyUI 和 Tailwind CSS，所有资源通过 CDN 引入，无本地文件依赖。
 
-## 改造目标
-
-1. 将每个 Vue 页面组件转换为独立的单 HTML 文件
-2. 使用 DaisyUI 和 Tailwind CSS 进行样式设计
-3. 仅使用 DaisyUI 的原生类名，统一添加 bordered 后缀
-4. 所有资源通过 CDN 引入，无本地文件依赖
-5. CSS 仅写在 style 标签内的全局统一样式（间距、字体）
-
 ## 技术架构
 
 ### 前端技术栈
 
-- **CSS 框架**: Tailwind CSS + DaisyUI
-- **组件库**: DaisyUI (纯 CSS 组件，无 JS 依赖)
 - **资源引入**: CDN (无本地依赖)
 - **开发方式**: 单 HTML 文件 (所有代码在一个文件内)
 
@@ -115,24 +105,27 @@
 #### 缩放机制
 
 1. **容器尺寸计算**
+
    - 使用 `getBoundingClientRect()` 获取精确的容器尺寸
    - 自动减去工具栏高度和边距，确保内容不被遮挡
    - 考虑侧边栏状态（展开/收起）对可用空间的影响
 
 2. **设备尺寸常量**
+
    - 手机模拟器：375px × 812px（含边框：399px × 836px）
    - 平板模拟器：1024px × 812px（含边框：1056px × 844px）
    - 紧凑模式：720px（手机模式专用）
 
 3. **缩放算法**
+
    ```javascript
    // 计算容器和内容的宽高比
    const scaleX = containerW / contentW;
    const scaleY = containerH / contentH;
-   
+
    // 取较小值确保内容完全可见
    let scale = Math.min(scaleX, scaleY);
-   
+
    // 限制缩放范围（0.2 - 1.0）
    scale = Math.min(Math.max(scale, 0.2), 1.0);
    ```
@@ -140,11 +133,13 @@
 #### 视图模式
 
 1. **对比模式** (`compare`)
+
    - 同时显示手机和平板模拟器
    - 内容宽度：手机 + 间隙 + 平板
    - 内容高度：取两者最大值
 
 2. **手机模式** (`phone`)
+
    - 仅显示手机模拟器，使用紧凑高度
    - 节省屏幕空间，便于专注移动端设计
 
@@ -207,18 +202,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>页面标题 - 可视化编辑器</title>
-    
+
     <!-- 引入Tailwind CSS和DaisyUI -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.min.css" rel="stylesheet" type="text/css" />
-    
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
     <!-- 引入图标库 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
 
     <style>
       /* 全局样式 */
       body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
         overflow: hidden;
       }
 
@@ -318,25 +321,44 @@
   </head>
   <body class="bg-base-200 h-screen flex w-full">
     <!-- 1. 左侧预览区域 (Flex-1) -->
-    <main class="flex-1 h-full flex flex-col bg-slate-100 relative overflow-hidden order-1">
+    <main
+      class="flex-1 h-full flex flex-col bg-slate-100 relative overflow-hidden order-1"
+    >
       <!-- 顶部工具栏 - 固定结构，所有页面相同 -->
-      <div class="absolute top-6 left-1/2 -translate-x-1/2 z-50 bg-white/90 backdrop-blur p-1.5 rounded-full shadow-lg border border-white/50 flex gap-1">
-        <button class="btn btn-sm btn-ghost rounded-full px-5 data-[active=true]:bg-gray-900 data-[active=true]:text-white transition-all" 
-                id="btn-view-compare" onclick="switchView('compare')" data-active="true">
+      <div
+        class="absolute top-6 left-1/2 -translate-x-1/2 z-50 bg-white/90 backdrop-blur p-1.5 rounded-full shadow-lg border border-white/50 flex gap-1"
+      >
+        <button
+          class="btn btn-sm btn-ghost rounded-full px-5 data-[active=true]:bg-gray-900 data-[active=true]:text-white transition-all"
+          id="btn-view-compare"
+          onclick="switchView('compare')"
+          data-active="true"
+        >
           <i class="fa-solid fa-table-columns"></i> 对比
         </button>
-        <button class="btn btn-sm btn-ghost rounded-full px-5 data-[active=true]:bg-gray-900 data-[active=true]:text-white transition-all" 
-                id="btn-view-phone" onclick="switchView('phone')" data-active="false">
+        <button
+          class="btn btn-sm btn-ghost rounded-full px-5 data-[active=true]:bg-gray-900 data-[active=true]:text-white transition-all"
+          id="btn-view-phone"
+          onclick="switchView('phone')"
+          data-active="false"
+        >
           <i class="fa-solid fa-mobile-screen"></i> 手机
         </button>
-        <button class="btn btn-sm btn-ghost rounded-full px-5 data-[active=true]:bg-gray-900 data-[active=true]:text-white transition-all" 
-                id="btn-view-pad" onclick="switchView('pad')" data-active="false">
+        <button
+          class="btn btn-sm btn-ghost rounded-full px-5 data-[active=true]:bg-gray-900 data-[active=true]:text-white transition-all"
+          id="btn-view-pad"
+          onclick="switchView('pad')"
+          data-active="false"
+        >
           <i class="fa-solid fa-tablet-screen-button"></i> 平板
         </button>
       </div>
 
       <!-- 预览画布容器 - 固定结构，所有页面相同 -->
-      <div class="w-full h-full flex items-center justify-center preview-wrapper relative" id="preview-container">
+      <div
+        class="w-full h-full flex items-center justify-center preview-wrapper relative"
+        id="preview-container"
+      >
         <!-- 舞台：包含所有设备，通过 JS 控制显隐和缩放 -->
         <div id="presentation-stage">
           <!-- 手机模型 - 外壳固定，内容动态 -->
@@ -362,20 +384,30 @@
       </div>
 
       <!-- 缩放提示 - 固定结构，所有页面相同 -->
-      <div class="absolute bottom-4 right-4 text-xs text-gray-400 bg-white/80 px-2 py-1 rounded backdrop-blur">
+      <div
+        class="absolute bottom-4 right-4 text-xs text-gray-400 bg-white/80 px-2 py-1 rounded backdrop-blur"
+      >
         Zoom: <span id="scale-val">100%</span>
       </div>
     </main>
 
     <!-- 2. 右侧配置面板 (Order-2) -->
-    <aside id="config-sidebar" class="w-[380px] bg-base-100 h-full flex flex-col border-l border-base-300 shadow-xl z-20 relative order-2">
+    <aside
+      id="config-sidebar"
+      class="w-[380px] bg-base-100 h-full flex flex-col border-l border-base-300 shadow-xl z-20 relative order-2"
+    >
       <!-- 收起/展开按钮 - 固定结构，所有页面相同 -->
-      <div class="toggle-btn text-gray-500 hover:text-primary" onclick="toggleSidebar()">
+      <div
+        class="toggle-btn text-gray-500 hover:text-primary"
+        onclick="toggleSidebar()"
+      >
         <i class="fa-solid fa-chevron-right" id="toggle-icon"></i>
       </div>
 
       <!-- 侧边栏内容容器 - 固定结构，内容动态 -->
-      <div class="sidebar-content flex flex-col h-full w-[380px] transition-opacity duration-200">
+      <div
+        class="sidebar-content flex flex-col h-full w-[380px] transition-opacity duration-200"
+      >
         <!-- 面板标题 - 根据页面自定义标题文字 -->
         <div class="p-5 border-b border-base-200 bg-white shrink-0">
           <div class="flex items-center gap-2">
@@ -420,8 +452,10 @@
         currentMode = type;
 
         // 更新按钮状态
-        document.getElementById("btn-view-compare").dataset.active = type === "compare";
-        document.getElementById("btn-view-phone").dataset.active = type === "phone";
+        document.getElementById("btn-view-compare").dataset.active =
+          type === "compare";
+        document.getElementById("btn-view-phone").dataset.active =
+          type === "phone";
         document.getElementById("btn-view-pad").dataset.active = type === "pad";
 
         const phoneWrapper = document.getElementById("phone-mockup-wrapper");
@@ -450,7 +484,9 @@
       function autoFit() {
         const container = document.getElementById("preview-container");
         const stage = document.getElementById("presentation-stage");
-        const toolbar = document.querySelector('[class*="top-6"][class*="left-1/2"]');
+        const toolbar = document.querySelector(
+          '[class*="top-6"][class*="left-1/2"]'
+        );
 
         // 重置缩放以获取真实尺寸
         stage.style.transform = "scale(1)";
@@ -494,7 +530,8 @@
 
         // 应用缩放
         stage.style.transform = `scale(${scale})`;
-        document.getElementById("scale-val").innerText = Math.round(scale * 100) + "%";
+        document.getElementById("scale-val").innerText =
+          Math.round(scale * 100) + "%";
       }
 
       // 监听窗口大小变化和侧边栏动画
@@ -503,14 +540,14 @@
       });
 
       // --- 4. 页面特定功能 - 根据不同页面自定义 ---
-      
+
       // 在此处添加页面特定的JavaScript功能
-      
+
       // --- 5. 初始化 - 固定代码，所有页面相同 ---
       document.addEventListener("DOMContentLoaded", function () {
         // 初始化页面特定功能
         // initPageSpecificFunctions();
-        
+
         // 初始执行一次缩放 (延迟执行确保DOM完全渲染)
         setTimeout(() => {
           autoFit();
@@ -527,21 +564,24 @@
 
 以下结构在所有单 HTML 页面中完全相同，直接复制使用：
 
-1. **HTML基础结构**
-   - DOCTYPE声明、语言设置、字符编码
-   - CDN资源引入（Tailwind CSS、DaisyUI、Font Awesome）
+1. **HTML 基础结构**
+
+   - DOCTYPE 声明、语言设置、字符编码
+   - CDN 资源引入（Tailwind CSS、DaisyUI、Font Awesome）
 
 2. **全局样式**
-   - body样式、设备外壳样式、屏幕容器样式
-   - UI辅助类（preview-wrapper、stage过渡等）
+
+   - body 样式、设备外壳样式、屏幕容器样式
+   - UI 辅助类（preview-wrapper、stage 过渡等）
 
 3. **布局容器**
+
    - 左侧预览区域结构
    - 顶部工具栏（设备切换按钮）
    - 预览画布容器和舞台
    - 右侧配置面板框架
 
-4. **核心JavaScript功能**
+4. **核心 JavaScript 功能**
    - 侧边栏收起/展开逻辑
    - 视图切换逻辑
    - 自动缩放逻辑
@@ -553,11 +593,13 @@
 以下内容需要根据具体页面进行定制：
 
 1. **页面标题**
+
    ```html
    <title>页面标题 - 可视化编辑器</title>
    ```
 
 2. **页面特定样式**
+
    ```css
    /* 在此处添加页面特定的CSS样式 */
    .page-specific-styles {
@@ -566,6 +608,7 @@
    ```
 
 3. **手机端页面内容**
+
    ```html
    <div class="page-content-phone">
      <!-- 在此处添加手机端页面内容 -->
@@ -573,6 +616,7 @@
    ```
 
 4. **平板端页面内容**
+
    ```html
    <div class="page-content-pad">
      <!-- 在此处添加平板端页面内容 -->
@@ -580,23 +624,26 @@
    ```
 
 5. **配置面板标题**
+
    ```html
    <h1 class="text-lg font-bold text-gray-800">页面配置标题</h1>
    ```
 
 6. **配置选项**
+
    ```html
    <div class="flex-1 overflow-y-auto p-6 space-y-8">
      <!-- 在此处添加页面特定的配置选项 -->
    </div>
    ```
 
-7. **页面特定JavaScript功能**
+7. **页面特定 JavaScript 功能**
+
    ```javascript
    // --- 4. 页面特定功能 - 根据不同页面自定义 ---
-   
+
    // 在此处添加页面特定的JavaScript功能
-   
+
    // 在初始化中调用
    // initPageSpecificFunctions();
    ```
@@ -604,22 +651,25 @@
 ### 开发最佳实践
 
 1. **保持模板完整性**：不要删除固定部分的核心代码
-2. **合理命名**：使用语义化的类名和ID命名
+2. **合理命名**：使用语义化的类名和 ID 命名
 3. **响应式设计**：确保手机和平板端都有良好的显示效果
-4. **性能优化**：避免在缩放计算中使用复杂的DOM查询
+4. **性能优化**：避免在缩放计算中使用复杂的 DOM 查询
 5. **代码复用**：将通用功能提取为可复用的函数
 
 ### 常见页面类型示例
 
 #### 弹窗页面
+
 - 内容区域：半透明遮罩 + 居中弹窗
 - 配置选项：弹窗文案、按钮设置、触发条件
 
 #### 列表页面
+
 - 内容区域：滚动列表 + 顶部导航
 - 配置选项：列表项配置、排序设置、分页设置
 
 #### 表单页面
+
 - 内容区域：表单控件 + 提交按钮
 - 配置选项：字段配置、验证规则、提交设置
 
