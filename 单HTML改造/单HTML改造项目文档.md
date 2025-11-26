@@ -196,154 +196,432 @@
 
 ## 页面结构规范
 
-### 统一布局结构
+### 统一布局模板
 
-每个单 HTML 页面都采用相同的左右分栏布局：
+所有单 HTML 页面都采用以下标准布局模板，确保一致的用户体验和开发效率：
 
 ```html
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="light">
   <head>
-    <!-- 头部资源引用 -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>页面标题 - 可视化编辑器</title>
+    
+    <!-- 引入Tailwind CSS和DaisyUI -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.min.css" rel="stylesheet" type="text/css" />
+    
+    <!-- 引入图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+      /* 全局样式 */
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        overflow: hidden;
+      }
+
+      /* 设备外壳模拟 */
+      .device-mockup {
+        position: relative;
+        background: #fff;
+        border: 12px solid #1f2937;
+        border-radius: 40px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+        flex-shrink: 0; /* 防止在Flex容器中被压缩 */
+      }
+
+      .device-mockup.phone {
+        width: 375px;
+        height: 812px;
+      }
+
+      /* 手机紧凑模式：高度减小以避开顶部切换按钮 */
+      .device-mockup.phone.phone-compact {
+        height: 720px; /* 减小高度 */
+      }
+
+      .device-mockup.pad {
+        width: 1024px;
+        height: 812px; /* 与手机高度一致 */
+        border-width: 16px;
+        border-radius: 24px;
+      }
+
+      /* 屏幕容器 */
+      .screen-container {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+        background-color: #fff;
+      }
+
+      /* 页面特定样式 - 根据不同页面自定义 */
+      .page-specific-styles {
+        /* 在此处添加页面特定的CSS样式 */
+      }
+
+      /* UI Helper Classes */
+      .preview-wrapper {
+        background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+        background-size: 20px 20px;
+        overflow: hidden; /* 禁止滚动，完全依赖缩放 */
+      }
+
+      /* Stage Transition */
+      #presentation-stage {
+        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        transform-origin: center center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+      }
+
+      /* Sidebar Transition */
+      #config-sidebar {
+        transition: width 0.3s ease, transform 0.3s ease;
+      }
+
+      .toggle-btn {
+        position: absolute;
+        left: -24px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 24px;
+        height: 48px;
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-right: none;
+        border-radius: 8px 0 0 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: -2px 0 8px rgba(0, 0, 0, 0.05);
+        z-index: 50;
+      }
+
+      .sidebar-collapsed {
+        width: 0 !important;
+        border: none;
+      }
+
+      .sidebar-collapsed .sidebar-content {
+        opacity: 0;
+        pointer-events: none;
+      }
+    </style>
   </head>
-  <body class="global-font">
-    <div class="flex h-screen">
-      <!-- 左侧实时预览区 -->
-      <div class="w-3/5 border-r border-gray-200">
-        <!-- 顶部工具栏 -->
-        <div class="h-12 bg-gray-100 border-b border-gray-200 flex items-center px-4">
-          <!-- 设备切换按钮等通用工具 -->
-        </div>
-        
-        <!-- 预览画布容器 -->
-        <div class="h-full overflow-auto bg-gray-50">
-          <!-- 舞台区域 -->
-          <div class="min-h-full flex items-center justify-center p-8">
-            <!-- 手机模拟器 -->
-            <div id="phone-preview" class="hidden">
-              <div class="w-[375px] h-[812px] bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-300">
-                <!-- 手机状态栏 -->
-                <div class="h-11 bg-black text-white flex items-center justify-between px-6 text-xs">
-                  <span>9:41</span>
-                  <div class="flex gap-1">
-                    <!-- 信号、WiFi、电池图标 -->
-                  </div>
-                </div>
-                <!-- 手机内容区域 (动态内容) -->
-                <div id="phone-content" class="h-[761px] overflow-auto">
-                  <!-- 页面特定内容 -->
-                </div>
+  <body class="bg-base-200 h-screen flex w-full">
+    <!-- 1. 左侧预览区域 (Flex-1) -->
+    <main class="flex-1 h-full flex flex-col bg-slate-100 relative overflow-hidden order-1">
+      <!-- 顶部工具栏 - 固定结构，所有页面相同 -->
+      <div class="absolute top-6 left-1/2 -translate-x-1/2 z-50 bg-white/90 backdrop-blur p-1.5 rounded-full shadow-lg border border-white/50 flex gap-1">
+        <button class="btn btn-sm btn-ghost rounded-full px-5 data-[active=true]:bg-gray-900 data-[active=true]:text-white transition-all" 
+                id="btn-view-compare" onclick="switchView('compare')" data-active="true">
+          <i class="fa-solid fa-table-columns"></i> 对比
+        </button>
+        <button class="btn btn-sm btn-ghost rounded-full px-5 data-[active=true]:bg-gray-900 data-[active=true]:text-white transition-all" 
+                id="btn-view-phone" onclick="switchView('phone')" data-active="false">
+          <i class="fa-solid fa-mobile-screen"></i> 手机
+        </button>
+        <button class="btn btn-sm btn-ghost rounded-full px-5 data-[active=true]:bg-gray-900 data-[active=true]:text-white transition-all" 
+                id="btn-view-pad" onclick="switchView('pad')" data-active="false">
+          <i class="fa-solid fa-tablet-screen-button"></i> 平板
+        </button>
+      </div>
+
+      <!-- 预览画布容器 - 固定结构，所有页面相同 -->
+      <div class="w-full h-full flex items-center justify-center preview-wrapper relative" id="preview-container">
+        <!-- 舞台：包含所有设备，通过 JS 控制显隐和缩放 -->
+        <div id="presentation-stage">
+          <!-- 手机模型 - 外壳固定，内容动态 -->
+          <div id="phone-mockup-wrapper" class="device-mockup phone">
+            <div class="screen-container phone-bg">
+              <!-- 页面特定内容 - 根据不同页面自定义 -->
+              <div class="page-content-phone">
+                <!-- 在此处添加手机端页面内容 -->
               </div>
             </div>
-            
-            <!-- 平板模拟器 -->
-            <div id="tablet-preview" class="hidden">
-              <div class="w-[768px] h-[1024px] bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-300">
-                <!-- 平板状态栏 -->
-                <div class="h-11 bg-gray-100 flex items-center justify-between px-6 text-xs">
-                  <span>9:41</span>
-                  <div class="flex gap-1">
-                    <!-- 信号、WiFi、电池图标 -->
-                  </div>
-                </div>
-                <!-- 平板内容区域 (动态内容) -->
-                <div id="tablet-content" class="h-[1013px] overflow-auto">
-                  <!-- 页面特定内容 -->
-                </div>
+          </div>
+
+          <!-- 平板模型 - 外壳固定，内容动态 -->
+          <div id="pad-mockup-wrapper" class="device-mockup pad">
+            <div class="screen-container pad-bg">
+              <!-- 页面特定内容 - 根据不同页面自定义 -->
+              <div class="page-content-pad">
+                <!-- 在此处添加平板端页面内容 -->
               </div>
             </div>
           </div>
         </div>
       </div>
-      
-      <!-- 右侧配置面板 -->
-      <div class="w-2/5 bg-white">
-        <!-- 配置面板标题 -->
-        <div class="h-12 bg-gray-100 border-b border-gray-200 flex items-center px-4">
-          <h3 class="font-medium">配置面板</h3>
+
+      <!-- 缩放提示 - 固定结构，所有页面相同 -->
+      <div class="absolute bottom-4 right-4 text-xs text-gray-400 bg-white/80 px-2 py-1 rounded backdrop-blur">
+        Zoom: <span id="scale-val">100%</span>
+      </div>
+    </main>
+
+    <!-- 2. 右侧配置面板 (Order-2) -->
+    <aside id="config-sidebar" class="w-[380px] bg-base-100 h-full flex flex-col border-l border-base-300 shadow-xl z-20 relative order-2">
+      <!-- 收起/展开按钮 - 固定结构，所有页面相同 -->
+      <div class="toggle-btn text-gray-500 hover:text-primary" onclick="toggleSidebar()">
+        <i class="fa-solid fa-chevron-right" id="toggle-icon"></i>
+      </div>
+
+      <!-- 侧边栏内容容器 - 固定结构，内容动态 -->
+      <div class="sidebar-content flex flex-col h-full w-[380px] transition-opacity duration-200">
+        <!-- 面板标题 - 根据页面自定义标题文字 -->
+        <div class="p-5 border-b border-base-200 bg-white shrink-0">
+          <div class="flex items-center gap-2">
+            <h1 class="text-lg font-bold text-gray-800">页面配置标题</h1>
+          </div>
         </div>
-        
-        <!-- 配置选项区域 (动态内容) -->
-        <div id="config-panel" class="p-4 overflow-auto h-[calc(100vh-3rem)]">
-          <!-- 页面特定的配置选项 -->
+
+        <!-- 配置选项区域 - 根据不同页面自定义配置项 -->
+        <div class="flex-1 overflow-y-auto p-6 space-y-8">
+          <!-- 在此处添加页面特定的配置选项 -->
         </div>
       </div>
-    </div>
+    </aside>
+
+    <script>
+      // --- 1. 侧边栏收起/展开逻辑 - 固定代码，所有页面相同 ---
+      let isSidebarOpen = true;
+      function toggleSidebar() {
+        const sidebar = document.getElementById("config-sidebar");
+        const icon = document.getElementById("toggle-icon");
+
+        isSidebarOpen = !isSidebarOpen;
+
+        if (!isSidebarOpen) {
+          sidebar.classList.add("sidebar-collapsed");
+          icon.classList.remove("fa-chevron-right");
+          icon.classList.add("fa-chevron-left");
+        } else {
+          sidebar.classList.remove("sidebar-collapsed");
+          icon.classList.remove("fa-chevron-left");
+          icon.classList.add("fa-chevron-right");
+        }
+
+        // 侧边栏动画结束后重新计算缩放
+        setTimeout(autoFit, 350);
+      }
+
+      // --- 2. 视图切换逻辑 - 固定代码，所有页面相同 ---
+      let currentMode = "compare"; // 默认模式
+
+      function switchView(type) {
+        currentMode = type;
+
+        // 更新按钮状态
+        document.getElementById("btn-view-compare").dataset.active = type === "compare";
+        document.getElementById("btn-view-phone").dataset.active = type === "phone";
+        document.getElementById("btn-view-pad").dataset.active = type === "pad";
+
+        const phoneWrapper = document.getElementById("phone-mockup-wrapper");
+        const padWrapper = document.getElementById("pad-mockup-wrapper");
+
+        // 根据模式显示/隐藏设备
+        if (type === "compare") {
+          phoneWrapper.style.display = "block";
+          padWrapper.style.display = "block";
+          phoneWrapper.classList.remove("phone-compact");
+        } else if (type === "phone") {
+          phoneWrapper.style.display = "block";
+          padWrapper.style.display = "none";
+          phoneWrapper.classList.add("phone-compact"); // 手机模式添加紧凑样式
+        } else if (type === "pad") {
+          phoneWrapper.style.display = "none";
+          padWrapper.style.display = "block";
+          phoneWrapper.classList.remove("phone-compact");
+        }
+
+        // 触发自动缩放
+        autoFit();
+      }
+
+      // --- 3. 自动缩放逻辑 - 固定代码，所有页面相同 ---
+      function autoFit() {
+        const container = document.getElementById("preview-container");
+        const stage = document.getElementById("presentation-stage");
+        const toolbar = document.querySelector('[class*="top-6"][class*="left-1/2"]');
+
+        // 重置缩放以获取真实尺寸
+        stage.style.transform = "scale(1)";
+
+        // 获取容器尺寸 (优化计算逻辑)
+        const containerRect = container.getBoundingClientRect();
+        const containerW = containerRect.width - 80; // 增加边距
+        const toolbarHeight = toolbar ? toolbar.offsetHeight + 60 : 100; // 工具栏高度 + 间距
+        const containerH = containerRect.height - 80 - toolbarHeight; // 增加边距
+
+        // 计算内容尺寸
+        let contentW = 0;
+        let contentH = 0;
+
+        // 硬件尺寸常量
+        const PHONE_W = 399; // 375 + border 24
+        const PHONE_H = 836; // 812 + border 24
+        const PHONE_COMPACT_H = 744; // 720 + border 24 (紧凑模式)
+        const PAD_W = 1056; // 1024 + border 32
+        const PAD_H = 844; // 812 + border 32 (与手机高度一致)
+        const GAP = 40;
+
+        if (currentMode === "compare") {
+          contentW = PHONE_W + GAP + PAD_W;
+          contentH = Math.max(PHONE_H, PAD_H);
+        } else if (currentMode === "phone") {
+          contentW = PHONE_W;
+          contentH = PHONE_COMPACT_H; // 手机模式使用紧凑高度
+        } else {
+          contentW = PAD_W;
+          contentH = PAD_H;
+        }
+
+        // 计算缩放比例 (优化算法)
+        const scaleX = containerW / contentW;
+        const scaleY = containerH / contentH;
+        let scale = Math.min(scaleX, scaleY);
+
+        // 限制最大缩放为1，最小缩放为0.2 (提高最小缩放限制)
+        scale = Math.min(Math.max(scale, 0.2), 1);
+
+        // 应用缩放
+        stage.style.transform = `scale(${scale})`;
+        document.getElementById("scale-val").innerText = Math.round(scale * 100) + "%";
+      }
+
+      // 监听窗口大小变化和侧边栏动画
+      window.addEventListener("resize", () => {
+        setTimeout(autoFit, 100);
+      });
+
+      // --- 4. 页面特定功能 - 根据不同页面自定义 ---
+      
+      // 在此处添加页面特定的JavaScript功能
+      
+      // --- 5. 初始化 - 固定代码，所有页面相同 ---
+      document.addEventListener("DOMContentLoaded", function () {
+        // 初始化页面特定功能
+        // initPageSpecificFunctions();
+        
+        // 初始执行一次缩放 (延迟执行确保DOM完全渲染)
+        setTimeout(() => {
+          autoFit();
+        }, 100);
+      });
+    </script>
   </body>
 </html>
 ```
 
-### 相同部分说明
+### 模板使用说明
 
-以下结构在所有单 HTML 页面中完全相同：
+#### 固定部分（无需修改）
 
-1. **顶部工具栏**
-   - 设备切换按钮（手机/平板）
-   - 刷新预览按钮
-   - 全屏预览按钮
-   - 导出代码按钮
+以下结构在所有单 HTML 页面中完全相同，直接复制使用：
 
-2. **预览画布容器**
-   - 灰色背景的容器
-   - 居中对齐的舞台区域
-   - 统一的间距和阴影效果
+1. **HTML基础结构**
+   - DOCTYPE声明、语言设置、字符编码
+   - CDN资源引入（Tailwind CSS、DaisyUI、Font Awesome）
 
-3. **手机模拟器**
-   - 尺寸：375px × 812px（iPhone X 标准）
-   - 圆角边框和阴影
-   - 黑色状态栏（时间、信号、WiFi、电池）
-   - 内容区域高度：761px
+2. **全局样式**
+   - body样式、设备外壳样式、屏幕容器样式
+   - UI辅助类（preview-wrapper、stage过渡等）
 
-4. **平板模拟器**
-   - 尺寸：768px × 1024px（iPad 标准）
-   - 圆角边框和阴影
-   - 灰色状态栏
-   - 内容区域高度：1013px
+3. **布局容器**
+   - 左侧预览区域结构
+   - 顶部工具栏（设备切换按钮）
+   - 预览画布容器和舞台
+   - 右侧配置面板框架
 
-5. **配置面板框架**
-   - 固定宽度：40%
-   - 白色背景
-   - 标题栏和滚动区域
+4. **核心JavaScript功能**
+   - 侧边栏收起/展开逻辑
+   - 视图切换逻辑
+   - 自动缩放逻辑
+   - 窗口大小监听
+   - 初始化代码
 
-### 动态内容范围
+#### 动态部分（需要自定义）
 
-以下内容在不同页面中有所不同：
+以下内容需要根据具体页面进行定制：
 
-#### 手机和平板模拟器中的动态内容
+1. **页面标题**
+   ```html
+   <title>页面标题 - 可视化编辑器</title>
+   ```
 
-1. **手机内容区域** (`#phone-content`)
-   - 根据页面类型显示不同的 UI 组件
-   - 广场页面：显示科目图标、轮播图、活动卡片
-   - 弹窗页面：显示各种弹窗组件
-   - 课后服务页面：显示课程卡片、续费选项
-   - 我的页面：显示用户信息、菜单项
+2. **页面特定样式**
+   ```css
+   /* 在此处添加页面特定的CSS样式 */
+   .page-specific-styles {
+     /* 页面特定的样式定义 */
+   }
+   ```
 
-2. **平板内容区域** (`#tablet-content`)
-   - 与手机内容功能相同，但布局适配平板尺寸
-   - 通常使用更大的卡片、更多的列数
-   - 间距和字体大小相应调整
+3. **手机端页面内容**
+   ```html
+   <div class="page-content-phone">
+     <!-- 在此处添加手机端页面内容 -->
+   </div>
+   ```
 
-#### 右侧配置面板的动态内容
+4. **平板端页面内容**
+   ```html
+   <div class="page-content-pad">
+     <!-- 在此处添加平板端页面内容 -->
+   </div>
+   ```
 
-1. **广场页面配置**
-   - 轮播图配置（图片上传、切换时间）
-   - 科目图标配置（名称、图标、链接）
-   - 活动卡片配置（标题、图片、跳转链接）
+5. **配置面板标题**
+   ```html
+   <h1 class="text-lg font-bold text-gray-800">页面配置标题</h1>
+   ```
 
-2. **弹窗页面配置**
-   - 弹窗类型选择
-   - 弹窗内容配置（标题、描述、按钮）
-   - 触发条件设置
+6. **配置选项**
+   ```html
+   <div class="flex-1 overflow-y-auto p-6 space-y-8">
+     <!-- 在此处添加页面特定的配置选项 -->
+   </div>
+   ```
 
-3. **课后服务页面配置**
-   - 课程列表配置
-   - 续费选项设置
-   - 价格显示配置
+7. **页面特定JavaScript功能**
+   ```javascript
+   // --- 4. 页面特定功能 - 根据不同页面自定义 ---
+   
+   // 在此处添加页面特定的JavaScript功能
+   
+   // 在初始化中调用
+   // initPageSpecificFunctions();
+   ```
 
-4. **我的页面配置**
-   - 用户信息配置
-   - 菜单项配置
-   - 功能开关设置
+### 开发最佳实践
+
+1. **保持模板完整性**：不要删除固定部分的核心代码
+2. **合理命名**：使用语义化的类名和ID命名
+3. **响应式设计**：确保手机和平板端都有良好的显示效果
+4. **性能优化**：避免在缩放计算中使用复杂的DOM查询
+5. **代码复用**：将通用功能提取为可复用的函数
+
+### 常见页面类型示例
+
+#### 弹窗页面
+- 内容区域：半透明遮罩 + 居中弹窗
+- 配置选项：弹窗文案、按钮设置、触发条件
+
+#### 列表页面
+- 内容区域：滚动列表 + 顶部导航
+- 配置选项：列表项配置、排序设置、分页设置
+
+#### 表单页面
+- 内容区域：表单控件 + 提交按钮
+- 配置选项：字段配置、验证规则、提交设置
 
 ## 注意事项
 
