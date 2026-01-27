@@ -12,7 +12,7 @@ const config = {
   host: "10.130.33.131",
   port: 22,
   username: "qihao",
-  password: "qh9189",
+  password: "0015",
 };
 
 const sftp = new SftpClient();
